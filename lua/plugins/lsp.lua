@@ -6,5 +6,8 @@ return {
         opts.capabilities.offsetEncoding = { "utf-16" }
       end,
     },
+    inlay_hints = {
+      enabled = true,
+    },
   },
 }
