@@ -3,6 +3,7 @@ return {
   enabled = false,
   cmd = "Copilot",
   build = ":Copilot auth",
+  enabled = false,
   opts = {
     suggestion = { enabled = true, auto_trigger = true, keymap = {
       accept = "<C-l>",
