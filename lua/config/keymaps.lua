@@ -15,7 +15,7 @@ local function map(mode, lhs, rhs, opts)
 end
 
 local lazyterm = function()
-  Util.float_term(nil, { cwd = Util.get_root() })
+  Util.terminal.open(nil, { cwd = Util.root.get() })
 end
 
 map("t", "<c-\\>", "<cmd>close<cr>", { desc = "Hide Terminal" })
