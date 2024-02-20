@@ -20,4 +20,9 @@ end
 
 map("t", "<c-\\>", "<cmd>close<cr>", { desc = "Hide Terminal" })
 map("n", "<c-\\>", lazyterm, { desc = "Terminal (root dir)" })
-map("n", "<leader>ci", "<cmd>lua vim.lsp.inlay_hints(0,nil)<cr>", { desc = "toggle inlay hints" })
+map(
+  "n",
+  "<leader>ci",
+  "<cmd>lua vim.lsp.inlay_hint.enable(0, not vim.lsp.inlay_hint.is_enabled())<cr>",
+  { desc = "toggle inlay hints" }
+)
