@@ -1,0 +1,1 @@
+/Users/mag1cian/Dropbox/Mackup/.config/nvim/lua
