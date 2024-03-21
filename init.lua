@@ -1,1 +1,1 @@
-/Users/mag1cian/Dropbox/Mackup/.config/nvim/init.lua
+/Users/mag1cian/Library/CloudStorage/Dropbox/Mackup/.config/nvim/init.lua
