@@ -1,1 +1,2 @@
-/Users/mag1cian/Library/CloudStorage/Dropbox/Mackup/.config/nvim/init.lua
+-- bootstrap lazy.nvim, LazyVim and your plugins
+require("config.lazy")
