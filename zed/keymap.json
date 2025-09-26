@@ -1,0 +1,42 @@
+[
+  {
+    "context": "Workspace",
+    "bindings": {
+      "ctrl-\\": "workspace::ToggleBottomDock"
+    }
+  },
+  {
+    "context": "Editor && vim_mode == insert",
+    "bindings": {
+      // put key-bindings here if you want them to work in insert mode
+      // e.g.
+      "j k": ["workspace::SendKeystrokes", "escape"]
+    }
+  },
+  {
+    "context": "Dock",
+    "bindings": {
+      "ctrl-h": "workspace::ActivatePaneLeft",
+      "ctrl-l": "workspace::ActivatePaneRight",
+      "ctrl-k": "workspace::ActivatePaneUp",
+      "ctrl-j": "workspace::ActivatePaneDown"
+      // ... or other keybindings
+    }
+  },
+  {
+    "context": "Editor && vim_mode == normal",
+    "bindings": {
+      "space c f": "editor::Format",
+      "space c r": "editor::Rename",
+      "space c a": "editor::ToggleCodeActions",
+      "space e": "workspace::ToggleLeftDock",
+      "space b p": "pane::TogglePinTab",
+      "space b d": "pane::CloseActiveItem",
+      "space space": "file_finder::Toggle",
+      "space g b": "editor::ToggleGitBlameInline",
+      "space g c": "git::Blame",
+      "space d i": "editor::ToggleInlineDiagnostics",
+      "space o": "outline::Toggle"
+    }
+  }
+]
