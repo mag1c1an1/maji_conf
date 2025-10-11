@@ -15,12 +15,15 @@
     ripgrep # recursively searches directories for a regex pattern
     fd
     yazi
+    zellij
+    just
+
+    # vcs
     git
+    lazygit
     jujutsu
     lazyjj
     gh
-    zellij
-    just
 
     # rust
     rustup
@@ -28,7 +31,7 @@
     # go
     go
 
-    # python 
+    # python
     uv
 
     # cpp
@@ -54,16 +57,16 @@
 
     # system tools
   ];
+
   programs.bash = {
     enable = true;
-    enableCompletion = true;
     initExtra = ''
-    if [[ $(${pkgs.procps}/bin/ps --no-header --pid=$PPID --format=comm) != "fish" && -z ''${BASH_EXECUTION_STRING} ]]
-    then
-      shopt -q login_shell && LOGIN_OPTION='--login' || LOGIN_OPTION=""
-      exec ${pkgs.fish}/bin/fish $LOGIN_OPTION
-    fi
-  '';
+      if [[ $(${pkgs.procps}/bin/ps --no-header --pid=$PPID --format=comm) != "fish" && -z ''${BASH_EXECUTION_STRING} ]]
+      then
+        shopt -q login_shell && LOGIN_OPTION='--login' || LOGIN_OPTION=""
+        exec ${pkgs.fish}/bin/fish $LOGIN_OPTION
+      fi
+    '';
   };
 
   # git 相关配置
@@ -81,6 +84,7 @@
   };
 
   # 启用 starship，这是一个漂亮的 shell 提示符
+  # TODO add conf
   programs.starship = {
     enable = true;
     settings = {
@@ -107,7 +111,7 @@
       set -gx UV_PYTHON_INSTALL_MIRROR "https://ghfast.top/https://github.com/indygreg/python-build-standalone/releases/download"
       set -gx UV_DEFAULT_INDEX https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple
 
-      
+
 
     '';
   };

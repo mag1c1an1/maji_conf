@@ -13,25 +13,19 @@
     };
   };
 
-  outputs = { self, nixpkgs, nixos-wsl, ... }: {
+  outputs = { self, nixpkgs, nixos-wsl, home-manager ,... }:
+  {
     nixosConfigurations = {
       nixos = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
-          ./configuration.nix
-
           nixos-wsl.nixosModules.default
           {
             system.stateVersion = "25.05";
             wsl.enable = true;
-            wsl.defaultUser = "mag1cian";
-            wsl.extraBin = [
-              { src = "${pkgs.coreutils}/bin/uname";}
-              { src = "${pkgs.coreutils}/bin/mkdir";}
-              { src = "${pkgs.coreutils}/bin/cp";}
-            ];
           }
 
+          ./configuration.nix
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
