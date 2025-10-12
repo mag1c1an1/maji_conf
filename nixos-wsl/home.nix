@@ -41,6 +41,9 @@
     # debug
     lldb
 
+    # node
+    nodejs_24
+
     # networking tools
 
     # misc
@@ -60,6 +63,7 @@
 
   programs.bash = {
     enable = true;
+    enableCompletion = true;
     initExtra = ''
       if [[ $(${pkgs.procps}/bin/ps --no-header --pid=$PPID --format=comm) != "fish" && -z ''${BASH_EXECUTION_STRING} ]]
       then
@@ -77,10 +81,10 @@
   };
 
   programs.gh = {
-  enable = true;
-  gitCredentialHelper = {
-  enable = true;
-  };
+    enable = true;
+    gitCredentialHelper = {
+      enable = true;
+    };
   };
 
   # 启用 starship，这是一个漂亮的 shell 提示符
@@ -96,6 +100,10 @@
     enable = true;
     interactiveShellInit = ''
       set fish_greeting # Disable greeting
+
+      # ALIAS
+      alias lg=lazygit
+
       # PATH
       fish_add_path $HOME/.cargo/bin
       fish_add_path $HOME/.local/bin
@@ -111,8 +119,6 @@
       set -gx UV_PYTHON_INSTALL_MIRROR "https://ghfast.top/https://github.com/indygreg/python-build-standalone/releases/download"
       set -gx UV_DEFAULT_INDEX https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple
 
-
-
     '';
   };
 
@@ -120,8 +126,8 @@
     enable = true;
     settings = {
       user = {
+       	name = "mag1cian";
         email = "mag1cian@icloud.com";
-	name = "mag1cian";
       };
     };
   };
