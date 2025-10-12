@@ -15,6 +15,7 @@
     # archives
     unzip
     # utils
+    lsd
     zoxide
     ripgrep # recursively searches directories for a regex pattern
     fd

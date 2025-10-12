@@ -5,7 +5,14 @@
       set fish_greeting # Disable greeting
 
       # ALIAS
-      alias lg=lazygit
+      abbr -a ls lsd
+      abbr -a lt lsd --tree
+      abbr -a ll lsd -l
+      abbr -a l lsd -al
+      abbr -a lg lazygit
+      abbr -a lj lazyjj
+      abbr -a zj zellij
+      abbr -a jt just
 
       # PATH
       fish_add_path $HOME/.cargo/bin
