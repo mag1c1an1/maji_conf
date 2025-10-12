@@ -1,64 +1,54 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
+  imports = [
+   ];
   home.username = "mag1cian";
   home.homeDirectory = "/home/mag1cian";
-
   # 通过 home.packages 安装一些常用的软件
   # 这些软件将仅在当前用户下可用，不会影响系统级别的配置
   # 建议将所有 GUI 软件，以及与 OS 关系不大的 CLI 软件，都通过 home.packages 安装
   home.packages = with pkgs;[
     # archives
     unzip
-
     # utils
+    zoxide
     ripgrep # recursively searches directories for a regex pattern
     fd
     yazi
     zellij
     just
-
     # vcs
     git
     lazygit
     jujutsu
     lazyjj
     gh
-
+    # system
+    nix-ld
+    # editor
+    zed-editor
     # rust
     rustup
-
     # go
     go
-
     # python
     uv
-
     # cpp
     clang
     xmake
-
+    # nix related
+    nixd
+    alejandra
     # debug
     lldb
-
     # node
     nodejs_24
-
     # networking tools
-
-    # misc
-
-    # nix related
-    #
-    # it provides the command `nom` works just like `nix`
-
     # productivity
     btop  # replacement of htop/nmon
-
     # system call monitoring
     lsof # list open files
-
-    # system tools
   ];
 
   programs.bash = {
@@ -119,6 +109,14 @@
       set -gx UV_PYTHON_INSTALL_MIRROR "https://ghfast.top/https://github.com/indygreg/python-build-standalone/releases/download"
       set -gx UV_DEFAULT_INDEX https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple
 
+      function ra
+       	set tmp (mktemp -t "yazi-cwd.XXXXXX")
+       	yazi $argv --cwd-file="$tmp"
+       	if read -z cwd < "$tmp"; and [ -n "$cwd" ]; and [ "$cwd" != "$PWD" ]
+        		builtin cd -- "$cwd"
+       	end
+       	rm -f -- "$tmp"
+      end
     '';
   };
 
@@ -129,6 +127,16 @@
        	name = "mag1cian";
         email = "mag1cian@icloud.com";
       };
+      templates = {
+        commit_trailers = "format_signed_off_by_trailer(self)";
+      };
+    };
+  };
+
+  programs.lazygit = {
+    enable = true;
+    settings = {
+      git.commit.signOff = true;
     };
   };
 
@@ -137,6 +145,21 @@
   extraConfig = ''
     inoremap jk <esc>
   '';
+  };
+
+  programs.zed-editor = {
+    enable = true;
+    userSettings = {
+      node = {
+                    path = lib.getExe pkgs.nodejs;
+                    npm_path = lib.getExe' pkgs.nodejs "npm";
+                };
+    };
+  };
+
+  programs.zoxide = {
+    enable = true;
+    enableFishIntegration= true;
   };
 
 
