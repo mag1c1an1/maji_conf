@@ -71,14 +71,11 @@
             "language_servers": ["ruff", "..."]
         },
         "Nix": {
-            "language_servers": ["nixd", "!nil"]
-        }
-    },
-    "lsp": {
-        "nixd": {
-            "initialization_options": {
-                "formatting": {
-                    "command": ["alejandra", "--quiet", "--"] // or ["nixfmt"]
+            "language_servers": ["nixd", "!nil", "!nixfmt", "..."],
+            "formatter": {
+                "external": {
+                    "command": "alejandra", // or "nixfmt"
+                    "arguments": ["--quiet", "--"]
                 }
             }
         }
