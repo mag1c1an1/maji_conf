@@ -1,2 +1,2 @@
 switch:
-    sudo nixos-rebuild switch --flake ./nixos-wsl#nixos
+   sudo -E nixos-rebuild switch --flake ./nixos-wsl#nixos 

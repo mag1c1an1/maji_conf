@@ -1,12 +1,18 @@
-{config, lib, pkgs,...}:
-
+{ lib, pkgs,...}:
+let
+  isWSL = builtins.getEnv "WSL_DISTRO_NAME" != "";
+in
 {
-  wsl.defaultUser = "mag1cian";
-  wsl.extraBin = [
-    {src = "${pkgs.coreutils}/bin/uname";}
-    {src = "${pkgs.coreutils}/bin/mkdir";}
-    {src = "${pkgs.coreutils}/bin/cp";}
-  ];
+  wsl = {
+    enable = isWSL;
+     defaultUser = "mag1cian";
+     extraBin = [
+       {src = "${pkgs.coreutils}/bin/uname";}
+       {src = "${pkgs.coreutils}/bin/mkdir";}
+       {src = "${pkgs.coreutils}/bin/cp";}
+       {src = "${pkgs.git}/bin/git";}
+     ];
+  };
 
   nix.settings.substituters = lib.mkForce ["https://mirror.sjtu.edu.cn/nix-channels/store"];
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -19,4 +25,5 @@
   programs.fish.enable = true;
   users.defaultUserShell = pkgs.fish;
   users.users.mag1cian.shell = pkgs.fish;
+  system.stateVersion = "25.05";
 }

@@ -13,7 +13,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, nixos-wsl, home-manager ,... }:
+  outputs = {  nixpkgs, nixos-wsl, home-manager ,... }:
   {
     nixosConfigurations = {
       nixos = nixpkgs.lib.nixosSystem {
@@ -21,10 +21,6 @@
         modules = [
           ./configuration.nix
           nixos-wsl.nixosModules.default
-          {
-            system.stateVersion = "25.05";
-            wsl.enable = true;
-          }
           home-manager.nixosModules.home-manager
           {
             home-manager = {
