@@ -1,8 +1,9 @@
-{ config, pkgs, lib, ... }:
+{  pkgs, lib, ... }:
 
 {
   imports = [
     ./shells
+    ./vcs
    ];
   home.username = "mag1cian";
   home.homeDirectory = "/home/mag1cian";
@@ -52,14 +53,6 @@
     lsof # list open files
   ];
 
-
-  # git 相关配置
-  programs.git = {
-    enable = true;
-    userName = "mag1c1an1";
-    userEmail = "mag1cian@icloud.com";
-  };
-
   programs.gh = {
     enable = true;
     gitCredentialHelper = {
@@ -77,25 +70,6 @@
 
 
 
-  programs.jujutsu = {
-    enable = true;
-    settings = {
-      user = {
-       	name = "mag1cian";
-        email = "mag1cian@icloud.com";
-      };
-      templates = {
-        commit_trailers = "format_signed_off_by_trailer(self)";
-      };
-    };
-  };
-
-  programs.lazygit = {
-    enable = true;
-    settings = {
-      git.commit.signOff = true;
-    };
-  };
 
   programs.neovim = {
   enable = true;
