@@ -1,18 +1,21 @@
 {
   programs.fish = {
     enable = true;
+    shellAbbrs = {
+      ls = "lsd";
+      lt = "lsd --tree";
+      l = "lsd -al";
+      ll = "lsd -l";
+      lg = "lazygit";
+      lj = "lazyjj";
+      zj = "zellij";
+      jt = "just";
+    };
+    shellAliases = {
+      cnpm = "npm --registry=https://registry.npmmirror.com  --cache=$HOME/.npm/.cache/cnpm  --disturl=https://npmmirror.com/mirrors/node  --userconfig=$HOME/.cnpmrc"
+    };
     interactiveShellInit = ''
       set fish_greeting # Disable greeting
-
-      # ALIAS
-      abbr -a ls lsd
-      abbr -a lt lsd --tree
-      abbr -a ll lsd -l
-      abbr -a l lsd -al
-      abbr -a lg lazygit
-      abbr -a lj lazyjj
-      abbr -a zj zellij
-      abbr -a jt just
 
       # PATH
       fish_add_path $HOME/.cargo/bin
@@ -36,6 +39,18 @@
         		builtin cd -- "$cwd"
        	end
        	rm -f -- "$tmp"
+      end
+
+      function pythonEnv --description 'start a nix-shell with the given python packages' --argument pythonVersion
+        if set -q argv[2]
+            set argv $argv[2..-1]
+        end
+
+        for el in $argv
+            set ppkgs $ppkgs "python"$pythonVersion"Packages.$el"
+        end
+
+        nix-shell -p $ppkgs
       end
     '';
   };
