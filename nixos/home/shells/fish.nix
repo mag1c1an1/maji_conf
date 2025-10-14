@@ -12,7 +12,7 @@
       jt = "just";
     };
     shellAliases = {
-      cnpm = "npm --registry=https://registry.npmmirror.com  --cache=$HOME/.npm/.cache/cnpm  --disturl=https://npmmirror.com/mirrors/node  --userconfig=$HOME/.cnpmrc"
+      cnpm = "npm --registry=https://registry.npmmirror.com  --cache=$HOME/.npm/.cache/cnpm  --disturl=https://npmmirror.com/mirrors/node  --userconfig=$HOME/.cnpmrc";
     };
     interactiveShellInit = ''
       set fish_greeting # Disable greeting

@@ -1,6 +1,12 @@
+{pkgs,lib, ...}:
+
 {
-    nix.settings.substituters = lib.mkForce ["https://mirror.sjtu.edu.cn/nix-channels/store"];
-    nix.settings.experimental-features = [ "nix-command" "flakes" ];
+    nix = {
+        settings = {
+            substituters = lib.mkForce ["https://mirror.sjtu.edu.cn/nix-channels/store"];
+            experimental-features = [ "nix-command" "flakes" ];
+        };
+    };
     environment.systemPackages = with pkgs; [
         git
         neovim
@@ -8,8 +14,10 @@
         fish
     ];
     programs.fish.enable = true;
-    users.defaultUserShell = pkgs.fish;
-    users.users.mag1cian.shell = pkgs.fish;
+    users = {
+        defaultUserShell = pkgs.fish;
+        users.mag1cian.shell = pkgs.fish;
+    };
 
     # This option defines the first version of NixOS you have installed on this particular machine,
     # and is used to maintain compatibility with application data (e.g. databases) created on older NixOS versions.

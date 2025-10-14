@@ -30,7 +30,7 @@ def toml_to_nix(data, indent=0):
 def to_nix_value(value):
     """将 Python 值转换成 Nix 表达式"""
     if isinstance(value, str):
-        return json.dumps(value)  # 自动加双引号并转义
+        return f'"{value}"'
     elif isinstance(value, bool):
         return "true" if value else "false"
     elif value is None:
