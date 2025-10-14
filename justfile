@@ -1,4 +1,4 @@
 wsl:
-   sudo -E nixos-rebuild switch --flake ./nixos-wsl#nixos --impure --show-trace
+   WSL=TRUE sudo -E nixos-rebuild switch --flake ./nixos#nixos --impure --show-trace
 orb:
-   sudo -E nixos-rebuild switch --flake ./nixos-orb#nixos --impure --show-trace
+   WSL=FALSE sudo -E nixos-rebuild switch --flake ./nixos#nixos --impure --show-trace

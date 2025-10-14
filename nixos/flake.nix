@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
+    nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
     # home-manager, used for managing user configuration
     home-manager = {
       url = "github:nix-community/home-manager/release-25.05";
@@ -12,14 +13,11 @@
       # to avoid problems caused by different versions of nixpkgs.
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    wsl = {
-      url = "./wsl";
-    };
   };
 
   outputs = {
     nixpkgs,
-    wsl,
+    nixos-wsl,
     home-manager,
     ...
   }: {
@@ -31,9 +29,10 @@
         in [
           (
             if isWsl
-            then wsl.nixosModules.default
+            then ./configuration_wsl.nix
             else ./configuration_orb.nix
           )
+          nixos-wsl.nixosModules.default
           # 将 home-manager 配置为 nixos 的一个 module
           # 这样在 nixos-rebuild switch 时，home-manager 配置也会被自动部署
           home-manager.nixosModules.home-manager
