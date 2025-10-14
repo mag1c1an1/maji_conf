@@ -14,6 +14,7 @@
         fish
     ];
     programs.fish.enable = true;
+    programs.nix-ld.enable = true;
     users = {
         defaultUserShell = pkgs.fish;
         users.mag1cian.shell = pkgs.fish;

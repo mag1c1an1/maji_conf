@@ -28,8 +28,6 @@
     jujutsu
     lazyjj
     gh
-    # system
-    nix-ld
     # editor
     zed-editor
     # rust
