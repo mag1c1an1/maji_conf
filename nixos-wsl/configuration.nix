@@ -1,10 +1,10 @@
 { lib, pkgs,...}:
-let
-  isWSL = builtins.getEnv "WSL_DISTRO_NAME" != "";
-in
 {
+  imports = [
+    ../nixos-common
+  ]
   wsl = {
-    enable = isWSL;
+    enable = true;
      defaultUser = "mag1cian";
      extraBin = [
        {src = "${pkgs.coreutils}/bin/uname";}
@@ -13,17 +13,4 @@ in
        {src = "${pkgs.git}/bin/git";}
      ];
   };
-
-  nix.settings.substituters = lib.mkForce ["https://mirror.sjtu.edu.cn/nix-channels/store"];
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
-  environment.systemPackages = with pkgs; [
-    git
-    neovim
-    wget
-    fish
-  ];
-  programs.fish.enable = true;
-  users.defaultUserShell = pkgs.fish;
-  users.users.mag1cian.shell = pkgs.fish;
-  system.stateVersion = "25.05";
 }

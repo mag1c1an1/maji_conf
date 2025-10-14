@@ -1,7 +1,8 @@
 
 from nixos wiki
 
-neovim 
+neovim
 
 customRC is useless
 
+home for home manager
