@@ -47,7 +47,7 @@ def to_nix_value(value):
 
 if __name__ == "__main__":
     # 读取 TOML 文件
-    with open("../nixos-wsl/shells/starship.toml", "rb") as f:
+    with open("./config.toml", "rb") as f:
         data = tomllib.load(f)
 
     # 转换为 Nix Attribute Set 格式
