@@ -32,6 +32,8 @@
     zed-editor
     # rust
     rustup
+
+
     # go
     go
     # python
@@ -51,6 +53,14 @@
     btop # replacement of htop/nmon
     # system call monitoring
     lsof # list open files
+
+
+    metals # scala
+
+    # java
+    temurin-jre-bin-11
+    gradle
+    jdt-language-server # java
   ];
 
   # This value determines the Home Manager release that your

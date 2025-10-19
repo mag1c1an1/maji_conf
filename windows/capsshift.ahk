@@ -13,8 +13,9 @@ CapsLock::
 	if (KeyWait("CapsLock", "T0.5")) {
 		if(!isCapsPressed){
 			; 点击CapsLock，切换中英文
-			Send "{LAlt down}{Shift}"
-			Send "{LAlt up}"
+			; Send "{LAlt down}{Shift}"
+			; Send "{LAlt up}"
+			Send "^{Space}"
 		}
 		global isCapsPressed := false
 	} else { if(!isCapsPressed){
