@@ -72,4 +72,8 @@
   # the Home Manager release notes for a list of state version
   # changes in each release.
   home.stateVersion = "25.05";
+  programs.java = {
+    enable = true;
+    package = pkgs.temurin-jre-bin-11;
+  };
 }
