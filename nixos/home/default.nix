@@ -61,6 +61,8 @@
     temurin-jre-bin-11
     gradle
     jdt-language-server # java
+    # python
+    python313
   ];
 
   # This value determines the Home Manager release that your
