@@ -1,96 +1,100 @@
-// Zed keymap
-//
-// For information on binding keys, see the Zed
-// documentation: https://zed.dev/docs/key-bindings
-//
-// To see the default key bindings run `zed: open default keymap`
-// from the command palette.
 [
-    {
-        "context": "Editor && vim_mode == insert",
-        "bindings": {
-            "j k": "vim::NormalBefore"
-        }
-    },
-    {
-        "context": "Workspace",
-        "bindings": {
-            "ctrl-\\": "workspace::ToggleBottomDock"
-        }
-    },
-    {
-        "context": "vim_operator == a || vim_operator == i || vim_operator == cs",
-        "bindings": {
-            // Traditional Vim behavior
-            "q": "vim::MiniQuotes",
-            "b": "vim::MiniBrackets"
-        }
-    },
-    {
-        "context": "vim_mode == normal && !menu",
-        "bindings": {
-            // "shift-y": ["workspace::SendKeystrokes", "y $"] // Use neovim's yank behavior: yank to end of line.
-            "ctrl-\\": ["workspace::SendKeystrokes", "ctrl-`"]
-        }
-    },
-    {
-        "context": "vim_mode == normal || vim_mode == visual",
-        "bindings": {
-            "s": "vim::PushSneak",
-            "shift-s": "vim::PushSneakBackward"
-        }
-    },
-    {
-        "context": "vim_mode == visual",
-        "bindings": {
-            "shift-x": "vim::Exchange"
-        }
-    },
-    {
-        "context": "Dock",
-        "bindings": {
-            "ctrl-h": "workspace::ActivatePaneLeft",
-            "ctrl-l": "workspace::ActivatePaneRight",
-            "ctrl-k": "workspace::ActivatePaneUp",
-            "ctrl-j": "workspace::ActivatePaneDown"
-            // ... or other keybindings
-        }
-    },
-    {
-        "context": "VimControl && !menu && vim_mode != operator",
-        "bindings": {
-            "w": "vim::NextSubwordStart",
-            "b": "vim::PreviousSubwordStart",
-            "e": "vim::NextSubwordEnd",
-            "g e": "vim::PreviousSubwordEnd"
-        }
-    },
-    {
-        "context": "Editor && !menu",
-        "bindings": {
-            "ctrl-c": "editor::Copy", // vim default: return to normal mode
-            "ctrl-x": "editor::Cut", // vim default: decrement
-            "ctrl-v": "editor::Paste", // vim default: visual block mode
-            "ctrl-y": "editor::Undo", // vim default: line up
-            "ctrl-f": "buffer_search::Deploy", // vim default: page down
-            "ctrl-s": "workspace::Save", // vim default: show signature
-            "ctrl-a": "editor::SelectAll" // vim default: increment
-        }
-    },
-    {
-        "context": "Editor && vim_mode == normal",
-        "bindings": {
-            "space c f": "editor::Format",
-            "space c r": "editor::Rename",
-            "space c a": "editor::ToggleCodeActions",
-            "space e": "workspace::ToggleLeftDock",
-            "space b p": "pane::TogglePinTab",
-            "space b d": "pane::CloseActiveItem",
-            "space space": "file_finder::Toggle",
-            "space g b": "editor::ToggleGitBlameInline",
-            "space g c": "git::Blame",
-            "space d i": "editor::ToggleInlineDiagnostics",
-            "space o": "outline::Toggle"
-        }
+  {
+    "context": "Workspace",
+    "bindings": {
+      "ctrl-\\": "workspace::ToggleBottomDock"
     }
+  },
+  // vim
+  {
+    "context": "Editor && vim_mode == insert",
+    "bindings": {
+      // put key-bindings here if you want them to work in insert mode
+      // e.g.
+      "j k": ["workspace::SendKeystrokes", "escape"]
+    }
+  },
+  {
+    "context": "vim_operator == a || vim_operator == i || vim_operator == cs",
+    "bindings": {
+      // Traditional Vim behavior
+      // "q": "vim::AnyQuotes",
+      // "b": "vim::AnyBrackets",
+      // mini.ai plugin behavior
+      "q": "vim::MiniQuotes",
+      "b": "vim::MiniBrackets"
+    }
+  },
+  {
+    // Subword motion
+    "context": "VimControl && !menu && vim_mode != operator",
+    "bindings": {
+      "w": "vim::NextSubwordStart",
+      "b": "vim::PreviousSubwordStart",
+      "e": "vim::NextSubwordEnd",
+      "g e": "vim::PreviousSubwordEnd"
+    }
+  },
+  {
+    "context": "Dock || (Editor && vim_mode == normal)",
+    "bindings": {
+      "ctrl-h": "workspace::ActivatePaneLeft",
+      "ctrl-l": "workspace::ActivatePaneRight",
+      "ctrl-k": "workspace::ActivatePaneUp",
+      "ctrl-j": "workspace::ActivatePaneDown"
+    }
+  },
+  {
+    "context": "os==windows > (Editor && !menu)",
+    "bindings": {
+      "ctrl-c": "editor::Copy", // vim default: return to normal mode
+      "ctrl-x": "editor::Cut", // vim default: decrement
+      "ctrl-v": "editor::Paste", // vim default: visual block mode
+      "ctrl-a": "editor::SelectAll" // vim default: increment
+    }
+  },
+  {
+    "context": "vim_mode == normal || vim_mode == visual",
+    "bindings": {
+      "s": "vim::PushSneak",
+      "shift-s": "vim::PushSneakBackward"
+    }
+  },
+  {
+    "context": "vim_mode == visual",
+    "bindings": {
+      "shift-x": "vim::Exchange"
+    }
+  },
+  {
+    "context": "Editor && vim_mode == normal",
+    "bindings": {
+      "space c f": "editor::Format",
+      "space c r": "editor::Rename",
+      "space c a": "editor::ToggleCodeActions",
+      "space e": "workspace::ToggleLeftDock",
+      "space b p": "pane::TogglePinTab",
+      "space b d": "pane::CloseActiveItem",
+      "space space": "file_finder::Toggle",
+      "space g b": "editor::ToggleGitBlameInline",
+      "space g c": "git::Blame",
+      "space d i": "editor::ToggleInlineDiagnostics",
+      "space o": "outline::Toggle",
+      "space l": "workspace::ToggleRightDock"
+    }
+  },
+  {
+    "context": "Workspace",
+    "bindings": {
+      "cmd-w": null
+    }
+  },
+  // netrw
+  {
+    "context": "ProjectPanel && not_editing",
+    "bindings": {
+      "q": "workspace::ToggleLeftDock",
+      "r": "project_panel::Rename"
+    }
+  }
 ]
