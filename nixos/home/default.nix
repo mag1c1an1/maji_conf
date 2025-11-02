@@ -42,6 +42,8 @@
     clang
     xmake
     cmake
+    gnumake
+    ninja
     # nix related
     nixd
     alejandra
