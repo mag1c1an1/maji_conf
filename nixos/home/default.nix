@@ -54,6 +54,8 @@
     # system call monitoring
     lsof # list open files
 
+    direnv 
+
 
     metals # scala
 
