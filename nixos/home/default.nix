@@ -41,6 +41,7 @@
     # cpp
     clang
     xmake
+    cmake
     # nix related
     nixd
     alejandra
