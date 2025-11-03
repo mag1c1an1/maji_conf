@@ -58,6 +58,7 @@
     lsof # list open files
 
     direnv 
+    openssl
 
 
     metals # scala
