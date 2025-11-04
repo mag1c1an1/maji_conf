@@ -51,6 +51,7 @@
     lldb
     # node
     nodejs_24
+    yarn
     # networking tools
     # productivity
     btop # replacement of htop/nmon
