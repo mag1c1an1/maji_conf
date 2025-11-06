@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{pkgs, pkgs-unstable,...}: {
   imports = [
     ./shells
     ./vcs
@@ -11,68 +11,67 @@
   # 通过 home.packages 安装一些常用的软件
   # 这些软件将仅在当前用户下可用，不会影响系统级别的配置
   # 建议将所有 GUI 软件，以及与 OS 关系不大的 CLI 软件，都通过 home.packages 安装
-  home.packages = with pkgs; [
+  home.packages = [
     # archives
-    unzip
+    pkgs.unzip
     # utils
-    lsd
-    zoxide
-    ripgrep # recursively searches directories for a regex pattern
-    fd
-    yazi
-    zellij
-    just
+    pkgs.lsd
+    pkgs.zoxide
+    pkgs.ripgrep # recursively searches directories for a regex pattern
+    pkgs.fd
+    pkgs.yazi
+    pkgs.zellij
+    pkgs.just
     # vcs
-    git
-    lazygit
-    jujutsu
-    lazyjj
-    gh
+    pkgs.git
+    pkgs.lazygit
+    pkgs.jujutsu
+    pkgs.lazyjj
+    pkgs.gh
     # editor
-    zed-editor
+    pkgs.zed-editor
     # rust
-    rustup
+    pkgs.rustup
 
 
     # go
-    go
+    pkgs.go
     # python
-    uv
+    pkgs.uv
     # cpp
-    clang
-    clang-tools
-    xmake
-    cmake
-    gnumake
-    ninja
+    pkgs.clang
+    pkgs.clang-tools
+    pkgs-unstable.xmake
+    pkgs.cmake
+    pkgs.gnumake
+    pkgs.ninja
     # nix related
-    nixd
-    alejandra
+    pkgs.nixd
+    pkgs.alejandra
     # debug
-    lldb
+    pkgs.lldb
     # node
-    nodejs_24
-    pnpm
+    pkgs.nodejs_24
+    pkgs.pnpm
     # networking tools
     # productivity
-    btop # replacement of htop/nmon
+    pkgs.btop # replacement of htop/nmon
     # system call monitoring
-    lsof # list open files
+    pkgs.lsof # list open files
 
-    direnv 
-    openssl
+    pkgs.direnv
+    pkgs.openssl
 
 
-    metals # scala
+    pkgs.metals # scala
 
     # java
-    temurin-jre-bin-11
-    gradle
-    jdt-language-server # java
+    pkgs.temurin-jre-bin-11
+    pkgs.gradle
+    pkgs.jdt-language-server # java
     # python
-    python313
+    pkgs.python313
   ];
-
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
   # when a new Home Manager release introduces backwards
