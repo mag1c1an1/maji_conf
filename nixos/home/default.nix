@@ -40,6 +40,7 @@
     uv
     # cpp
     clang
+    clang-tools
     xmake
     cmake
     gnumake
