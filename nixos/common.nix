@@ -20,6 +20,18 @@
         users.mag1cian.shell = pkgs.fish;
     };
 
+    virtualisation.docker = {
+	enable = true;
+	# Customize Docker daemon settings using the daemon.settings option
+	daemon.settings = {
+		registry-mirrors = [ "https://mirror.gcr.io" ];
+	};
+	# Use the rootless mode - run Docker daemon as non-root user
+  	rootless = {
+    		enable = true; setSocketVariable = true;
+  	};
+    };
+
     # This option defines the first version of NixOS you have installed on this particular machine,
     # and is used to maintain compatibility with application data (e.g. databases) created on older NixOS versions.
     #
