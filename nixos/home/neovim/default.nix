@@ -3,7 +3,7 @@
   enable = true;
   defaultEditor = true;
   extraConfig = ''
-    inoremap jk <esc>
+    inoremap JJ <esc>
   '';
   };
 }
