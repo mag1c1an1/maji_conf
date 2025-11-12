@@ -1,7 +1,7 @@
 wsl:
-   WSL=TRUE sudo -E nixos-rebuild switch --flake ./nixos#nixos --impure --show-trace
+   WSL=TRUE nixos-rebuild switch --flake ./nixos#nixos --impure --show-trace --use-remote-sudo
 orb:
-   WSL=FALSE sudo -E nixos-rebuild switch --flake ./nixos#nixos --impure --show-trace
+   WSL=FALSE nixos-rebuild switch --flake ./nixos#nixos --impure --show-trace --use-remote-sudo
 link:
    ln $PWD/nix $HOME/.config/nix
    

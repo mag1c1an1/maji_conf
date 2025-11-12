@@ -1,4 +1,4 @@
-{pkgs,lib, ...}:
+{pkgs,lib,config, ...}:
 
 {
     nix = {
@@ -12,24 +12,26 @@
         neovim
         wget
         fish
+        config.boot.kernelPackages.perf
     ];
     programs.fish.enable = true;
     programs.nix-ld.enable = true;
     users = {
         defaultUserShell = pkgs.fish;
         users.mag1cian.shell = pkgs.fish;
+        users.mag1cian.extraGroups = ["docker"];
     };
 
     virtualisation.docker = {
-	enable = true;
-	# Customize Docker daemon settings using the daemon.settings option
-	daemon.settings = {
-		registry-mirrors = [ "https://mirror.gcr.io" ];
-	};
+      enable = true;
+      # Customize Docker daemon settings using the daemon.settings option
+      daemon.settings = {
+        registry-mirrors = [ "https://mirror.gcr.io" ];
+      };
 	# Use the rootless mode - run Docker daemon as non-root user
-  	rootless = {
-    		enable = true; setSocketVariable = true;
-  	};
+      rootless = {
+          enable = true; setSocketVariable = true;
+      };
     };
 
     # This option defines the first version of NixOS you have installed on this particular machine,
