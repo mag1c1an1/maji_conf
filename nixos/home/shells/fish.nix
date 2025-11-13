@@ -34,9 +34,10 @@
 
       # proxy
       function proxy
-        if uname -a | string match -q "*orbstack*"
-          set -x HTTP_PROXY host.orb.internal:7890
-          set -x HTTPS_PROXY host.orb.internal:7890
+        if string match -q "*orbstack*" (uname -a)
+          set -gx HTTP_PROXY host.orb.internal:7890
+          set -gx HTTPS_PROXY host.orb.internal:7890
+        else
         end
       end
 
@@ -44,6 +45,8 @@
         set -e HTTP_PROXY
         set -e HTTPS_PROXY
       end
+
+      proxy
 
       function ra
        	set tmp (mktemp -t "yazi-cwd.XXXXXX")
