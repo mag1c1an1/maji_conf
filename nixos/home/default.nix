@@ -30,6 +30,7 @@
     pkgs.gh
     # editor
     pkgs.zed-editor
+    pkgs-unstable.neovim
     # rust
     pkgs.rustup
 

@@ -1,17 +1,33 @@
-{pkgs,lib,config, ...}:
+{pkgs,pkgs-unstable,lib,config, ...}:
 
 {
     nix = {
         settings = {
-            substituters = lib.mkForce ["https://mirror.sjtu.edu.cn/nix-channels/store"];
+            substituters = ["https://mirror.tuna.tsinghua.edu.cn/nix-channels/store"];
             experimental-features = [ "nix-command" "flakes" ];
         };
     };
-    environment.systemPackages = with pkgs; [
-        git
-        neovim
-        wget
-        fish
+    environment.systemPackages = [
+        pkgs.git
+        pkgs.wget
+        pkgs.fish
+        pkgs.vim
+        # ((pkgs.vim_configurable.override {  }).customize{
+        #   name = "vim";
+        # vimrcConfig.customRC = ''
+        #   inoremap JJ <esc>
+        #   set expandtab
+        #   set shiftwidth=2
+        #   set tabstop=2
+        #   set softtabstop=2 
+        #   let s:uname_output = trim(system('uname -a'))
+        #   if s:uname_output =~ 'orbstack'
+        #     let g:clipboard = 'pbcopy'
+        #   else
+        #   endif
+        # '';
+        #   }
+        # )
         config.boot.kernelPackages.perf
     ];
     programs.fish.enable = true;

@@ -1,10 +1,9 @@
-{pkgs,...}:
+{pkgs,pkgs-unstable,...}:
 {
   programs.neovim = {
-    enable = true;
     defaultEditor = true;
     viAlias = true;
-    vimAlias = true;
+    vimAlias = false;
     # extraConfig = ''
     #   inoremap JJ <esc>
     #   set expandtab   
@@ -18,7 +17,7 @@
     #   endif
     # '';
     plugins = [
-      pkgs.vimPlugins.LazyVim
+      pkgs-unstable.vimPlugins.LazyVim
     ];
   };
   home.file.".config/nvim" = {
