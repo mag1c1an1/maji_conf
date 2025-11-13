@@ -11,7 +11,7 @@
     "bindings": {
       // put key-bindings here if you want them to work in insert mode
       // e.g.
-      "j k": ["workspace::SendKeystrokes", "escape"]
+      "J J": ["workspace::SendKeystrokes", "escape"]
     }
   },
   {
@@ -94,7 +94,10 @@
     "context": "ProjectPanel && not_editing",
     "bindings": {
       "q": "workspace::ToggleLeftDock",
-      "r": "project_panel::Rename"
+      "r": "project_panel::Rename",
+      "a": "project_panel::NewFile",
+      "d": "project_panel::Delete"
     }
   }
 ]
+

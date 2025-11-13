@@ -4,80 +4,143 @@
 // documentation: https://zed.dev/docs/configuring-zed
 //
 // To see all of Zed's default settings without changing your
-// custom settings, run `zed: open default settings` from the
-// command palette (cmd-shift-p / ctrl-shift-p)
+// custom settings, run the `open default settings` command
+// from the command palette or from `Zed` application menu.
 {
-    "base_keymap": "VSCode",
-    "wsl_connections": [
-        {
-            "distro_name": "Arch",
-            "user": null,
-            "projects": [
-                {
-                    "paths": ["/home/maji/Projects"]
-                }
-            ]
-        },
-        {
-            "distro_name": "NixOS",
-            "user": null,
-            "projects": [
-                {
-                    "paths": ["/home/mag1cian/Projects/maji_conf"]
-                }
-            ]
-        }
-    ],
-    "ssh_connections": [
-        {
-            "host": "aws",
-            "args": [],
-            "projects": [
-                {
-                    "paths": ["/home/jiax/Projects/LakeSoul"]
-                }
-            ]
-        }
-    ],
-    "autosave": {
-        "after_delay": {
-            "milliseconds": 1000
-        }
-    },
-    "minimap": {
-        "show": "always"
-    },
-    "vim_mode": true,
-    "icon_theme": "Zed (Default)",
-    "ui_font_size": 20,
-    "buffer_font_size": 20.0,
-    "buffer_font_family": "Lilex Nerd Font",
-    "terminal": {
-        "font_size": 16.0,
-        "cursor_shape": "bar",
-        "blinking": "on",
-        "font_family": "FantasqueSansM Nerd Font",
-        "line_height": {
-            "custom": 1.1
-        }
-    },
-    "theme": {
-        "mode": "light",
-        "light": "One Light",
-        "dark": "One Dark"
-    },
-    "languages": {
-        "Python": {
-            "language_servers": ["ruff", "..."]
-        },
-        "Nix": {
-            "language_servers": ["nixd", "!nil", "!nixfmt", "..."],
-            "formatter": {
-                "external": {
-                    "command": "alejandra", // or "nixfmt"
-                    "arguments": ["--quiet", "--"]
-                }
-            }
-        }
+  "relative_line_numbers": "enabled",
+  "agent_buffer_font_size": 16.0,
+  "agent": {
+    "default_profile": "ask",
+    "always_allow_tool_actions": true,
+    "default_model": {
+      "provider": "zed.dev",
+      "model": "gemini-2.5-pro"
     }
+  },
+  "language_models": {
+    "openai_compatible": {
+      "MiniMax": {
+        "api_url": "https://api.minimax.io/v1",
+        "available_models": [
+          {
+            "name": "MiniMax-M2",
+            "max_tokens": 200000,
+            "max_output_tokens": 32000,
+            "max_completion_tokens": 200000,
+            "capabilities": {
+              "tools": true,
+              "images": false,
+              "parallel_tool_calls": false,
+              "prompt_cache_key": false
+            }
+          }
+        ]
+      }
+    },
+    "anthropic": {
+      "available_models": [
+        {
+          "name": "MiniMax-M2",
+          "display_name": "MiniMax-M2",
+          "max_tokens": 128000,
+          "max_output_tokens": 2560,
+          "cache_configuration": {
+            "max_cache_anchors": 10,
+            "min_total_token": 10000,
+            "should_speculate": false
+          },
+          "tool_override": "some-model-that-supports-toolcalling"
+        }
+      ]
+    }
+  },
+  "ssh_connections": [
+    {
+      "host": "aws",
+      "args": [],
+      "projects": [
+        {
+          "paths": ["/home/jiax/Projects/LakeSoul/./"]
+        },
+        {
+          "paths": ["/home/jiax/Projects/hdrs"]
+        },
+        {
+          "paths": ["/home/jiax/Projects/lakesoul-e2e"]
+        },
+        {
+          "paths": ["/home/jiax/Projects/tpcds"]
+        }
+      ]
+    },
+    {
+      "host": "orb",
+      "args": [],
+      "projects": [
+        {
+          "paths": ["/home/mag1cian/Projects/half/./"]
+        },
+        {
+          "paths": ["/home/mag1cian/Projects/maji_conf"]
+        },
+        {
+          "paths": ["/home/mag1cian/Projects/minnow"]
+        }
+      ]
+    }
+  ],
+  "autosave": {
+    "after_delay": {
+      "milliseconds": 1000
+    }
+  },
+  "minimap": {
+    "show": "never"
+  },
+  "vim_mode": true,
+  "icon_theme": "Zed (Default)",
+  "ui_font_size": 24,
+  "buffer_font_size": 20.0,
+  "buffer_font_family": "Lilex Nerd Font",
+  "terminal": {
+    "font_size": 18.0,
+    "cursor_shape": "bar",
+    "blinking": "on",
+    "font_family": "FantasqueSansM Nerd Font",
+    "line_height": {
+      "custom": 1.1
+    }
+  },
+  "theme": {
+    "mode": "light",
+    "light": "One Light",
+    "dark": "One Dark"
+  },
+  "lsp": {
+    "yaml-language-server": {
+      "settings": {
+        "editor": {
+          "tabSize": 1
+        }
+      }
+    }
+  },
+  "languages": {
+    "YAML": {
+      "formatter": "language_server"
+    },
+    "Python": {
+      "language_servers": ["ruff", "..."]
+    },
+    "Nix": {
+      "language_servers": ["nixd", "!nil", "!nixfmt", "..."],
+      "formatter": {
+        "external": {
+          "command": "alejandra", // or "nixfmt"
+          "arguments": ["--quiet", "--"]
+        }
+      }
+    }
+  }
 }
+
