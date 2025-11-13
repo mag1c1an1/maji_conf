@@ -32,6 +32,19 @@
       set -gx UV_PYTHON_INSTALL_MIRROR "https://ghfast.top/https://github.com/indygreg/python-build-standalone/releases/download"
       set -gx UV_DEFAULT_INDEX https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple
 
+      # proxy
+      function proxy
+        if uname -a | string match -q "*orbstack*"
+          set -x HTTP_PROXY host.orb.internal:7890
+          set -x HTTPS_PROXY host.orb.internal:7890
+        end
+      end
+
+      function noproxy
+        set -e HTTP_PROXY
+        set -e HTTPS_PROXY
+      end
+
       function ra
        	set tmp (mktemp -t "yazi-cwd.XXXXXX")
        	yazi $argv --cwd-file="$tmp"
