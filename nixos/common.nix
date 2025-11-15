@@ -31,6 +31,10 @@
         config.boot.kernelPackages.perf
     ];
     programs.fish.enable = true;
+    programs.git = {
+    	enable = true;
+	lfs.enable = true;
+    };
     programs.nix-ld.enable = true;
     users = {
         defaultUserShell = pkgs.fish;
