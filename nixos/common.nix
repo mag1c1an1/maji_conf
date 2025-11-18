@@ -12,6 +12,7 @@
         pkgs.wget
         pkgs.fish
         pkgs.vim
+        pkgs.neovim
         # ((pkgs.vim_configurable.override {  }).customize{
         #   name = "vim";
         # vimrcConfig.customRC = ''

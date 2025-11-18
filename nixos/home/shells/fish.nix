@@ -23,6 +23,8 @@
 
       # less
       set -gx LESSCHARSET utf-8
+      # EDITOR     
+      set -gx EDITOR nvim
 
       # rustup
       set -gx RUSTUP_DIST_SERVER "https://rsproxy.cn"

@@ -34,6 +34,8 @@
     # rust
     pkgs.rustup
 
+    pkgs.minio-client
+
 
     # go
     pkgs.go
