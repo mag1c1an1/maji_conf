@@ -23,6 +23,7 @@
 
       # less
       set -gx LESSCHARSET utf-8
+
       # EDITOR     
       set -gx EDITOR nvim
 

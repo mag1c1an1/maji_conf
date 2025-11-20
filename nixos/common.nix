@@ -13,6 +13,8 @@
         pkgs.fish
         pkgs.vim
         pkgs.neovim
+        pkgs.pkg-config
+        pkgs.openssl
         # ((pkgs.vim_configurable.override {  }).customize{
         #   name = "vim";
         # vimrcConfig.customRC = ''
@@ -42,6 +44,7 @@
         users.mag1cian.shell = pkgs.fish;
         users.mag1cian.extraGroups = ["docker"];
     };
+    i18n:defaultLocale = "en_US.UTF-8"
 
     virtualisation.docker = {
       enable = true;
