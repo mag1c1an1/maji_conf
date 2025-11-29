@@ -44,7 +44,7 @@
         users.mag1cian.shell = pkgs.fish;
         users.mag1cian.extraGroups = ["docker"];
     };
-    i18n:defaultLocale = "en_US.UTF-8"
+    i18n.defaultLocale = "en_US.UTF-8";
 
     virtualisation.docker = {
       enable = true;
@@ -52,7 +52,7 @@
       daemon.settings = {
         registry-mirrors = [ "https://mirror.gcr.io" ];
       };
-	# Use the rootless mode - run Docker daemon as non-root user
+      # Use the rootless mode - run Docker daemon as non-root user
       rootless = {
           enable = true; setSocketVariable = true;
       };

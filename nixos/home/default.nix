@@ -22,6 +22,8 @@
     pkgs.yazi
     pkgs.zellij
     pkgs.just
+    pkgs.tokei
+    pkgs.dust
     # vcs
     pkgs.git
     pkgs.lazygit
@@ -49,6 +51,9 @@
     pkgs.cmake
     pkgs.gnumake
     pkgs.ninja
+    # parser
+    pkgs.flex
+    pkgs.bison
     # nix related
     pkgs.nixd
     pkgs.alejandra
