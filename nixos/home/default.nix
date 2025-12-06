@@ -35,6 +35,7 @@
     pkgs-unstable.neovim
     # rust
     pkgs.rustup
+    pkgs.protobuf
 
     pkgs.minio-client
 
