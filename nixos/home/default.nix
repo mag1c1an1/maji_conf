@@ -39,7 +39,8 @@
 
     pkgs.minio-client
 
-
+    pkgs.lefthook
+    pkgs.taplo
 
     # go
     pkgs.go
