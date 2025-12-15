@@ -73,6 +73,7 @@
     pkgs.direnv
     pkgs.openssl
 
+    pkgs.tokio-console
 
     pkgs.metals # scala
 
