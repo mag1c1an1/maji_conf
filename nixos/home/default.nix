@@ -79,7 +79,7 @@
     pkgs.scala_2_12
 
     # java
-    # pkgs.temurin-jre-bin-11
+    (pkgs.lowPrio pkgs.temurin-jre-bin-11)
     pkgs.gradle
     pkgs.maven
     pkgs.jdt-language-server # java
@@ -95,10 +95,10 @@
   # the Home Manager release notes for a list of state version
   # changes in each release.
   home.stateVersion = "25.05";
-  programs.java = {
-    enable = true;
-    package = pkgs.temurin-jre-bin-11;
-  };
+  # programs.java = {
+  #   enable = false;
+  #   package = pkgs.temurin-jre-bin-11;
+  # };
   home.file = {
 	  ".cargo/config.toml" = {
 		text = ''
