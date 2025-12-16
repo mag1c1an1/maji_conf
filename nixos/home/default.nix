@@ -75,11 +75,11 @@
 
     pkgs.tokio-console
 
-    pkgs.metals # scala
-    pkgs.scala_2_12
+    # parquet
+    pkgs.parquet-tools
 
     # java
-    (pkgs.lowPrio pkgs.temurin-jre-bin-11)
+    pkgs.temurin-jre-bin-11
     pkgs.gradle
     pkgs.maven
     pkgs.jdt-language-server # java
