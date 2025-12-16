@@ -76,10 +76,12 @@
     pkgs.tokio-console
 
     pkgs.metals # scala
+    pkgs.scala_2_12
 
     # java
     pkgs.temurin-jre-bin-11
     pkgs.gradle
+    pkgs.maven
     pkgs.jdt-language-server # java
     # python
     pkgs.python313
