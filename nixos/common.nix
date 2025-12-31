@@ -31,7 +31,8 @@
         # '';
         #   }
         # )
-        config.boot.kernelPackages.perf
+        #config.boot.kernelPackages.perf
+        pkgs.perf
     ];
     programs.fish.enable = true;
     programs.git = {
