@@ -11,31 +11,30 @@
   # 通过 home.packages 安装一些常用的软件
   # 这些软件将仅在当前用户下可用，不会影响系统级别的配置
   # 建议将所有 GUI 软件，以及与 OS 关系不大的 CLI 软件，都通过 home.packages 安装
-  home.packages = [
+  home.packages = (with pkgs;[
     # archives
-    pkgs.unzip
+    unzip
     # utils
-    pkgs.lsd
-    pkgs.zoxide
-    pkgs.ripgrep # recursively searches directories for a regex pattern
-    pkgs.fd
-    pkgs.yazi
-    pkgs.zellij
-    pkgs.just
-    pkgs.tokei
-    pkgs.dust
+    lsd
+    zoxide
+    ripgrep # recursively searches directories for a regex pattern
+    fd
+    yazi
+    zellij
+    just
+    tokei
+    dust
     # vcs
-    pkgs.git
-    pkgs.lazygit
-    pkgs.jujutsu
-    pkgs.lazyjj
-    pkgs.gh
+    git
+    lazygit
+    jujutsu
+    lazyjj
+    gh
     # editor
-    pkgs.zed-editor
-    pkgs-unstable.neovim
+    zed-editor
     # rust
-    pkgs.rustup
-    pkgs.protobuf
+    rustup
+    protobuf
 
     pkgs.minio-client
 
@@ -43,49 +42,51 @@
     pkgs.taplo
 
     # go
-    pkgs.go
+    go
     # python
-    pkgs.uv
+    uv
     # cpp
-    pkgs.clang
-    pkgs.clang-tools
-    pkgs-unstable.xmake
-    pkgs.cmake
-    pkgs.gnumake
-    pkgs.ninja
+    clang
+    clang-tools
+    cmake
+    gnumake
+    ninja
     # parser
-    pkgs.flex
-    pkgs.bison
+    flex
+    bison
     # nix related
-    pkgs.nixd
-    pkgs.alejandra
+    nixd
+    alejandra
     # debug
-    pkgs.lldb
+    lldb
     # node
-    pkgs.nodejs_24
-    pkgs.pnpm
+    nodejs_24
+    pnpm
     # networking tools
     # productivity
-    pkgs.btop # replacement of htop/nmon
+    btop # replacement of htop/nmon
     # system call monitoring
-    pkgs.lsof # list open files
+    lsof # list open files
 
-    pkgs.direnv
-    pkgs.openssl
-
-    pkgs.tokio-console
+    direnv
+    openssl
 
     # parquet
-    pkgs.parquet-tools
+    parquet-tools
 
     # java
-    pkgs.temurin-jre-bin-11
-    pkgs.gradle
-    pkgs.maven
-    pkgs.jdt-language-server # java
+    temurin-jre-bin-11
+    gradle
+    maven
+    jdt-language-server # java
     # python
-    pkgs.python313
-  ];
+    python313
+    # pg
+    postgresql
+  ]) ++ (with pkgs-unstable; [
+    neovim
+    xmake
+  ]);
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
   # when a new Home Manager release introduces backwards

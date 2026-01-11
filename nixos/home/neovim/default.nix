@@ -21,7 +21,7 @@
     ];
   };
   home.file.".config/nvim" = {
-    source = "/home/mag1cian/maji_conf/nvim";
+    source = "/home/mag1cian/Projects/maji_conf/nvim";
     recursive = true;
   };
 }
