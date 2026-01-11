@@ -34,7 +34,7 @@
     zed-editor
     # rust
     rustup
-    protobuf
+    protobuf_25
 
     minio-client
 
@@ -75,7 +75,6 @@
     parquet-tools
 
     # java
-    zulu11
     gradle
     maven
     jdt-language-server # java
@@ -96,10 +95,10 @@
   # the Home Manager release notes for a list of state version
   # changes in each release.
   home.stateVersion = "25.05";
-  # programs.java = {
-  #   enable = false;
-  #   package = pkgs.temurin-jre-bin-11;
-  # };
+  programs.java = {
+    enable = true;
+    package = pkgs.javaPackages.compiler.openjdk11;
+  };
   home.file = {
 	  ".cargo/config.toml" = {
 		text = ''
