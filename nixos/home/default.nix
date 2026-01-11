@@ -36,10 +36,10 @@
     rustup
     protobuf
 
-    pkgs.minio-client
+    minio-client
 
-    pkgs.lefthook
-    pkgs.taplo
+    lefthook
+    taplo
 
     # go
     go
@@ -75,7 +75,7 @@
     parquet-tools
 
     # java
-    temurin-jre-bin-11
+    zulu11
     gradle
     maven
     jdt-language-server # java
