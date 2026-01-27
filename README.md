@@ -6,3 +6,7 @@ neovim
 customRC is useless
 
 home for home manager
+
+launchctl
+
+systemctl

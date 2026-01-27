@@ -1,5 +1,12 @@
 if status is-interactive
     # Commands to run in interactive sessions can go here
+    # starship
+    starship init fish | source
+    # zoxide
+    zoxide init fish | source
+    # direnv
+    direnv hook fish | source
+
 end
 
 abbr -a ls lsd
@@ -86,11 +93,6 @@ set -gx HF_ENDPOINT https://hf-mirror.com
 
 proxy
 
-# zoxide
-zoxide init fish | source
-
-# starship
-starship init fish | source
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
