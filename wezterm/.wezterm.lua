@@ -13,7 +13,7 @@ config.hide_tab_bar_if_only_one_tab = true
 config.window_decorations = "RESIZE" -- disable title
 
 config.initial_cols = 80
-config.initial_rows = 120
+config.initial_rows = 100
 
 config.window_padding = {
   left = 5,
