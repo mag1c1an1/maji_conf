@@ -5,7 +5,7 @@
     viAlias = true;
     vimAlias = false;
     # extraConfig = ''
-    #   inoremap JJ <esc>
+    #   inoremap JK <esc>
     #   set expandtab   
     #   set shiftwidth=2 
     #   set tabstop=2    

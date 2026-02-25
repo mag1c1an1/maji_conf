@@ -12,7 +12,6 @@
         pkgs.wget
         pkgs.fish
         pkgs.vim
-        pkgs.neovim
         pkgs.pkg-config
         pkgs.openssl
         # ((pkgs.vim_configurable.override {  }).customize{

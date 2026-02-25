@@ -9,4 +9,5 @@ local uname_output = vim.fn.trim(vim.fn.system('uname -a'))
 if string.find(uname_output, "orbstack") then
   vim.g.clipboard = "pbcopy"
 else
+  vim.g.clipboard = "osc52"
 end

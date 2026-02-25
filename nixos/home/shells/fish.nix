@@ -41,9 +41,9 @@
           set -gx HTTP_PROXY host.orb.internal:7890
           set -gx HTTPS_PROXY host.orb.internal:7890
         else
-          set -x HTTP_PROXY socks5h://localhost:7890
-          set -x HTTPS_PROXY socks5h://localhost:7890
-          set -x ALL_PROXY socks5h://localhost:7890
+          set -gx HTTP_PROXY socks5h://localhost:9531
+          set -gx HTTPS_PROXY socks5h://localhost:9531
+          set -gx ALL_PROXY socks5h://localhost:9531
         end
       end
 
