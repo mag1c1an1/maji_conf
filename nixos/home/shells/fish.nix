@@ -41,12 +41,16 @@
           set -gx HTTP_PROXY host.orb.internal:7890
           set -gx HTTPS_PROXY host.orb.internal:7890
         else
+          set -x HTTP_PROXY socks5h://localhost:7890
+          set -x HTTPS_PROXY socks5h://localhost:7890
+          set -x ALL_PROXY socks5h://localhost:7890
         end
       end
 
       function noproxy
         set -e HTTP_PROXY
         set -e HTTPS_PROXY
+        set -e ALL_PROXY
       end
 
       proxy
