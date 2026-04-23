@@ -8,24 +8,24 @@
 // from the command palette or from `Zed` application menu.
 {
   "project_panel": {
-    "dock": "left"
+    "dock": "left",
   },
   "outline_panel": {
-    "dock": "left"
+    "dock": "left",
   },
   "collaboration_panel": {
-    "dock": "left"
+    "dock": "left",
   },
   "git_panel": {
-    "dock": "left"
+    "dock": "left",
   },
   "indent_guides": {
-    "coloring": "indent_aware"
+    "coloring": "indent_aware",
   },
   "agent_servers": {
     "claude-acp": {
-      "type": "registry"
-    }
+      "type": "registry",
+    },
   },
   "helix_mode": false,
   "preferred_line_length": 10000000,
@@ -134,139 +134,91 @@
       "args": [],
       "projects": [
         {
-          "paths": [
-            "/data/jiax_space/LakeSoul"
-          ]
+          "paths": ["/data/jiax_space/LakeSoul"],
         },
         {
-          "paths": [
-            "/data/jiax_space/arrow-reverse/./"
-          ]
+          "paths": ["/data/jiax_space/arrow-reverse/./"],
         },
         {
-          "paths": [
-            "/data/jiax_space/arrow-rs"
-          ]
+          "paths": ["/data/jiax_space/arrow-rs"],
         },
         {
-          "paths": [
-            "/data/jiax_space/chagee"
-          ]
+          "paths": ["/data/jiax_space/chagee"],
         },
         {
-          "paths": [
-            "/data/jiax_space/datautils/./"
-          ]
+          "paths": ["/data/jiax_space/datautils/./"],
         },
         {
-          "paths": [
-            "/data/jiax_space/leak/./"
-          ]
+          "paths": ["/data/jiax_space/leak/./"],
         },
         {
-          "paths": [
-            "/data/jiax_space/miniob/./"
-          ]
+          "paths": ["/data/jiax_space/miniob/./"],
         },
         {
-          "paths": [
-            "/data/jiax_space/s2n-quic-fork/./"
-          ]
+          "paths": ["/data/jiax_space/s2n-quic-fork/./"],
         },
         {
-          "paths": [
-            "/data/jiax_space/zako"
-          ]
+          "paths": ["/data/jiax_space/zako"],
         },
         {
-          "paths": [
-            "/home/jiax"
-          ]
+          "paths": ["/home/jiax"],
         },
         {
-          "paths": [
-            "/home/jiax/Projects/flink_lakesoul_sdk"
-          ]
+          "paths": ["/home/jiax/Projects/flink_lakesoul_sdk"],
         },
         {
-          "paths": [
-            "/home/jiax/Projects/hdrs"
-          ]
+          "paths": ["/home/jiax/Projects/hdrs"],
         },
         {
-          "paths": [
-            "/home/jiax/Projects/lakesoul-e2e"
-          ]
+          "paths": ["/home/jiax/Projects/lakesoul-e2e"],
         },
         {
-          "paths": [
-            "/home/jiax/Projects/tpcds"
-          ]
+          "paths": ["/home/jiax/Projects/tpcds"],
         },
         {
-          "paths": [
-            "/home/jiax/mysql_test"
-          ]
+          "paths": ["/home/jiax/mysql_test"],
         },
         {
-          "paths": [
-            "/home/jiax/mysql_test/./"
-          ]
+          "paths": ["/home/jiax/mysql_test/./"],
         },
         {
-          "paths": [
-            "/home/jiax/洞天/LakeSoul"
-          ]
+          "paths": ["/home/jiax/洞天/LakeSoul"],
         },
         {
-          "paths": [
-            "/home/jiax/洞天/datafusion/./"
-          ]
+          "paths": ["/home/jiax/洞天/datafusion/./"],
         },
         {
-          "paths": [
-            "/home/jiax/洞天/old"
-          ]
-        }
+          "paths": ["/home/jiax/洞天/old"],
+        },
       ],
       "port_forwards": [
         {
           "local_port": 8081,
-          "remote_port": 8088
-        }
-      ]
+          "remote_port": 8088,
+        },
+      ],
     },
     {
       "host": "orb",
       "args": [],
       "projects": [
         {
-          "paths": [
-            "/home/mag1cian/Projects/anyhow"
-          ]
+          "paths": ["/home/mag1cian/Projects/anyhow"],
         },
         {
-          "paths": [
-            "/home/mag1cian/Projects/datafusion"
-          ]
+          "paths": ["/home/mag1cian/Projects/datafusion"],
         },
         {
-          "paths": [
-            "/home/mag1cian/Projects/half/./"
-          ]
+          "paths": ["/home/mag1cian/Projects/half/./"],
         },
         {
-          "paths": [
-            "/home/mag1cian/Projects/maji_conf"
-          ]
+          "paths": ["/home/mag1cian/Projects/maji_conf"],
         },
         {
-          "paths": [
-            "/home/mag1cian/Projects/minnow"
-          ]
-        }
-      ]
-    }
+          "paths": ["/home/mag1cian/Projects/minnow"],
+        },
+      ],
+    },
   ],
   "autosave": {
     "after_delay": {
@@ -298,6 +250,16 @@
     "mode": "light",
     "light": "Fleet Light",
     "dark": "Fleet Dark",
+  },
+  "theme_overrides": {
+    "Fleet Light": {
+      "syntax": {
+        "hint": {
+          "color": "#ff0000a0",
+          "font_style": "italic",
+        },
+      },
+    },
   },
   "lsp": {
     "yaml-language-server": {
