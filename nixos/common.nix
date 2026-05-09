@@ -40,8 +40,8 @@
     };
     programs.nix-ld.enable = true;
     users = {
-        defaultUserShell = pkgs.nushell;
-        users.mag1cian.shell = pkgs.nushell;
+        defaultUserShell = pkgs.fish;
+        users.mag1cian.shell = pkgs.fish;
         users.mag1cian.extraGroups = ["docker"];
     };
     i18n.defaultLocale = "en_US.UTF-8";

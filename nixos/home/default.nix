@@ -1,4 +1,4 @@
-{pkgs, pkgs-unstable,...}: {
+{inputs,pkgs, pkgs-unstable,...}: {
   imports = [
     ./shells
     ./vcs
@@ -79,7 +79,7 @@
       openssl
 
       # parquet
-      parquet-tools
+      parquet-tools   
 
       # java
       gradle
@@ -92,7 +92,12 @@
     ]) ++ (with pkgs-unstable; [
       neovim
       xmake
-    ]);
+    ]) ++ [
+      #ai
+      inputs.codex-cli-nix.packages.${pkgs.stdenv.hostPlatform.system}.default
+      inputs.claude-code.packages.${pkgs.stdenv.hostPlatform.system}.default
+      inputs.cc-switch-cli.packages.${pkgs.stdenv.hostPlatform.system}.default
+    ];
     stateVersion = "25.05";
     file = {
       ".cargo/config.toml" = {

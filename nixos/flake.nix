@@ -6,8 +6,9 @@
     nixpkgs.url = "git+https://mirrors.nju.edu.cn/git/nixpkgs.git?ref=nixos-25.11&shallow=1";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
-    codex-cli.url = "github:sadjow/codex-cli-nix";
+    codex-cli-nix.url = "github:sadjow/codex-cli-nix";
     claude-code.url = "github:sadjow/claude-code-nix";
+    cc-switch-cli.url = "github:saladday/cc-switch-cli";
     # home-manager, used for managing user configuration
     home-manager = {
       url = "github:nix-community/home-manager/release-25.11";
@@ -42,6 +43,7 @@
             # 这里我们需要允许安装非自由软件
             config.allowUnfree = true;
           };
+          inherit inputs;
         };
       in nixpkgs.lib.nixosSystem {
         # Pass specialArgs to all NixOS modules, including home-manager's module.
@@ -49,6 +51,9 @@
         inherit specialArgs;
 
         modules = [
+          {
+            nixpkgs.config.allowUnfree = true;
+          }
           (
             if isWsl
             then ./configuration_wsl.nix
