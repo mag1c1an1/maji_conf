@@ -24,6 +24,7 @@
     just
     tokei
     dust
+    carapace
     # vcs
     git
     lazygit
@@ -113,5 +114,15 @@ index = "https://rsproxy.cn/crates.io-index"
 git-fetch-with-cli = true
 		'';
 	  };
+  };
+  home.sessionPath = [
+    "$HOME/.local/bin"
+    "$HOME/.cargo/bin"
+  ];
+  home.sessionVariables = {
+    RUST_DIST_SERVER = "https://rsproxy.cn";
+    RUSTUP_UPDATE_ROOT = "https://rsproxy.cn/rustup";
+    UV_PATHON_INSTALL_MIRROR = "https://ghfast.top/https://github.com/indygreg/python-build-standalone/releases/download";
+    UV_DEFAULT_INDEX = "https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple";
   };
 }
