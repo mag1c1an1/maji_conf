@@ -9,6 +9,7 @@ link:
 
 upadte:
     cd nixos && nix flake update
+    
 init:
   echo "trusted-users = root $USER" | sudo tee --append /etc/nix/nix.conf
    

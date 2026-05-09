@@ -1,4 +1,4 @@
-{pkgs,pkgs-unstable,...}:
+{config,pkgs,pkgs-unstable,...}:
 {
   programs.neovim = {
     defaultEditor = true;
@@ -21,7 +21,7 @@
     ];
   };
   home.file.".config/nvim" = {
-    source = "/home/mag1cian/Projects/maji_conf/nvim";
+    source = "${config.home.homeDirectory}/maji_conf/nvim";
     recursive = true;
   };
 }
