@@ -10,7 +10,5 @@
       zj = "zellij";
       cc = "claude";
     };
-    carapace.enable = true;
-    carapace.enableNushellIntegration = true;
   };
 }
