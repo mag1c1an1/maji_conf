@@ -27,8 +27,7 @@
     # vcs
     git
     lazygit
-    jujutsu
-    lazyjj
+    # github
     gh
     # editor
     zed-editor

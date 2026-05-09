@@ -6,6 +6,8 @@
     nixpkgs.url = "git+https://mirrors.nju.edu.cn/git/nixpkgs.git?ref=nixos-25.11&shallow=1";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
+    codex-cli.url = "github:sadjow/codex-cli-nix";
+    claude-code.url = "github:sadjow/claude-code-nix";
     # home-manager, used for managing user configuration
     home-manager = {
       url = "github:nix-community/home-manager/release-25.11";
