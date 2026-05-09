@@ -12,3 +12,16 @@ vim.api.nvim_create_autocmd({ "VimLeave" }, {
     vim.opt.guicursor = "a:ver1"
   end,
 })
+
+vim.api.nvim_create_autocmd({
+  "InsertLeave",
+  "TextChanged",
+  "FocusLost",
+}, {
+  pattern = "*",
+  callback = function()
+    if vim.bo.modified and vim.fn.expand("%") ~= "" and vim.bo.buftype == "" then
+      vim.cmd("silent write")
+    end
+  end,
+})
