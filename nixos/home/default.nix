@@ -6,87 +6,9 @@
     #./zed
     ./utils
   ];
-  home.username = "mag1cian";
-  home.homeDirectory = "/home/mag1cian";
   # 通过 home.packages 安装一些常用的软件
   # 这些软件将仅在当前用户下可用，不会影响系统级别的配置
   # 建议将所有 GUI 软件，以及与 OS 关系不大的 CLI 软件，都通过 home.packages 安装
-  home.packages = (with pkgs;[
-    # archives
-    unzip
-    # utils
-    lsd
-    zoxide
-    ripgrep # recursively searches directories for a regex pattern
-    fd
-    yazi
-    zellij
-    just
-    tokei
-    dust
-    carapace
-    # vcs
-    git
-    lazygit
-    # github
-    gh
-    # editor
-    #zed-editor
-    # rust
-    rustup
-    protobuf_25
-
-    minio-client
-
-    lefthook
-    taplo
-
-    # go
-    go
-    # python
-    uv
-    # cpp
-    clang
-    clang-tools
-    cmake
-    gnumake
-    ninja
-    # parser
-    flex
-    bison
-    # nix related
-    nixd
-    alejandra
-    # debug
-    lldb
-    # node
-    nodejs_24
-    pnpm
-    # networking tools
-    # productivity
-    btop # replacement of htop/nmon
-    # system call monitoring
-    lsof # list open files
-
-    direnv
-    openssl
-
-    # parquet
-    parquet-tools
-
-    # java
-    gradle
-    maven
-    jdt-language-server # java
-    # python
-    python313
-    # pg
-    postgresql
-  ]) ++ (with pkgs-unstable; [
-    neovim
-    xmake
-  ]);
-  # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
   # when a new Home Manager release introduces backwards
   # incompatible changes.
@@ -94,20 +16,87 @@
   # You can update Home Manager without changing this value. See
   # the Home Manager release notes for a list of state version
   # changes in each release.
-  home.stateVersion = "25.05";
-  programs = {
-    java = {
-      enable = true;
-      package = pkgs.javaPackages.compiler.openjdk11;
-    };
-    carapace = {
-      enable = true;
-      enableNushellIntegration = true;
-    };
-  };
-  home.file = {
-	  ".cargo/config.toml" = {
-		text = ''
+  home = {
+    username = "mag1cian";
+    homeDirectory = "/home/mag1cian";
+    packages = (with pkgs;[
+      # archives
+      unzip
+      # utils
+      lsd
+      zoxide
+      ripgrep # recursively searches directories for a regex pattern
+      fd
+      yazi
+      zellij
+      just
+      tokei
+      dust
+      carapace
+      # vcs
+      git
+      lazygit
+      # github
+      gh
+      # editor
+      zed-editor
+      # rust
+      rustup
+      protobuf_25
+      # git hook
+      lefthook
+      taplo
+
+      # go
+      go
+      # python
+      uv
+      # cpp
+      clang
+      clang-tools
+      cmake
+      gnumake
+      ninja
+      # parser
+      flex
+      bison
+      # nix related
+      nixd
+      alejandra
+      # debug
+      lldb
+      # node
+      nodejs_24
+      pnpm
+      # networking tools
+      # productivity
+      btop # replacement of htop/nmon
+      # system call monitoring
+      lsof # list open files
+
+      direnv
+      devenv
+      openssl
+
+      # parquet
+      parquet-tools
+
+      # java
+      gradle
+      maven
+      jdt-language-server # java
+      # python
+      python313
+      # pg
+      postgresql
+    ]) ++ (with pkgs-unstable; [
+      neovim
+      xmake
+    ]);
+    stateVersion = "25.05";
+    file = {
+      ".cargo/config.toml" = {
+      text = ''
 [source.crates-io]
 replace-with = 'rsproxy-sparse'
 [source.rsproxy]
@@ -118,17 +107,28 @@ registry = "sparse+https://rsproxy.cn/index/"
 index = "https://rsproxy.cn/crates.io-index"
 [net]
 git-fetch-with-cli = true
-		'';
-	  };
+        '';
+      };
+    };
+    sessionPath = [
+      "$HOME/.local/bin"
+      "$HOME/.cargo/bin"
+    ];
+    sessionVariables = {
+      RUST_DIST_SERVER = "https://rsproxy.cn";
+      RUSTUP_UPDATE_ROOT = "https://rsproxy.cn/rustup";
+      UV_PATHON_INSTALL_MIRROR = "https://ghfast.top/https://github.com/indygreg/python-build-standalone/releases/download";
+      UV_DEFAULT_INDEX = "https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple";
+    };
   };
-  home.sessionPath = [
-    "$HOME/.local/bin"
-    "$HOME/.cargo/bin"
-  ];
-  home.sessionVariables = {
-    RUST_DIST_SERVER = "https://rsproxy.cn";
-    RUSTUP_UPDATE_ROOT = "https://rsproxy.cn/rustup";
-    UV_PATHON_INSTALL_MIRROR = "https://ghfast.top/https://github.com/indygreg/python-build-standalone/releases/download";
-    UV_DEFAULT_INDEX = "https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple";
+  programs = {
+    java = {
+      enable = true;
+      package = pkgs.javaPackages.compiler.openjdk11;
+    };
+    carapace = {
+      enable = true;
+      enableNushellIntegration = true;
+    };
   };
 }
