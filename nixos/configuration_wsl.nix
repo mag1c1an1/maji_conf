@@ -12,6 +12,22 @@ in
     ];
     system.stateVersion = "25.05";
     nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
+    services.openssh = {
+      enable = true;
+      ports = [2222];
+      settings = {
+        PasswordAuthentication = false;
+        KbdInteractiveAuthentication = false;
+        PermitRootLogin = "no";
+        X11Forwarding = false;
+        AllowUsers = [ "mag1cian" ];
+      };
+    };
+    users.users.mag1cian = {
+      openssh.authorizedKeys.keys = [
+      "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDBUNrW/gxDVgH5M2YH5B6edo/0T4c3G85SmlZUMKwVGFCQaKvJz8uL0KjBjSAVNLzxDUV36DNhr82p31jcaDE4WdeglNKbTzcVfD1uNyNhD1yypiYNocFasSGaqOGQkxhcfq/NrUqeZjojWxXQDE9fjAeHRCodLcoE/DczIltc2ya7dIxWb9RUSzrSgQSOS0d2ZrQtruYfCSd00UKZlSogO3NKKgFCl+3ElwUirHK2icJ1yRtcEeKaW3W1vSVIn0Y+nR0KJmfAP1gEh8+VJkwQeuXcE6YAP2QLWCo6FKbEYevKMTNvrsWGx6BNQHVyTvZh67AjMZP4zQ3Tg77funu9"
+    ];
+    };
     wsl = {
       enable = isWsl;
       defaultUser = "mag1cian";
