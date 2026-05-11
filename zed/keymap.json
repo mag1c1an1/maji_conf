@@ -1,4 +1,4 @@
-  [
+[
   {
     "context": "Workspace",
     "bindings": {
@@ -90,5 +90,10 @@
       "d": "project_panel::Delete",
     },
   },
+  {
+    "context": "Terminal",
+    "bindings": {
+      "shift-enter": ["terminal::SendText", "\u001b\r"],
+    },
+  },
 ]
-
