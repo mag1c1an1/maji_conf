@@ -7,6 +7,8 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+  "code_lens": "on",
+  "cli_default_open_behavior": "new_window",
   "project_panel": {
     "dock": "left",
   },
@@ -23,15 +25,16 @@
     "coloring": "indent_aware",
   },
   "agent_servers": {
+    "codex-acp": {
+      "type": "registry",
+    },
     "claude-acp": {
       "type": "registry",
     },
   },
   "helix_mode": false,
-  "preferred_line_length": 10000000,
-  "soft_wrap": "preferred_line_length",
   "colorize_brackets": true,
-  "base_keymap": "JetBrains",
+  "base_keymap": "VSCode",
   "diagnostics": {
     "inline": {
       "enabled": true,
@@ -57,9 +60,10 @@
     },
     "default_profile": "write",
     "default_model": {
+      "effort": "max",
       "enable_thinking": true,
-      "provider": "google",
-      "model": "gemini-2.5-pro",
+      "provider": "deepseek",
+      "model": "deepseek-v4-pro",
     },
   },
   "language_models": {
@@ -219,6 +223,11 @@
         },
       ],
     },
+    {
+      "host": "hw",
+      "args": [],
+      "projects": [],
+    },
   ],
   "autosave": {
     "after_delay": {
@@ -226,13 +235,13 @@
     },
   },
   "minimap": {
-    "show": "never",
+    "show": "always",
   },
   "vim_mode": true,
   "icon_theme": {
-    "mode": "light",
-    "light": "Catppuccin Latte",
-    "dark": "Catppuccin Latte",
+    "mode": "system",
+    "light": "Material Icon Theme",
+    "dark": "Material Icon Theme",
   },
   "ui_font_size": 24,
   "buffer_font_size": 20.0,
@@ -256,6 +265,14 @@
       "syntax": {
         "hint": {
           "color": "#ff0000a0",
+          "font_style": "italic",
+        },
+      },
+    },
+    "Fleet Dark": {
+      "syntax": {
+        "hint": {
+          "color": "#7d7f82",
           "font_style": "italic",
         },
       },
@@ -293,11 +310,10 @@
       "enable_language_server": false,
     },
   },
-  "proxy": "socks5h://127.0.0.1:9531",
+  "proxy": "http://127.0.0.1:10801",
   // "dap": {
   //   "CodeLLDB": {
   //     "binary": "~/.local/bin/codelldb-launch",
   //   },
   // },
 }
-
