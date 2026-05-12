@@ -23,7 +23,6 @@ in
         AllowUsers = [ "mag1cian" ];
       };
     };
-    services.tailscale = {enable=true;};
     services.frp = {
       enable = true;
       role = "client";
