@@ -89,6 +89,9 @@
       python313
       # pg
       postgresql
+      # lsp
+      ty
+      ruff
     ]) ++ (with pkgs-unstable; [
       neovim
       xmake
