@@ -16,6 +16,7 @@ abbr -a l lsd -al
 abbr -a lg lazygit
 abbr -a zj zellij
 abbr -a jt just
+abbr -a cc claude
 
 set BREW_HOME /opt/homebrew
 

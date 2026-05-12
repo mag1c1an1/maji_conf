@@ -135,8 +135,8 @@ git-fetch-with-cli = true
       package = pkgs.javaPackages.compiler.openjdk11;
     };
     carapace = {
-      enable = true;
-      enableNushellIntegration = true;
+      enable = false;
+      enableNushellIntegration = false;
     };
   };
 }
