@@ -48,14 +48,14 @@ in
       enable = true;
       settingsFile = "/home/mag1cian/maji_conf/xray/client.json";
     };
-    systemd.services.frpc-hw = {
-      description = "FRP HW";
-      wantedBy = [ "multi-user.target" ];
-      serviceConfig = {
-        ExecStart = "${pkgs.frp}/bin/frpc -c /etc/frp/hw.toml";
-        Restart = "always";
-      };
-    };
+    # systemd.services.frpc-hw = {
+    #   description = "FRP HW";
+    #   wantedBy = [ "multi-user.target" ];
+    #   serviceConfig = {
+    #     ExecStart = "${pkgs.frp}/bin/frpc -c /etc/frp/hw.toml";
+    #     Restart = "always";
+    #   };
+    # };
   users.users.mag1cian = {
     openssh.authorizedKeys.keys = [
     "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDBUNrW/gxDVgH5M2YH5B6edo/0T4c3G85SmlZUMKwVGFCQaKvJz8uL0KjBjSAVNLzxDUV36DNhr82p31jcaDE4WdeglNKbTzcVfD1uNyNhD1yypiYNocFasSGaqOGQkxhcfq/NrUqeZjojWxXQDE9fjAeHRCodLcoE/DczIltc2ya7dIxWb9RUSzrSgQSOS0d2ZrQtruYfCSd00UKZlSogO3NKKgFCl+3ElwUirHK2icJ1yRtcEeKaW3W1vSVIn0Y+nR0KJmfAP1gEh8+VJkwQeuXcE6YAP2QLWCo6FKbEYevKMTNvrsWGx6BNQHVyTvZh67AjMZP4zQ3Tg77funu9"
