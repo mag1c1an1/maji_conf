@@ -32,7 +32,7 @@
       just
       tokei
       dust
-      carapace
+      jq
       # vcs
       git
       lazygit
