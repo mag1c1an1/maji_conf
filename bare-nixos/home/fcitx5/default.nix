@@ -7,7 +7,9 @@
 
   # 添加常用中文模块
   i18n.inputMethod.fcitx5.addons = with pkgs; [
-    fcitx5-rime
+    (fcitx5-rime.override {
+      rimeDataPkgs = [pkgs.rime-ice];
+    })
     qt6Packages.fcitx5-configtool
     qt6Packages.fcitx5-chinese-addons # 拼音、五笔等
   ];
@@ -43,12 +45,14 @@
     # addons.classicui.globalSection.Theme = "catppuccin-mocha-mauve";
   };
 
+  home.file.".local/share/fcitx5/rime/default.custom.yaml".source = ../rime/default.custom.yaml;
+
   # catppuccin的flake,option
-  catppuccin.fcitx5 = {
-    enable = true;
-    flavor = "mocha"; # 主题变体
-    accent = "mauve"; # 强调色
-    enableRounded = true; # 启用圆角
-    apply = false; # 自动配置
-  };
+  # catppuccin.fcitx5 = {
+  #   enable = true;
+  #   flavor = "mocha"; # 主题变体
+  #   accent = "mauve"; # 强调色
+  #   enableRounded = true; # 启用圆角
+  #   apply = false; # 自动配置
+  # };
 }

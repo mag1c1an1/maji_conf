@@ -25,5 +25,5 @@ elseif uname:find("orbstack") then
 
 else
   -- Linux / SSH / remote terminal
-  vim.g.clipboard = "osc52"
+  vim.g.clipboard = "unnamedplus"
 end
