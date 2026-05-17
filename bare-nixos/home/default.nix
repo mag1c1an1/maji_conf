@@ -17,8 +17,8 @@
   # the Home Manager release notes for a list of state version
   # changes in each release.
   home = {
-    username = "mag1cian";
-    homeDirectory = "/home/mag1cian";
+    username = "maji";
+    homeDirectory = "/home/maji";
     packages = (with pkgs;[
       # archives
       unzip

@@ -4,6 +4,9 @@ wsl:
 orb:
    WSL=FALSE nixos-rebuild  switch --flake ./nixos#nixos --impure --show-trace --sudo
 
+bare:
+   nixos-rebuild  switch --flake ./bare-nixos#AORUSX --impure --show-trace --sudo
+
 link:
    ln $PWD/nix $HOME/.config/nix
 
