@@ -42,7 +42,7 @@
       # };
       "Hotkey/TriggerKeys" = {"0" = "F10";};
     };
-    # addons.classicui.globalSection.Theme = "catppuccin-mocha-mauve";
+    addons.classicui.globalSection.Theme = "catppuccin-mocha-mauve";
   };
 
   home.file.".local/share/fcitx5/rime/default.custom.yaml".source = ../../../rime/default.custom.yaml;

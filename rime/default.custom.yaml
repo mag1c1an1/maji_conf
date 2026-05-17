@@ -3,3 +3,7 @@ patch:
 
   schema_list:
     - schema: rime_ice
+
+  menu/page_size: 8
+
+  switches/@0/reset: 0
