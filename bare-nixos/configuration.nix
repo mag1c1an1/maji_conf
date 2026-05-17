@@ -117,6 +117,10 @@
     "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
     "https://cache.nixos.org"
   ];
+  environment.pathsToLink = [
+    "/share/xdg-desktop-portal"
+  ];
+
 
   # programs.firefox.enable = true;
 
