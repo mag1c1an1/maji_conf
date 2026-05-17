@@ -11,6 +11,7 @@
     ./zed
     ./utils
     ./fcitx5
+    ./desktop
   ];
   # 通过 home.packages 安装一些常用的软件
   # 这些软件将仅在当前用户下可用，不会影响系统级别的配置

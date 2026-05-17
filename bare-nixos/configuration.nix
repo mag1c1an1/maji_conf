@@ -80,17 +80,17 @@
   services.displayManager.gdm.enable = false;
   services.desktopManager.gnome.enable = false;
 
-  programs.niri = {
-    enable = true;
-    useNautilus = false;
-  };
+  # programs.niri = {
+  #   enable = true;
+  #   useNautilus = false;
+  # };
 
-  services.displayManager.defaultSession = "niri";
-  services.greetd = {
-    enable = true;
-    useTextGreeter = true;
-    settings.default_session.command = "${pkgs.tuigreet}/bin/tuigreet --time --remember --remember-user-session --cmd ${config.programs.niri.package}/bin/niri-session";
-  };
+  # services.displayManager.defaultSession = "niri";
+  # services.greetd = {
+  #   enable = true;
+  #   useTextGreeter = true;
+  #   settings.default_session.command = "${pkgs.tuigreet}/bin/tuigreet --time --remember --remember-user-session --cmd ${config.programs.niri.package}/bin/niri-session";
+  # };
 
   # Configure keymap in X11
   # services.xserver.xkb.layout = "us";
