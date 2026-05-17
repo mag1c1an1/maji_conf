@@ -121,7 +121,6 @@
     "/share/xdg-desktop-portal"
   ];
 
-
   # programs.firefox.enable = true;
 
   # List packages installed in system profile.
