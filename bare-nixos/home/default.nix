@@ -101,6 +101,7 @@
       ++ (with pkgs-unstable; [
         neovim
         xmake
+        zed-editor
       ])
       ++ [
         #ai

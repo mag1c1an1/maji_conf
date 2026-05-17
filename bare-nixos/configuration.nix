@@ -75,12 +75,22 @@
     ];
   };
 
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
+  # Use niri as the Wayland compositor instead of GNOME.
+  services.xserver.enable = false;
+  services.displayManager.gdm.enable = false;
+  services.desktopManager.gnome.enable = false;
 
-  # Enable the GNOME Desktop Environment.
-  services.displayManager.gdm.enable = true;
-  services.desktopManager.gnome.enable = true;
+  programs.niri = {
+    enable = true;
+    useNautilus = false;
+  };
+
+  services.displayManager.defaultSession = "niri";
+  services.greetd = {
+    enable = true;
+    useTextGreeter = true;
+    settings.default_session.command = "${pkgs.tuigreet}/bin/tuigreet --time --remember --remember-user-session --cmd ${config.programs.niri.package}/bin/niri-session";
+  };
 
   # Configure keymap in X11
   # services.xserver.xkb.layout = "us";
@@ -120,6 +130,18 @@
       neovim
       just
       pkg-config
+      alacritty
+      brightnessctl
+      fuzzel
+      grim
+      mako
+      networkmanagerapplet
+      pavucontrol
+      slurp
+      swayidle
+      swaylock
+      waybar
+      wl-clipboard
     ]
     ++ [
       inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
