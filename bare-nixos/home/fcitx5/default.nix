@@ -40,12 +40,12 @@
       # 关键设置：关闭程序内预编辑，强制使用 Fcitx5 浮窗(能解决 neovide 中无法预编辑的问题)
       # "PreeditEnabledByDefault" = "False";
       # };
-      "Hotkey/TriggerKeys" = {"0" = "Super+space";};
+      "Hotkey/TriggerKeys" = {"0" = "F10";};
     };
     # addons.classicui.globalSection.Theme = "catppuccin-mocha-mauve";
   };
 
-  home.file.".local/share/fcitx5/rime/default.custom.yaml".source = ../rime/default.custom.yaml;
+  home.file.".local/share/fcitx5/rime/default.custom.yaml".source = ../../../rime/default.custom.yaml;
 
   # catppuccin的flake,option
   # catppuccin.fcitx5 = {

@@ -1,8 +1,8 @@
 [
   {
-    "context": "Workspace",
+    "context": "",
     "bindings": {
-      "ctrl-\\": "workspace::ToggleBottomDock",
+      "ctrl-\\": "terminal_panel::Toggle",
     },
   },
   // vim

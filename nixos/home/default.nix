@@ -1,4 +1,9 @@
-{inputs,pkgs, pkgs-unstable,...}: {
+{
+  inputs,
+  pkgs,
+  pkgs-unstable,
+  ...
+}: {
   imports = [
     ./shells
     ./vcs
@@ -19,102 +24,106 @@
   home = {
     username = "mag1cian";
     homeDirectory = "/home/mag1cian";
-    packages = (with pkgs;[
-      # archives
-      unzip
-      # utils
-      lsd
-      zoxide
-      ripgrep # recursively searches directories for a regex pattern
-      fd
-      yazi
-      zellij
-      just
-      tokei
-      dust
-      jq
-      # vcs
-      git
-      lazygit
-      # github
-      gh
-      # editor
-      zed-editor
-      # rust
-      rustup
-      protobuf_25
-      # git hook
-      lefthook
-      taplo
+    packages =
+      (with pkgs; [
+        # archives
+        unzip
+        # utils
+        lsd
+        zoxide
+        ripgrep # recursively searches directories for a regex pattern
+        fd
+        yazi
+        zellij
+        just
+        tokei
+        dust
+        jq
+        # vcs
+        git
+        lazygit
+        # github
+        gh
+        # editor
+        zed-editor
+        # rust
+        rustup
+        protobuf_25
+        # git hook
+        lefthook
+        taplo
 
-      # go
-      go
-      # python
-      uv
-      # cpp
-      clang
-      clang-tools
-      cmake
-      gnumake
-      ninja
-      # parser
-      flex
-      bison
-      # nix related
-      nixd
-      alejandra
-      # debug
-      lldb
-      # node
-      nodejs_24
-      pnpm
-      # networking tools
-      # productivity
-      btop # replacement of htop/nmon
-      # system call monitoring
-      lsof # list open files
+        # go
+        go
+        # python
+        uv
+        # cpp
+        clang
+        clang-tools
+        cmake
+        gnumake
+        ninja
+        # parser
+        flex
+        bison
+        # nix related
+        nixd
+        alejandra
+        # debug
+        lldb
+        # node
+        nodejs_24
+        pnpm
+        # networking tools
+        # productivity
+        btop # replacement of htop/nmon
+        # system call monitoring
+        lsof # list open files
 
-      direnv
-      devenv
-      openssl
+        direnv
+        devenv
+        openssl
 
-      # parquet
-      parquet-tools   
+        # parquet
+        parquet-tools
 
-      # java
-      gradle
-      maven
-      jdt-language-server # java
-      # python
-      python313
-      # pg
-      postgresql
-      # lsp
-      ty
-      ruff
-    ]) ++ (with pkgs-unstable; [
-      neovim
-      xmake
-    ]) ++ [
-      #ai
-      #inputs.codex-cli-nix.packages.${pkgs.stdenv.hostPlatform.system}.default
-      #inputs.claude-code.packages.${pkgs.stdenv.hostPlatform.system}.default
-      #inputs.cc-switch-cli.packages.${pkgs.stdenv.hostPlatform.system}.default
-    ];
+        # java
+        gradle
+        maven
+        jdt-language-server # java
+        # python
+        python313
+        # pg
+        postgresql
+        # lsp
+        ty
+        ruff
+      ])
+      ++ (with pkgs-unstable; [
+        neovim
+        xmake
+        zed-editor
+      ])
+      ++ [
+        #ai
+        #inputs.codex-cli-nix.packages.${pkgs.stdenv.hostPlatform.system}.default
+        #inputs.claude-code.packages.${pkgs.stdenv.hostPlatform.system}.default
+        #inputs.cc-switch-cli.packages.${pkgs.stdenv.hostPlatform.system}.default
+      ];
     stateVersion = "25.05";
     file = {
       ".cargo/config.toml" = {
-      text = ''
-[source.crates-io]
-replace-with = 'rsproxy-sparse'
-[source.rsproxy]
-registry = "https://rsproxy.cn/crates.io-index"
-[source.rsproxy-sparse]
-registry = "sparse+https://rsproxy.cn/index/"
-[registries.rsproxy]
-index = "https://rsproxy.cn/crates.io-index"
-[net]
-git-fetch-with-cli = true
+        text = ''
+          [source.crates-io]
+          replace-with = 'rsproxy-sparse'
+          [source.rsproxy]
+          registry = "https://rsproxy.cn/crates.io-index"
+          [source.rsproxy-sparse]
+          registry = "sparse+https://rsproxy.cn/index/"
+          [registries.rsproxy]
+          index = "https://rsproxy.cn/crates.io-index"
+          [net]
+          git-fetch-with-cli = true
         '';
       };
     };

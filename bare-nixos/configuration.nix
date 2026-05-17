@@ -18,7 +18,7 @@
   boot.loader.systemd-boot.windows = {
     "nvme1n1p1" = {
       title = "Windows 11";
-      efiDeviceHandle = "FS0"; 
+      efiDeviceHandle = "FS0";
     };
   };
 
@@ -69,7 +69,7 @@
   # Enable the GNOME Desktop Environment.
   services.displayManager.gdm.enable = true;
   services.desktopManager.gnome.enable = true;
-  
+
 
   # Configure keymap in X11
   # services.xserver.xkb.layout = "us";
@@ -105,7 +105,7 @@
     # Flakes 通过 git 命令拉取其依赖项，所以必须先安装好 git
     git
     fish
-    neovim      
+    neovim
     just
     pkg-config
   ] ++ [
@@ -121,6 +121,36 @@
       enable = true;
       settingsFile = "/home/maji/maji_conf/xray/client.json";
 	};
+
+  services.keyd = {
+    enable = false;
+    # keyboards.default.settings = {
+    #   main = {
+    #     capslock = "overload(f15, capslock)";
+    #   };
+    # };
+  };
+  services.kanata = {
+    enable = true;
+
+    keyboards.default = {
+      config = ''
+        (defsrc
+          caps
+        )
+
+        (defalias
+          ;; 点按 CapsLock -> F10
+          ;; 长按 CapsLock -> CapsLock
+          caps-ime (tap-hold 200 200 f10 caps)
+        )
+
+        (deflayer base
+          @caps-ime
+        )
+      '';
+    };
+  };
 
    # timezone and local
   time.timeZone = "Asia/Shanghai";
@@ -188,4 +218,3 @@
   system.stateVersion = "25.11"; # Did you read the comment?
 
 }
-

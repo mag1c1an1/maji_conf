@@ -3,7 +3,7 @@
     ./shells
     ./vcs
     ./neovim
-    #./zed
+    ./zed
     ./utils
     ./fcitx5
   ];
@@ -39,8 +39,6 @@
       lazygit
       # github
       gh
-      # editor
-      zed-editor
       # rust
       rustup
       protobuf_25
@@ -80,7 +78,7 @@
       openssl
 
       # parquet
-      parquet-tools   
+      parquet-tools
 
       # java
       gradle
