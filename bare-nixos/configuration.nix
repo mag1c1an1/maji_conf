@@ -3,8 +3,6 @@
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 {
   inputs,
-  config,
-  lib,
   pkgs,
   ...
 }: {
@@ -35,6 +33,11 @@
   hardware.nvidia.open = true; # see the note above
   hardware.nvidia.modesetting.enable = true;
 
+  # 选择输入法类型为 fcitx5
+  i18n.inputMethod = {
+    type = "fcitx5";
+    enable = true;
+  };
   # services.displayManager.dms-greeter = {
   #     enable = true;
   #     compositor.name = "niri";

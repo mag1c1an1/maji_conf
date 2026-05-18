@@ -42,9 +42,6 @@
     enableCalendarEvents = true; # Calendar integration (khal)
     enableClipboardPaste = true; # Pasting items from the clipboard (wtype)
     settings = {
-      theme = "dark";
-      dynamicTheming = true;
-      # Add any other settings here
     };
     session = {
       isLightMode = false;
