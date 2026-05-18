@@ -164,17 +164,7 @@
       neovim
       just
       pkg-config
-      alacritty
-      brightnessctl
-      fuzzel
-      grim
-      mako
-      networkmanagerapplet
       pavucontrol
-      slurp
-      swayidle
-      swaylock
-      waybar
       wl-clipboard
     ]
     ++ [
