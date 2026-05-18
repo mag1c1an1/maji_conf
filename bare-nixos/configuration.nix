@@ -12,6 +12,7 @@
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     # inputs.dms.nixosMoudles.dank-material-shell
+    inputs.dms.nixosModules.greeter
   ];
 
   # Use the systemd-boot EFI boot loader.
@@ -89,15 +90,33 @@
 
   programs.niri = {
     enable = true;
-    #useNautilus = false;
   };
 
-  services.displayManager.defaultSession = "niri";
-  services.greetd = {
+  # programs.dms-shell = {
+  #   enable = true;
+  #   systemd = {
+  #     enable = true;
+  #     restartIfChanged = true;
+  #   };
+  #   enableSystemMonitoring = true; # System monitoring widgets (dgop)
+  #   enableVPN = false; # VPN management widget
+  #   enableDynamicTheming = true; # Wallpaper-based theming (matugen)
+  #   enableAudioWavelength = true; # Audio visualizer (cava)
+  #   enableCalendarEvents = true; # Calendar integration (khal)
+  #   enableClipboardPaste = true;
+  # };
+
+  programs.dank-material-shell.greeter = {
     enable = true;
-    useTextGreeter = true;
-    settings.default_session.command = "${pkgs.tuigreet}/bin/tuigreet --time --remember --remember-user-session --cmd ${config.programs.niri.package}/bin/niri-session";
+    compositor.name = "niri";
   };
+
+  # services.displayManager.defaultSession = "niri";
+  # services.greetd = {
+  #   enable = true;
+  #   useTextGreeter = true;
+  #   settings.default_session.command = "${pkgs.tuigreet}/bin/tuigreet --time --remember --remember-user-session --cmd ${config.programs.niri.package}/bin/niri-session";
+  # };
 
   # Configure keymap in X11
   # services.xserver.xkb.layout = "us";

@@ -1,5 +1,8 @@
-{config,pkgs,pkgs-unstable,...}:
 {
+  config,
+  pkgs-unstable,
+  ...
+}: {
   programs.neovim = {
     package = pkgs-unstable.neovim;
     defaultEditor = true;
@@ -7,10 +10,10 @@
     vimAlias = true;
     # extraConfig = ''
     #   inoremap JK <esc>
-    #   set expandtab   
-    #   set shiftwidth=2 
-    #   set tabstop=2    
-    #   set softtabstop=2 
+    #   set expandtab
+    #   set shiftwidth=2
+    #   set tabstop=2
+    #   set softtabstop=2
     #   let s:uname_output = trim(system('uname -a'))
     #   if s:uname_output =~ 'orbstack'
     #     let g:clipboard = 'pbcopy'

@@ -1,10 +1,4 @@
-{
-  inputs,
-  pkgs,
-  pkgs-unstable,
-  lib,
-  ...
-}: {
+{pkgs-unstable, ...}: {
   # home.file.".config/zed/settings.json" = ../../../zed/settings.json;
   # home.file.".config/zed/keymap.json" = ../../../zed/keymap.json;
   programs.zed-editor = {
