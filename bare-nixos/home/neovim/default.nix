@@ -1,6 +1,7 @@
 {config,pkgs,pkgs-unstable,...}:
 {
   programs.neovim = {
+    package = pkgs-unstable.neovim;
     defaultEditor = true;
     viAlias = true;
     vimAlias = true;
