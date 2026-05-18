@@ -62,7 +62,7 @@
             DefaultIM = "keyboard-us";
           };
           "Groups/0/Items/0".Name = "keyboard-us";
-          "Groups/0/Items/1".Name = "rime";
+          "Groups/0/Items/1".Name = "Rime";
         };
       };
     };
