@@ -11,6 +11,7 @@
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
+    # inputs.dms.nixosMoudles.dank-material-shell
   ];
 
   # Use the systemd-boot EFI boot loader.
@@ -32,6 +33,12 @@
   services.xserver.videoDrivers = ["nvidia"];
   hardware.nvidia.open = true; # see the note above
   hardware.nvidia.modesetting.enable = true;
+
+  # services.displayManager.dms-greeter = {
+  #     enable = true;
+  #     compositor.name = "niri";
+  #     package = inputs.dms.packages.${pkgs.stdenv.hostPlatform.system}.default;
+  #   };
 
   services.logind.settings.Login = {
     IdleAction = "ignore";
@@ -80,17 +87,17 @@
   services.displayManager.gdm.enable = false;
   services.desktopManager.gnome.enable = false;
 
-  # programs.niri = {
-  #   enable = true;
-  #   useNautilus = false;
-  # };
+  programs.niri = {
+    enable = true;
+    #useNautilus = false;
+  };
 
-  # services.displayManager.defaultSession = "niri";
-  # services.greetd = {
-  #   enable = true;
-  #   useTextGreeter = true;
-  #   settings.default_session.command = "${pkgs.tuigreet}/bin/tuigreet --time --remember --remember-user-session --cmd ${config.programs.niri.package}/bin/niri-session";
-  # };
+  services.displayManager.defaultSession = "niri";
+  services.greetd = {
+    enable = true;
+    useTextGreeter = true;
+    settings.default_session.command = "${pkgs.tuigreet}/bin/tuigreet --time --remember --remember-user-session --cmd ${config.programs.niri.package}/bin/niri-session";
+  };
 
   # Configure keymap in X11
   # services.xserver.xkb.layout = "us";
@@ -122,6 +129,11 @@
   ];
 
   # programs.firefox.enable = true;
+  # programs.dms-shell = {
+  #   enable = true;
+  #   enableSystemMonitoring = true;
+  #   dgop.package = inputs.dgop.packages.$[pkgs.stdenv.hostPlatform.system].default;
+  # }
 
   # List packages installed in system profile.
   # You can use https://search.nixos.org/ to find more packages (and options).
@@ -168,7 +180,7 @@
       KbdInteractiveAuthentication = false;
       PermitRootLogin = "no";
       X11Forwarding = false;
-      AllowUsers = ["mag1cian"];
+      AllowUsers = ["maji"];
     };
   };
 

@@ -3,7 +3,7 @@
   programs.neovim = {
     defaultEditor = true;
     viAlias = true;
-    vimAlias = false;
+    vimAlias = true;
     # extraConfig = ''
     #   inoremap JK <esc>
     #   set expandtab   
