@@ -42,8 +42,6 @@
         tokei
         dust
         jq
-        # vcs
-        git
         lazygit
         # github
         gh
@@ -144,6 +142,16 @@
     java = {
       enable = true;
       package = pkgs.javaPackages.compiler.openjdk11;
+    };
+  };
+  programs.git = {
+    enable = true;
+    config = {
+      pull.rebase = true;
+      user = {
+        name = "mag1cian";
+        email = "mag1cian@icloud.com";
+      };
     };
   };
 }
