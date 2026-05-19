@@ -25,7 +25,11 @@ config.window_padding = {
 }
 
 -- config.color_scheme = 'Mariana'
-config.color_scheme = 'Tokyo Night Storm'
+
+local theme = wezterm.plugin.require('https://github.com/neapsix/wezterm').dawn
+config.colors = theme.colors()
+
+-- config.color_scheme = 'Tokyo Night Storm'
 -- render
 config.animation_fps = 60
 config.max_fps = 60
