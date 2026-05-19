@@ -96,4 +96,16 @@
       "shift-enter": ["terminal::SendText", "\u001b\r"],
     },
   },
+  {
+    "context": "Picker > Editor",
+    "bindings": {
+      "enter": "picker::ConfirmCompletion"
+    }
+  },
+  {
+    "context": "Picker > Editor",
+    "unbind": {
+      "tab": "picker::ConfirmCompletion"
+    }
+  }
 ]
