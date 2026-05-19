@@ -5,7 +5,7 @@
     settings = {
       pull.rebase = true;
       user = {
-        name = "mag1c1an";
+        name = "mag1cian";
         email = "mag1cian@icloud.com";
       };
     };
