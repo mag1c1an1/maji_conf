@@ -8,7 +8,10 @@ bare:
    nixos-rebuild  switch --flake ./bare-nixos#AORUSX --impure --show-trace --sudo
 
 link:
-   ln $PWD/nix $HOME/.config/nix
+   ln -s $PWD/fish/themes $HOME/.config/fish/themes
+   ln -s $PWD/bare-nixos/home/shells/starship.toml $HOME/.config/starship.toml
+   ln -s $PWD/wezterm/.wezterm.lua $HOME/.config/.wezterm.lua
+   # ln $PWD/nix $HOME/.config/nix
 
 upadte:
    cd nixos && nix flake update
