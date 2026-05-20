@@ -145,4 +145,5 @@
       package = pkgs.javaPackages.compiler.openjdk11;
     };
   };
+  xdg.enable = true;
 }
