@@ -11,6 +11,7 @@
     ./hardware-configuration.nix
     # inputs.dms.nixosMoudles.dank-material-shell
     inputs.dms.nixosModules.greeter
+    ./docker.nix
   ];
 
   # Use the systemd-boot EFI boot loader.

@@ -76,4 +76,11 @@
       };
     };
   };
+  # xdg.configFile."niri/dms/binds.kdl".text = ''
+  #   binds {
+  #     Mod+Return {
+  #       spawn "foot";
+  #     }
+  #   }
+  # '';
 }
