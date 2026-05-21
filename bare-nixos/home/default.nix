@@ -103,6 +103,7 @@
           xmake
           neovim
           wezterm
+          opencode
         ]
       )
       ++ [
