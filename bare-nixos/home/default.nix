@@ -97,6 +97,8 @@
         # lsp
         ty
         ruff
+        #sandbox
+        bubblewrap
       ])
       ++ (
         with pkgs-unstable; [

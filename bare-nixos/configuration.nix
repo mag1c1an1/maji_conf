@@ -4,6 +4,7 @@
 {
   inputs,
   pkgs,
+  pkgs-unstable,
   ...
 }: {
   imports = [
@@ -199,6 +200,13 @@
     ++ [
       inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
     ];
+  programs.clash-verge = {
+        enable = true;
+        package = pkgs-unstable.clash-verge-rev;
+        serviceMode = true;
+        tunMode = true;
+        autoStart = true;
+  };
   programs.fish.enable = true;
   programs.git.enable = true;
   programs.nix-ld.enable = true;
