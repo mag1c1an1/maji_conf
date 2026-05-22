@@ -44,7 +44,7 @@
     settings = {
     };
     session = {
-      isLightMode = false;
+      isLightMode = true;
       # Add any other session state settings here
     };
     clipboardSettings = {

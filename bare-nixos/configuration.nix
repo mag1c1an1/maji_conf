@@ -4,7 +4,6 @@
 {
   inputs,
   pkgs,
-  pkgs-unstable,
   ...
 }: {
   imports = [
@@ -13,6 +12,7 @@
     # inputs.dms.nixosMoudles.dank-material-shell
     inputs.dms.nixosModules.greeter
     ./docker.nix
+    ./desktop.nix
   ];
 
   # Use the systemd-boot EFI boot loader.
@@ -113,15 +113,6 @@
     ];
   };
 
-  # Use niri as the Wayland compositor instead of GNOME.
-  services.xserver.enable = false;
-  services.displayManager.gdm.enable = false;
-  services.desktopManager.gnome.enable = false;
-
-  programs.niri = {
-    enable = true;
-  };
-
   # programs.dms-shell = {
   #   enable = true;
   #   systemd = {
@@ -135,11 +126,6 @@
   #   enableCalendarEvents = true; # Calendar integration (khal)
   #   enableClipboardPaste = true;
   # };
-
-  programs.dank-material-shell.greeter = {
-    enable = true;
-    compositor.name = "niri";
-  };
 
   # services.displayManager.defaultSession = "niri";
   # services.greetd = {
@@ -186,27 +172,15 @@
 
   # List packages installed in system profile.
   # You can use https://search.nixos.org/ to find more packages (and options).
-  environment.systemPackages = with pkgs;
-    [
-      # Flakes 通过 git 命令拉取其依赖项，所以必须先安装好 git
-      git
-      fish
-      neovim
-      just
-      pkg-config
-      pavucontrol
-      wl-clipboard
-    ]
-    ++ [
-      inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
-    ];
-  programs.clash-verge = {
-        enable = true;
-        package = pkgs-unstable.clash-verge-rev;
-        serviceMode = true;
-        tunMode = true;
-        autoStart = true;
-  };
+  environment.systemPackages = with pkgs; [
+    # Flakes 通过 git 命令拉取其依赖项，所以必须先安装好 git
+    git
+    fish
+    neovim
+    just
+    pkg-config
+  ];
+
   programs.fish.enable = true;
   programs.git.enable = true;
   programs.nix-ld.enable = true;

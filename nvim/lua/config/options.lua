@@ -2,6 +2,12 @@ vim.g.autoformat = false
 vim.opt.relativenumber = true
 
 local uname = vim.uv.os_uname().release:lower()
+local is_wayland = (vim.env.WAYLAND_DISPLAY ~= nil and vim.env.WAYLAND_DISPLAY ~= "")
+  or (vim.env.XDG_SESSION_TYPE or ""):lower() == "wayland"
+
+local function executable(cmd)
+  return vim.fn.executable(cmd) == 1
+end
 
 if uname:find("microsoft") or uname:find("wsl") then
   -- WSL
@@ -41,6 +47,15 @@ elseif vim.env.SSH_TTY or vim.env.SSH_CONNECTION then
       end,
     },
   }
+elseif is_wayland then
+  -- Wayland
+  if executable("wl-copy") and executable("wl-paste") then
+    vim.g.clipboard = "wl-copy"
+  elseif executable("waycopy") and executable("waypaste") then
+    vim.g.clipboard = "wayclip"
+  else
+    vim.g.clipboard = "unnamedplus"
+  end
 else
   -- Linux / SSH / remote terminal
   vim.g.clipboard = "unnamedplus"

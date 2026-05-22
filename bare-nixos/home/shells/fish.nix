@@ -11,6 +11,7 @@
       zj = "zellij";
       jt = "just";
       cc = "claude";
+      zed = "zeditor";
     };
     shellAliases = {
       cnpm = "npm --registry=https://registry.npmmirror.com  --cache=$HOME/.npm/.cache/cnpm  --disturl=https://npmmirror.com/mirrors/node  --userconfig=$HOME/.cnpmrc";
@@ -26,7 +27,7 @@
       # less
       set -gx LESSCHARSET utf-8
 
-      # EDITOR     
+      # EDITOR
       set -gx EDITOR nvim
 
       # rustup
