@@ -107,10 +107,7 @@
       )
       ++ [
         #ai
-        inputs.codex-cli-nix.packages.${pkgs.stdenv.hostPlatform.system}.default
-        inputs.claude-code.packages.${pkgs.stdenv.hostPlatform.system}.default
         inputs.cc-switch-cli.packages.${pkgs.stdenv.hostPlatform.system}.default
-        inputs.opencode.packages.${pkgs.stdenv.hostPlatform.system}.default
       ];
     stateVersion = "25.05";
     file = {

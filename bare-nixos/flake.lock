@@ -41,7 +41,7 @@
         "type": "github"
       }
     },
-    "codex-cli": {
+    "codex-cli-nix": {
       "inputs": {
         "flake-utils": "flake-utils_2",
         "nixpkgs": [
@@ -295,7 +295,7 @@
       "inputs": {
         "cc-switch-cli": "cc-switch-cli",
         "claude-code": "claude-code",
-        "codex-cli": "codex-cli",
+        "codex-cli-nix": "codex-cli-nix",
         "dms": "dms",
         "home-manager": "home-manager",
         "niri": "niri",

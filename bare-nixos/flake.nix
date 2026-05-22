@@ -7,22 +7,10 @@
     nixpkgs-unstable.url = "git+https://mirrors.nju.edu.cn/git/nixpkgs.git?ref=nixos-unstable&shallow=1";
     # nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     # nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    codex-cli-nix = {
-        url = "github:sadjow/codex-cli-nix";
-        inputs.nixpkgs.follows = "nixpkgs";
-      };
-    claude-code = {
-        url = "github:sadjow/claude-code-nix";
-        inputs.nixpkgs.follows = "nixpkgs";
-      };
     cc-switch-cli = {
         url = "github:saladday/cc-switch-cli";
         inputs.nixpkgs.follows = "nixpkgs";
       };
-    opencode = {
-        url = "github:anomalyco/opencode";
-        inputs.nixpkgs.follows = "nixpkgs";
-    };
     # home-manager, used for managing user configuration
     home-manager = {
       url = "github:nix-community/home-manager/release-25.11";
