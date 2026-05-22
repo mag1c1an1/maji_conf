@@ -129,6 +129,7 @@
     sessionPath = [
       "$HOME/.local/bin"
       "$HOME/.cargo/bin"
+      "$HOME/.npm-global/bin"
     ];
     sessionVariables = {
       RUST_DIST_SERVER = "https://rsproxy.cn";
