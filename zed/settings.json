@@ -1,4 +1,9 @@
 {
+  "agent_servers": {
+    "opencode": {
+      "type": "registry"
+    }
+  },
   "code_lens": "on",
   "cli_default_open_behavior": "new_window",
   "project_panel": {
@@ -237,7 +242,7 @@
   },
   "theme": {
     "mode": "light",
-    "light": "Rosé Pine Dawn",
+    "light": "Fleet Light",
     "dark": "Fleet Dark",
   },
   "theme_overrides": {
