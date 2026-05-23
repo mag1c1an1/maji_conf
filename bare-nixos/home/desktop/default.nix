@@ -4,6 +4,11 @@
   pkgs-unstable,
   ...
 }: {
+  home.packages = [
+    pkgs-unstable.wechat
+    pkgs-unstable.feishu
+  ];
+
   imports = [
     inputs.niri.homeModules.niri
     inputs.dms.homeModules.dank-material-shell
@@ -20,6 +25,44 @@
     #   };
     # };
     settings = {
+      outputs = {
+        "DP-1" = {
+          scale = 1.5;
+          mode = {
+            width = 3840;
+            height = 2160;
+            refresh = 170.0;
+          };
+          position = {
+            x = 0;
+            y = 0;
+          };
+        };
+        "DP-2" = {
+          scale = 1.5;
+          mode = {
+            width = 3840;
+            height = 2160;
+            refresh = 170.0;
+          };
+          position = {
+            x = 2560;
+            y = 0;
+          };
+        };
+        "HDMI-A-1" = {
+          scale = 1;
+          mode = {
+            width = 1920;
+            height = 1080;
+            refresh = 59.950;
+          };
+          position = {
+            x = 320;
+            y = 1440;
+          };
+        };
+      };
       layout = {
         border = {
           enable = false;

@@ -230,14 +230,14 @@
     "font_size": 18.0,
     "cursor_shape": "bar",
     "blinking": "on",
-    "font_family": "FantasqueSansM Nerd Font",
+    "font_family": "0xProto Nerd Font Mono",
     "line_height": {
       "custom": 1.1,
     },
   },
   "theme": {
-    "mode": "dark",
-    "light": "Fleet Light",
+    "mode": "light",
+    "light": "Rosé Pine Dawn",
     "dark": "Fleet Dark",
   },
   "theme_overrides": {
