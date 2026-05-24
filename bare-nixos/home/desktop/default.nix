@@ -9,6 +9,7 @@
     pkgs.wechat
     pkgs-unstable.feishu
     pkgs.obsidian
+    pkgs.gthumb
   ];
 
   imports = [
