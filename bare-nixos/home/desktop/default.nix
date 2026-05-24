@@ -2,6 +2,7 @@
   inputs,
   pkgs,
   pkgs-unstable,
+  lib,
   ...
 }: {
   home.packages = [
@@ -135,7 +136,7 @@
       showcputemp = true;
       showgputemp = true;
       selectedgpuindex = 0;
-      enabledgpupciids = [];
+      enabledgpupciids = ["0000:02:00.0"];
       showsystemtray = true;
       systemtrayicontintmode = "none";
       systemtrayicontintsaturation = 50;
@@ -533,8 +534,8 @@
           spacing = 4;
           innerPadding = 4;
           bottomGap = 0;
-          transparency = 1;
-          widgetTransparency = 1;
+          transparency = 0;
+          widgetTransparency = 0.4;
           squareCorners = false;
           noBackground = false;
           maximizeWidgetIcons = false;
@@ -620,7 +621,7 @@
       systemMonitorShowCpuGraph = true;
       systemMonitorShowCpuTemp = true;
       systemMonitorShowGpuTemp = true;
-      systemMonitorGpuPciId = "";
+      systemMonitorGpuPciId = "0000:02:00.0";
       systemMonitorShowMemory = true;
       systemMonitorShowMemoryGraph = true;
       systemMonitorShowNetwork = true;
@@ -709,6 +710,14 @@
     #   };
     # };
   };
+  home.file.".config/DankMaterialShell/avatar.png".source = /home/maji/Pictures/jp.png;
+  home.activation.setDmsAvatar = lib.hm.dag.entryAfter ["writeBoundary"] ''
+    if command -v dms >/dev/null 2>&1; then
+      if systemctl --user is-active --quiet dms.service; then
+        dms ipc call profile setImage "$HOME/.config/DankMaterialShell/avatar.png" || true
+      fi
+    fi
+  '';
   # xdg.configFile."niri/dms/binds.kdl".text = ''
   #   binds {
   #     Mod+Return {
