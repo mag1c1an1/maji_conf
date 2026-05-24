@@ -7,7 +7,6 @@
   home.packages = [
     pkgs.wechat
     pkgs-unstable.feishu
-    pkgs-unstable.vicinae
     pkgs.obsidian
   ];
 
@@ -15,6 +14,7 @@
     inputs.niri.homeModules.niri
     inputs.dms.homeModules.dank-material-shell
     inputs.dms.homeModules.niri
+    inputs.vicinae.homeManagerModules.default
   ];
   programs.niri = {
     enable = true;
@@ -27,6 +27,9 @@
     #   };
     # };
     settings = {
+      spawn-at-startup = [
+        { argv = ["vicinae" "server"];}
+      ];
       outputs = {
         "DP-1" = {
           scale = 1.5;
@@ -121,6 +124,28 @@
       };
     };
   };
+services.vicinae = {
+  enable = true;
+
+  systemd = {
+    enable = true;
+    autoStart = true;
+
+    environment = {
+      USE_LAYER_SHELL = 1;
+    };
+  };
+
+  # settings = {
+  #   close_on_focus_loss = true;
+  #   consider_preedit = true;
+  #   pop_to_root_on_close = true;
+  #
+  #   launcher_window = {
+  #     opacity = 0.98;
+  #   };
+  # };
+};
   # xdg.configFile."niri/dms/binds.kdl".text = ''
   #   binds {
   #     Mod+Return {

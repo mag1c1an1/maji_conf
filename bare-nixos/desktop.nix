@@ -10,6 +10,7 @@
       pavucontrol
       wl-clipboard
       xwayland-satellite
+      nautilus
     ]
     ++ [
       inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default

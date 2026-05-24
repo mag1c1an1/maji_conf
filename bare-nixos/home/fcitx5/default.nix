@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{...}: {
   # home.file.".local/share/fcitx5/rime/default.custom.yaml".source = ../../rime/default.custom.yaml;
 
   # catppuccin的flake,option
