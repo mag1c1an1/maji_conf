@@ -5,7 +5,7 @@
   ...
 }: {
   home.packages = [
-    pkgs-unstable.wechat
+    pkgs.wechat
     pkgs-unstable.feishu
     pkgs-unstable.vicinae
     pkgs.obsidian

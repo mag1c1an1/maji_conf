@@ -9,6 +9,7 @@
       # Flakes 通过 git 命令拉取其依赖项，所以必须先安装好 git
       pavucontrol
       wl-clipboard
+      xwayland-satellite
     ]
     ++ [
       inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
@@ -24,6 +25,8 @@
   services.xserver.enable = false;
   services.displayManager.gdm.enable = false;
   services.desktopManager.gnome.enable = false;
+
+  programs.xwayland.enable = true;
 
   programs.niri = {
     enable = true;
