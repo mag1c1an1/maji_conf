@@ -107,10 +107,23 @@
       noto-fonts-cjk-sans
       noto-fonts-cjk-serif
       noto-fonts-color-emoji
-
       nerd-fonts.hack
       nerd-fonts._0xproto
     ];
+    fontconfig = {
+      defaultFonts = {
+      # 无衬线体（绝大多数系统 UI、浏览器默认使用的字体类别）
+        sansSerif = [ "Inter" "Noto Sans CJK SC" ];
+      # 衬线体（常用于印刷、小说阅读）
+        serif = [ "Noto Serif" "Noto Serif CJK SC" ];
+      # 等宽字体（你的终端模拟器、代码编辑器默认调用的类别）
+        monospace = [ "Hack Nerd Fond" "Noto Sans Mono CJK SC" ];
+      };
+      # 可选：开启一些渲染优化，让字体在 Linux 下更像 macOS 般圆润细腻
+      hinting.enable = true;
+      antialias = true;
+      subpixel.lcdfilter = "default";
+    };
   };
 
   # programs.dms-shell = {

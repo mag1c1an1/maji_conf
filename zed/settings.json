@@ -235,7 +235,7 @@
     "font_size": 18.0,
     "cursor_shape": "bar",
     "blinking": "on",
-    "font_family": "0xProto Nerd Font Mono",
+    "font_family": "0xProto Nerd Font",
     "line_height": {
       "custom": 1.1,
     },
