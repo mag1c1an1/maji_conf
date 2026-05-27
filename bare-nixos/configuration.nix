@@ -82,16 +82,13 @@
   };
 
   nix.optimise.automatic = true;
-  # networking.hostName = "AUROSX"; # Define your hostname.
+  networking.hostName = "aorusx"; # Define your hostname.
 
   # Configure network connections interactively with nmcli or nmtui.
   networking.networkmanager.enable = true;
 
-  # Set your time zone.
-  # time.timeZone = "Europe/Amsterdam";
-
   # Configure network proxy if necessary
-  networking.proxy.default = "http://127.0.0.1:10801";
+  # networking.proxy.default = "http://127.0.0.1:10801";
   networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   # Select internationalisation properties.

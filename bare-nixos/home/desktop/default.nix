@@ -342,8 +342,8 @@
       soundNewNotification = true;
       soundVolumeChanged = true;
       soundPluggedIn = true;
-      acMonitorTimeout = 60;
-      acLockTimeout = 0;
+      acMonitorTimeout = 900;
+      acLockTimeout = 600;
       acSuspendTimeout = 0;
       acSuspendBehavior = 0;
       acProfileName = "";
