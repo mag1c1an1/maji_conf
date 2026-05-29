@@ -16,11 +16,11 @@
       inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
     ];
   environment.sessionVariables = {
-    XMODIFIERS = "@im=fcitx";
-    GTK_IM_MODULE = "fcitx";
-    QT_IM_MODULE = "fcitx";
-    SDL_IM_MODULE = "fcitx";
-    GLFW_IM_MODULE = "ibus";
+    # XMODIFIERS = "@im=fcitx";
+    # GTK_IM_MODULE = "fcitx";
+    # QT_IM_MODULE = "fcitx";
+    # SDL_IM_MODULE = "fcitx";
+    # GLFW_IM_MODULE = "ibus";
   };
   programs.clash-verge = {
     enable = true;
