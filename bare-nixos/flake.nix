@@ -50,7 +50,7 @@
 
         specialArgs = {
           pkgs-unstable = import nixpkgs-unstable {
-            inherit hostPlatform;
+            system = hostPlatform;
             config.allowUnfree = true;
           };
 

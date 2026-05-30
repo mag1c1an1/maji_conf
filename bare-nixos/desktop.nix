@@ -2,6 +2,7 @@
   inputs,
   pkgs,
   pkgs-unstable,
+  lib,
   ...
 }: {
   environment.systemPackages = with pkgs;
@@ -26,8 +27,13 @@
     enable = true;
     package = pkgs-unstable.clash-verge-rev;
     serviceMode = true;
-    tunMode = false;
+    tunMode = true;
     autoStart = true;
+  };
+
+  systemd.services.clash-verge.serviceConfig = {
+    Group = lib.mkForce "wheel";
+    RuntimeDirectoryMode = lib.mkForce "0770";
   };
   # Use niri as the Wayland compositor instead of GNOME.
   services.xserver.enable = false;

@@ -4,7 +4,7 @@
   programs.zed-editor = {
     enable = true;
     installRemoteServer = true;
-    package = pkgs-unstable.zed;
+    package = pkgs-unstable.zed-editor;
     # userSettings = {
     #   node = {
     #     path = lib.getExe pkgs.nodejs;
