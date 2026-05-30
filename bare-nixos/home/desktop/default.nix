@@ -75,7 +75,7 @@
               app-id = "^chrome-blgdilankhbcpipclgpdndahbehalgkh-.*$";
             }
             {
-              app-id = "^clash-verge$";
+              app-id = "^chrome-cinhimbnkkaeohfgghhklpknlkffjgod-.*$";
             }
           ];
           open-on-output = "DP-2";
