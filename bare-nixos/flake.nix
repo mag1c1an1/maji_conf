@@ -11,11 +11,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    zed = {
-      url = "github:zed-industries/zed";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     # home-manager, used for managing user configuration
     home-manager = {
       url = "github:nix-community/home-manager/release-25.11";
