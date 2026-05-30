@@ -26,7 +26,7 @@
     enable = true;
     package = pkgs-unstable.clash-verge-rev;
     serviceMode = true;
-    tunMode = true;
+    tunMode = false;
     autoStart = true;
   };
   # Use niri as the Wayland compositor instead of GNOME.
