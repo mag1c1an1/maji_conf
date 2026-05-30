@@ -17,6 +17,7 @@
     inputs.dms.homeModules.dank-material-shell
     inputs.dms.homeModules.niri
     inputs.vicinae.homeManagerModules.default
+    ./avatar.nix
   ];
   programs.niri = {
     enable = true;
@@ -711,6 +712,7 @@
           "layout"
           "outputs"
           "wpblur"
+          "cursor"
         ];
       };
     };
