@@ -242,7 +242,7 @@
   },
   "theme": {
     "mode": "light",
-    "light": "Fleet Light",
+    "light": "Claude Light",
     "dark": "Fleet Dark",
   },
   "theme_overrides": {

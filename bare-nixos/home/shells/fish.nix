@@ -11,10 +11,10 @@
       zj = "zellij";
       jt = "just";
       cc = "claude";
-      zed = "zeditor";
     };
     shellAliases = {
       cnpm = "npm --registry=https://registry.npmmirror.com  --cache=$HOME/.npm/.cache/cnpm  --disturl=https://npmmirror.com/mirrors/node  --userconfig=$HOME/.cnpmrc";
+      zed = "zeditor";
     };
     interactiveShellInit = ''
       set fish_greeting # Disable greeting

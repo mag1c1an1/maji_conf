@@ -99,13 +99,13 @@
   {
     "context": "Picker > Editor",
     "bindings": {
-      "enter": "picker::ConfirmCompletion"
-    }
+      "enter": "picker::ConfirmCompletion",
+    },
   },
   {
     "context": "Picker > Editor",
     "unbind": {
-      "tab": "picker::ConfirmCompletion"
-    }
-  }
+      "tab": "picker::ConfirmCompletion",
+    },
+  },
 ]

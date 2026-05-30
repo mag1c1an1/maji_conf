@@ -68,6 +68,32 @@
           enable = false;
         };
       };
+      window-rules = [
+        {
+          matches = [
+            {
+              app-id = "^chrome-blgdilankhbcpipclgpdndahbehalgkh-.*$";
+            }
+            {
+              app-id = "^clash-verge$";
+            }
+          ];
+          open-on-output = "DP-2";
+        }
+        {
+          matches = [
+            {
+              app-id = "^com\\.mitchellh\\.ghostty$";
+            }
+            {
+              app-id = "^org\\.gnome\\.Nautilus$";
+            }
+          ];
+          open-floating = true;
+          default-column-width.fixed = 2000;
+          default-window-height.fixed = 1000;
+        }
+      ];
     };
   };
   programs.dank-material-shell = {
