@@ -7,6 +7,7 @@
 }: {
   imports = [
     ./avatar.nix
+    ./stream.nix
   ];
   environment.systemPackages = with pkgs;
     [
