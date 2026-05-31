@@ -335,7 +335,7 @@
       iconTheme = "System Default";
       cursorSettings = {
         theme = "System Default";
-        size = 24;
+        size = 45;
         niri = {
           hideWhenTyping = false;
           hideAfterInactiveMs = 0;
