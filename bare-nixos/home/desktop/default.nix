@@ -77,6 +77,9 @@
             {
               app-id = "^chrome-cinhimbnkkaeohfgghhklpknlkffjgod-.*$";
             }
+            {
+              app-id = "^clash-verge$";
+            }
           ];
           open-on-output = "DP-2";
         }
