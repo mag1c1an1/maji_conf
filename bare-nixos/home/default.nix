@@ -99,6 +99,9 @@
         ruff
         #sandbox
         bubblewrap
+        # idea
+        jetbrains.idea
+        jetbrains.gateway
       ])
       ++ (
         with pkgs-unstable; [
