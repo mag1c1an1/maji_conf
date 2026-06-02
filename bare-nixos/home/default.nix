@@ -80,7 +80,6 @@
         lsof # list open files
 
         direnv
-        devenv
         openssl
 
         # parquet
@@ -108,6 +107,7 @@
           xmake
           neovim
           wezterm
+          devenv
         ]
       )
       ++ [
