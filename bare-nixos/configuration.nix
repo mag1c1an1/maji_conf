@@ -178,6 +178,13 @@
     "/share/xdg-desktop-portal"
   ];
 
+  systemd.services.nix-daemon.environment = {
+    HTTP_PROXY = "http://127.0.0.1:10801";
+    HTTPS_PROXY = "http://127.0.0.1:10801";
+    ALL_PROXY = "socks5://127.0.0.1:10800";
+    NO_PROXY = "127.0.0.1,localhost,::1";
+  };
+
   # programs.firefox.enable = true;
   # programs.dms-shell = {
   #   enable = true;
