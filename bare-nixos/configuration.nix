@@ -170,6 +170,10 @@
     "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
     "https://cache.nixos.org"
   ];
+  nix.settings.trusted-users = [
+    "root"
+    "maji"
+  ];
   environment.pathsToLink = [
     "/share/xdg-desktop-portal"
   ];
