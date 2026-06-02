@@ -204,7 +204,13 @@
   ];
 
   programs.fish.enable = true;
-  programs.git.enable = true;
+  programs.git = {
+    enable = true;
+    config = {
+      http.proxy = "http://127.0.0.1:10801";
+      https.proxy = "http://127.0.0.1:10801";
+    };
+  };
   programs.nix-ld.enable = true;
   # 将默认编辑器设置为 vim
   environment.variables.EDITOR = "nvim";
