@@ -59,6 +59,7 @@
         # cpp
         clang
         clang-tools
+        lld
         cmake
         gnumake
         ninja
