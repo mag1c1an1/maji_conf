@@ -14,6 +14,7 @@
     };
     shellAliases = {
       cnpm = "npm --registry=https://registry.npmmirror.com  --cache=$HOME/.npm/.cache/cnpm  --disturl=https://npmmirror.com/mirrors/node  --userconfig=$HOME/.cnpmrc";
+      nd = "nix develop -c fish";
       zed = "zeditor";
     };
     interactiveShellInit = ''
