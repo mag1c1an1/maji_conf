@@ -13,7 +13,7 @@
     inputs.dms.nixosModules.greeter
     ./docker.nix
     ./desktop.nix
-    ./cachix/devenv.nix
+    # ./cachix/devenv.nix
   ];
 
   # Use the systemd-boot EFI boot loader.
