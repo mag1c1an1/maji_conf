@@ -16,10 +16,13 @@
       wl-clipboard
       xwayland-satellite
       nautilus
+      ddcutil
     ]
     ++ [
       inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
     ];
+    hardware.i2c.enable = true;
+    users.users.maji.extraGroups = ["i2c"];
   environment.sessionVariables = {
     # XMODIFIERS = "@im=fcitx";
     # GTK_IM_MODULE = "fcitx";
