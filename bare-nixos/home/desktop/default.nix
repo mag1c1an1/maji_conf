@@ -93,7 +93,7 @@
             }
           ];
           open-floating = true;
-          default-column-width.fixed = 2000;
+          default-column-width.fixed = 1600;
           default-window-height.fixed = 1000;
         }
       ];
