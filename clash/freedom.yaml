@@ -16,7 +16,7 @@ proxies:
     packet-encoding: ""
 
     tls: true
-    servername: www.metro.tokyo.lg.jp
+    servername: developer.mozilla.org
     # alpn:
     # fingerprint: chrome
     client-fingerprint: chrome
