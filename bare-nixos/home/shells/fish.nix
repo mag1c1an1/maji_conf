@@ -21,9 +21,13 @@
       set fish_greeting # Disable greeting
 
       # PATH
-      fish_add_path $HOME/.cargo/bin
       fish_add_path $HOME/.local/bin
       fish_add_path $HOME/.npm-global/bin
+
+      # cargo
+      set -gx CARGO_HOME = $HOME/data/.cargo
+      fish_add_path $CARGO_HOME/bin
+
 
       # less
       set -gx LESSCHARSET utf-8
@@ -38,6 +42,7 @@
       # uv
       set -gx UV_PYTHON_INSTALL_MIRROR "https://ghfast.top/https://github.com/indygreg/python-build-standalone/releases/download"
       set -gx UV_DEFAULT_INDEX https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple
+      set -gx UV_CACHE_DIR $HOME/data/.cache/uv
 
       # proxy
       function proxy
