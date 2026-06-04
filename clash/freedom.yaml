@@ -2,7 +2,8 @@ proxy-groups:
   - name: PROXY
     type: select
     proxies:
-      - maji
+      - ali-jp
+      - aws-us
 
 proxies:
   - name: "ali-jp"
