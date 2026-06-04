@@ -49,7 +49,7 @@
       // 3.3 国外域名代理
       {
         "domain": ["geosite:geolocation-!cn"],
-        "outboundTag": "proxy"
+        "outboundTag": "aws-us"
       },
       // 3.4 走国内"223.5.5.5"的DNS查询流量分流走direct出站
       {
@@ -86,42 +86,75 @@
       "port": 10801 // 这个是通过http协议做本地转发的端口
     }
   ],
-    "outbounds": [ // 客户端出站配置
-        {
-            "tag": "proxy",
-            "protocol": "vless",
-            "settings": {
-                "vnext": [
-                    {
-                        //"address": "8.209.242.121", // 服务端的域名或 IP
-                        // "address": "54.95.157.163", // 服务端的域名或 IP
-                        "address": "54.213.218.196", // 服务端的域名或 IP
-                        "port": 443,
-                        "users": [
-                            {
-                                "id": "ee7381ee-db2b-404c-b7fc-87f5369a7643", // 与服务端一致
-                                "flow": "xtls-rprx-vision", // 与服务端一致
-                                "encryption": "none"
-                            }
-                        ]
-                    }
-                ]
-            },
-            "streamSettings": {
-                "network": "raw",
-                "security": "reality",
-                "realitySettings": {
-                    "show": false, // 选填，若为 true，输出调试信息
-                    "fingerprint": "chrome", // 选填，使用 uTLS 库模拟客户端 TLS 指纹，默认 chrome
-                    "serverName": "developer.mozilla.org", // 服务端 serverNames 之一
-                    "password": "4-rbY6ItUutAV13q9VdEcWtCc2H2C382F4Y7IwfCwQw", // 服务端私钥生成的公钥，对客户端来说就是密码
-                    "shortId": "ffff", // 服务端 shortIds 之一
-                    "mldsa65Verify": "", // 选填，服务端 mldsa65Seed 生成的公钥，对证书进行抗量子的额外验证
-                    "spiderX": "" // 爬虫初始路径与参数，建议每个客户端不同
-                }
-            }
-        },
-       // 5.2 用`freedom`协议直连出站，即当routing中指定'direct'流出时，调用这个协议做处理
+  "outbounds": [
+    // 客户端出站配置
+    {
+      "tag": "ali-jp",
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "8.209.242.121", // 服务端的域名或 IP
+            "port": 443,
+            "users": [
+              {
+                "id": "ee7381ee-db2b-404c-b7fc-87f5369a7643", // 与服务端一致
+                "flow": "xtls-rprx-vision", // 与服务端一致
+                "encryption": "none"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "raw",
+        "security": "reality",
+        "realitySettings": {
+          "show": false, // 选填，若为 true，输出调试信息
+          "fingerprint": "chrome", // 选填，使用 uTLS 库模拟客户端 TLS 指纹，默认 chrome
+          "serverName": "www.metro.tokyo.lg.jp", // 服务端 serverNames 之一
+          "password": "4-rbY6ItUutAV13q9VdEcWtCc2H2C382F4Y7IwfCwQw", // 服务端私钥生成的公钥，对客户端来说就是密码
+          "shortId": "ffff", // 服务端 shortIds 之一
+          "mldsa65Verify": "", // 选填，服务端 mldsa65Seed 生成的公钥，对证书进行抗量子的额外验证
+          "spiderX": "" // 爬虫初始路径与参数，建议每个客户端不同
+        }
+      }
+    },
+    {
+      "tag": "aws-us",
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            //"address": "8.209.242.121", // 服务端的域名或 IP
+            // "address": "54.95.157.163", // 服务端的域名或 IP
+            "address": "54.213.218.196", // 服务端的域名或 IP
+            "port": 443,
+            "users": [
+              {
+                "id": "ee7381ee-db2b-404c-b7fc-87f5369a7643", // 与服务端一致
+                "flow": "xtls-rprx-vision", // 与服务端一致
+                "encryption": "none"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "raw",
+        "security": "reality",
+        "realitySettings": {
+          "show": false, // 选填，若为 true，输出调试信息
+          "fingerprint": "chrome", // 选填，使用 uTLS 库模拟客户端 TLS 指纹，默认 chrome
+          "serverName": "developer.mozilla.org", // 服务端 serverNames 之一
+          "password": "4-rbY6ItUutAV13q9VdEcWtCc2H2C382F4Y7IwfCwQw", // 服务端私钥生成的公钥，对客户端来说就是密码
+          "shortId": "ffff", // 服务端 shortIds 之一
+          "mldsa65Verify": "", // 选填，服务端 mldsa65Seed 生成的公钥，对证书进行抗量子的额外验证
+          "spiderX": "" // 爬虫初始路径与参数，建议每个客户端不同
+        }
+      }
+    },
+    // 5.2 用`freedom`协议直连出站，即当routing中指定'direct'流出时，调用这个协议做处理
     {
       "tag": "direct",
       "protocol": "freedom"
@@ -131,5 +164,5 @@
       "tag": "block",
       "protocol": "blackhole"
     }
-    ]
+  ]
 }
