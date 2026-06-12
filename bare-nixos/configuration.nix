@@ -197,6 +197,7 @@
   environment.systemPackages = with pkgs; [
     # Flakes 通过 git 命令拉取其依赖项，所以必须先安装好 git
     git
+    git-filter-repo
     fish
     neovim
     just
