@@ -201,6 +201,7 @@
     neovim
     just
     pkg-config
+    perf
   ];
 
   programs.fish.enable = true;
