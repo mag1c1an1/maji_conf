@@ -1,0 +1,62 @@
+{
+  programs.lsd = {
+    enable = true;
+    colors = {
+      user = "cyan";          # rose
+      group = "blue";      # foam
+      permission = {
+        read= "cyan";       # rose
+        write= "magenta"; # iris
+        exec= "red"; # love
+        exec-sticky= "yellow";# gold
+        no-access= "grey";       # secondary
+        octal= "dark_grey";      # subtle
+        acl= "green";             # pine
+        context= "dark_grey";    # overlay
+      };
+      date= {
+        hour-old= "red";       # text
+        day-old= "cyan";    # rose
+        older= "dark_grey";      # secondary
+      };
+      size= {
+        none= "dark_grey";            # secondary
+        small= "green";      # pine
+        medium="blue";          # foam
+        large= "magenta";        # iris
+      };
+      inode= {
+        valid= "blue";           # foam
+        invalid= "grey";         # secondary
+      };
+      links= {
+        valid= "white";          # text
+        invalid= "grey";         # secondary
+      };
+      tree-edge= "dark_grey";         # secondary
+      git-status= {
+        default= "dark_grey";         # secondary
+        unmodified= "dark_grey"; # secondary
+        ignored= "dark_grey";         # secondary
+        new-in-index= "blue"; # foam
+        new-in-workdir= "blue"; # foam
+        typechange= "yellow"; # gold
+        deleted= "red";     # love
+        renamed= "green";    # pine
+        modified= "cyan";  # rose
+        conflicted= "red";   # love
+      };
+
+      # green / dark_green = pine
+      # blue / dark_blue = foam
+      # cyan / dark_cyan = rose
+      # magenta / dark_magenta = iris
+      # red / dark_red = love
+      # yellow / dark_yellow = gold
+      #
+      # black = base
+      # grey = text
+      # dark_grey = secondary
+    };
+  };
+}
