@@ -23,7 +23,7 @@
     package = pkgs.niri;
     settings = {
       spawn-at-startup = [
-        {argv = ["vicinae" "server"];}
+        # {argv = ["vicinae" "server"];}
       ];
       outputs = {
         "DP-1" = {
