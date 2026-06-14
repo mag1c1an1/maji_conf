@@ -101,6 +101,7 @@
         # idea
         jetbrains.idea
         jetbrains.gateway
+        nvtopPackages.nvidia
       ])
       ++ (
         with pkgs-unstable; [
