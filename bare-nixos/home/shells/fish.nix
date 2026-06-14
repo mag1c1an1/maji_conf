@@ -42,7 +42,7 @@
       # uv
       set -gx UV_PYTHON_INSTALL_MIRROR "https://ghfast.top/https://github.com/indygreg/python-build-standalone/releases/download"
       set -gx UV_DEFAULT_INDEX https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple
-      set -gx UV_CACHE_DIR $HOME/data/.cache/uv
+      # set -gx UV_CACHE_DIR $HOME/data/.cache/uv
 
       # proxy
       function proxy
