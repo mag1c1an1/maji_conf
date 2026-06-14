@@ -110,12 +110,12 @@
     ];
     fontconfig = {
       defaultFonts = {
-      # 无衬线体（绝大多数系统 UI、浏览器默认使用的字体类别）
-        sansSerif = [ "Inter" "Noto Sans CJK SC" ];
-      # 衬线体（常用于印刷、小说阅读）
-        serif = [ "Noto Serif" "Noto Serif CJK SC" ];
-      # 等宽字体（你的终端模拟器、代码编辑器默认调用的类别）
-        monospace = [ "Hack Nerd Fond" "Noto Sans Mono CJK SC" ];
+        # 无衬线体（绝大多数系统 UI、浏览器默认使用的字体类别）
+        sansSerif = ["Inter" "Noto Sans CJK SC"];
+        # 衬线体（常用于印刷、小说阅读）
+        serif = ["Noto Serif" "Noto Serif CJK SC"];
+        # 等宽字体（你的终端模拟器、代码编辑器默认调用的类别）
+        monospace = ["Hack Nerd Fond" "Noto Sans Mono CJK SC"];
       };
       # 可选：开启一些渲染优化，让字体在 Linux 下更像 macOS 般圆润细腻
       hinting.enable = true;
@@ -234,7 +234,7 @@
     };
   };
 
-  services.frp = {
+  services.frp.instances = {
     enable = true;
     role = "client";
     settings = {
@@ -242,7 +242,7 @@
       serverPort = 7000;
       auth = {
         method = "token";
-        token = "wsl-nixos";
+        token = "aorus-nixos";
       };
       proxies = [
         {
@@ -251,6 +251,13 @@
           localIP = "127.0.0.1";
           localPort = 2222;
           remotePort = 6000;
+        }
+        {
+          name = "inference";
+          type = "tcp";
+          localIP = "127.0.0.1";
+          localPort = 8888;
+          remotePort = 6001;
         }
       ];
     };
