@@ -22,10 +22,10 @@
     fsType = "btrfs";
   };
 
-  fileSystems."/home/maji/data" = {
-    device = "/dev/disk/by-uuid/66040a38-67a6-420d-8b14-b65b253dfe3d";
-    fsType = "btrfs";
-  };
+  # fileSystems."/home/maji/data" = {
+  #   device = "/dev/disk/by-uuid/66040a38-67a6-420d-8b14-b65b253dfe3d";
+  #   fsType = "btrfs";
+  # };
 
   fileSystems."/efi" = {
     device = "/dev/disk/by-uuid/DC47-E186";
