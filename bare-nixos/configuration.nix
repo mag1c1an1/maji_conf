@@ -234,7 +234,7 @@
     };
   };
 
-  services.frp.instances = {
+  services.frp.instances."aliyun" = {
     enable = true;
     role = "client";
     settings = {
@@ -246,7 +246,7 @@
       };
       proxies = [
         {
-          name = "nixos-ssh";
+          name = "aorusx-ssh";
           type = "tcp";
           localIP = "127.0.0.1";
           localPort = 2222;
