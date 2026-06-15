@@ -22,7 +22,7 @@
     fsType = "btrfs";
   };
 
-  fileSystems."/home/maji/data" = {
+  fileSystems."/home/maji/crab" = {
     device = "/dev/disk/by-uuid/30341df8-10ff-41c6-a28a-d0a7c6c5033e";
     fsType = "ext4";
   };
