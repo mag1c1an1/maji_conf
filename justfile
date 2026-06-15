@@ -5,7 +5,7 @@ orb:
    WSL=FALSE nixos-rebuild  switch --flake ./nixos#nixos --impure --show-trace --sudo
 
 bare:
-   nixos-rebuild  switch --flake ./bare-nixos#AORUSX --impure --show-trace --sudo
+   nixos-rebuild  switch --flake ./bare-nixos#AORUSX --impure --show-trace --sudo -L
 
 link:
    ln -s $PWD/fish/themes $HOME/.config/fish/themes
