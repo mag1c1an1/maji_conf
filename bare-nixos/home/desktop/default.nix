@@ -10,6 +10,7 @@
     pkgs-unstable.feishu
     pkgs.obsidian
     pkgs.gthumb
+    pkgs.davinci-resolve
   ];
 
   imports = [
