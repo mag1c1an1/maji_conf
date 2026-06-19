@@ -30,18 +30,12 @@
     # SDL_IM_MODULE = "fcitx";
     # GLFW_IM_MODULE = "ibus";
   };
-  programs.clash-verge = {
-    enable = true;
-    package = pkgs-unstable.clash-verge-rev;
-    serviceMode = true;
-    tunMode = true;
-    autoStart = true;
-  };
 
-  systemd.services.clash-verge.serviceConfig = {
-    Group = lib.mkForce "wheel";
-    RuntimeDirectoryMode = lib.mkForce "0770";
-  };
+  # systemd.services.clash-verge.serviceConfig = {
+  #   Group = lib.mkForce "wheel";
+  #   RuntimeDirectoryMode = lib.mkForce "0770";
+  # };
+  #
   # Use niri as the Wayland compositor instead of GNOME.
   services.xserver.enable = false;
   services.displayManager.gdm.enable = false;

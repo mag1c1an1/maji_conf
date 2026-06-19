@@ -14,6 +14,15 @@
     pkgs.mpv
   ];
 
+  programs.clash-verge = {
+    enable = true;
+    group = "users";
+    package = pkgs-unstable.clash-verge-rev;
+    serviceMode = true;
+    tunMode = true;
+    autoStart = true;
+  };
+
   imports = [
     inputs.niri.homeModules.niri
     inputs.dms.homeModules.dank-material-shell
