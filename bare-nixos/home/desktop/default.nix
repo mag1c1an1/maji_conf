@@ -685,7 +685,7 @@
     session = {
       isLightMode = true;
       # Add any other session state settings here
-      wallpaperPath = "/home/maji/Pictures/wallhaven-7jwz59.jpg";
+      wallpaperPath = "/home/maji/Pictures/lady.png";
       weatherLocaltion = "New York, NY";
       weatherCoordinates = "33.996,116.481";
       nvidiaGpuTempEnabled = true;
