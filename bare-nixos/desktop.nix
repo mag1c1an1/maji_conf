@@ -31,6 +31,14 @@
     # GLFW_IM_MODULE = "ibus";
   };
 
+  programs.clash-verge = {
+    enable = true;
+    group = "users";
+    serviceMode = true;
+    tunMode = true;
+    autoStart = true;
+  };
+
   # systemd.services.clash-verge.serviceConfig = {
   #   Group = lib.mkForce "wheel";
   #   RuntimeDirectoryMode = lib.mkForce "0770";
