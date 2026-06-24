@@ -49,6 +49,20 @@
   "relative_line_numbers": "disabled",
   "agent_buffer_font_size": 16.0,
   "agent": {
+    "favorite_models": [
+      {
+        "provider": "deepseek",
+        "model": "deepseek-v4-pro",
+        "enable_thinking": true,
+        "effort": "max"
+      },
+      {
+        "provider": "deepseek",
+        "model": "deepseek-v4-flash",
+        "enable_thinking": false,
+        "effort": "high"
+      }
+    ],
     "sidebar_side": "right",
     "dock": "right",
     "tool_permissions": {
@@ -56,10 +70,10 @@
     },
     "default_profile": "write",
     "default_model": {
-      "effort": "max",
-      "enable_thinking": true,
+      "effort": "high",
+      "enable_thinking": false,
       "provider": "deepseek",
-      "model": "deepseek-v4-pro",
+      "model": "deepseek-v4-flash",
     },
   },
   "language_models": {
@@ -248,7 +262,7 @@
     },
   },
   "theme": {
-    "mode": "light",
+    "mode": "dark",
     "light": "Claude Light",
     "dark": "Fleet Dark",
   },
