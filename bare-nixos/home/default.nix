@@ -102,6 +102,9 @@
         jetbrains.idea
         jetbrains.gateway
         nvtopPackages.nvidia
+# 
+minio-client
+tealdeer
       ])
       ++ (
         with pkgs-unstable; [

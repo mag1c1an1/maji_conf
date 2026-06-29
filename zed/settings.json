@@ -68,7 +68,7 @@
     "tool_permissions": {
       "default": "allow",
     },
-    "default_profile": "write",
+    "default_profile": "ask",
     "default_model": {
       "effort": "high",
       "enable_thinking": false,
@@ -263,7 +263,7 @@
   },
   "theme": {
     "mode": "dark",
-    "light": "Claude Light",
+    "light": "Fleet Light",
     "dark": "Fleet Dark",
   },
   "theme_overrides": {
@@ -316,5 +316,5 @@
       "enable_language_server": false,
     },
   },
-  "proxy": "http://127.0.0.1:10801",
+  "proxy": "http://127.0.0.1:7890",
 }
