@@ -67,10 +67,10 @@
               # Vicinae Cachix，避免本地编译
               nix.settings = {
                 extra-substituters = [
-                  # "https://vicinae.cachix.org"
+                  "https://vicinae.cachix.org"
                 ];
                 extra-trusted-public-keys = [
-                  # "vicinae.cachix.org-1:1kDrfienkGHPYbkpNj1mWTr7Fm1+zcenzgTizIcI3oc="
+                  "vicinae.cachix.org-1:1kDrfienkGHPYbkpNj1mWTr7Fm1+zcenzgTizIcI3oc="
                 ];
               };
             }
