@@ -273,7 +273,9 @@ plugins {
 // Default: default
 //
 //
-theme "rose-pine-dawn" 
+theme "everforest-dark" 
+// theme "kanagawa"
+// theme "rose-pine-dawn" 
 // theme "dracula"
 
 // The name of the default layout to load on startup
