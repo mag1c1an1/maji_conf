@@ -1,3 +1,6 @@
+mode: rule
+allow-lan: true
+
 proxy-groups:
   - name: PROXY
     type: select
