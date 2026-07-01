@@ -27,6 +27,11 @@
     fsType = "ext4";
   };
 
+  fileSystems."/home/maji/mobile" = {
+    device = "/dev/disk/by-uuid/aa7d0969-42de-44f8-be2b-91eb73f76335";
+    fsType = "ext4";
+  };
+
   fileSystems."/efi" = {
     device = "/dev/disk/by-uuid/DC47-E186";
     fsType = "vfat";
