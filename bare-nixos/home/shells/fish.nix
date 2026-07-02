@@ -51,9 +51,9 @@
           set -gx HTTP_PROXY host.orb.internal:7890
           set -gx HTTPS_PROXY host.orb.internal:7890
         else
-          set -gx HTTP_PROXY http://127.0.0.1:10801
-          set -gx HTTPS_PROXY http://127.0.0.1:10801
-          set -gx ALL_PROXY sock5://127.0.0.1:10800
+          set -gx HTTP_PROXY http://127.0.0.1:7890
+          set -gx HTTPS_PROXY http://127.0.0.1:7890
+          set -gx ALL_PROXY sock5://127.0.0.1:7890
         end
       end
 
@@ -63,7 +63,7 @@
         set -e ALL_PROXY
       end
 
-      # proxy
+      proxy
 
       function ra
        	set tmp (mktemp -t "yazi-cwd.XXXXXX")
