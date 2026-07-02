@@ -1,6 +1,6 @@
 [
   {
-    "context": "",
+    "context": "Workspace",
     "bindings": {
       "ctrl-\\": "terminal_panel::Toggle",
     },
@@ -72,6 +72,7 @@
       "space d i": "editor::ToggleInlineDiagnostics",
       "space o": "outline::Toggle",
       "space l": "workspace::ToggleRightDock",
+      "space s": "text_finder::Toggle",
     },
   },
   {
