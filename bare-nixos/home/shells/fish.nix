@@ -63,7 +63,7 @@
         set -e ALL_PROXY
       end
 
-      proxy
+      # proxy
 
       function ra
        	set tmp (mktemp -t "yazi-cwd.XXXXXX")
