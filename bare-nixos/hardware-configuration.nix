@@ -22,14 +22,10 @@
     fsType = "btrfs";
   };
 
-  fileSystems."/home/maji/crab" = {
-    device = "/dev/disk/by-uuid/30341df8-10ff-41c6-a28a-d0a7c6c5033e";
-    fsType = "ext4";
-  };
-
   fileSystems."/home/maji/mobile" = {
     device = "/dev/disk/by-uuid/aa7d0969-42de-44f8-be2b-91eb73f76335";
     fsType = "ext4";
+    options = ["nofail"];
   };
 
   fileSystems."/efi" = {
