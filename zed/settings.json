@@ -61,6 +61,18 @@
         "model": "deepseek-v4-flash",
         "enable_thinking": false,
         "effort": "high"
+      },
+      {
+        "provider": "openai-subscribed",
+        "model": "gpt-5.5",
+        "enable_thinking": true,
+        "effort": "medium"
+      },
+      {
+        "provider": "openai-subscribed",
+        "model": "gpt-5.4",
+        "enable_thinking": true,
+        "effort": "medium"
       }
     ],
     "sidebar_side": "right",
@@ -68,12 +80,12 @@
     "tool_permissions": {
       "default": "allow",
     },
-    "default_profile": "ask",
+    "default_profile": "write",
     "default_model": {
-      "effort": "high",
-      "enable_thinking": false,
-      "provider": "deepseek",
-      "model": "deepseek-v4-flash",
+      "effort": "medium",
+      "enable_thinking": true,
+      "provider": "openai-subscribed",
+      "model": "gpt-5.5",
     },
   },
   "language_models": {
