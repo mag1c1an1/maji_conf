@@ -194,6 +194,7 @@
 
   # List packages installed in system profile.
   # You can use https://search.nixos.org/ to find more packages (and options).
+  hardware.openrazer.enable = true;
   environment.systemPackages = with pkgs; [
     # Flakes 通过 git 命令拉取其依赖项，所以必须先安装好 git
     git
@@ -203,6 +204,8 @@
     just
     pkg-config
     perf
+    openrazer-daemon
+    polychromatic
   ];
 
   programs.fish.enable = true;
@@ -328,7 +331,7 @@
   users.users.maji = {
     shell = pkgs.fish;
     isNormalUser = true;
-    extraGroups = ["wheel"]; # Enable ‘sudo’ for the user.
+    extraGroups = ["wheel" "openrazer"]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
       google-chrome
       github-cli
