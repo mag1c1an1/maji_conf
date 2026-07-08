@@ -179,10 +179,10 @@
   ];
 
   systemd.services.nix-daemon.environment = {
-    HTTP_PROXY = "socks5://127.0.0.1:10800";
-    HTTPS_PROXY = "socks5://127.0.0.1:10800";
-    ALL_PROXY = "socks5://127.0.0.1:10800";
-    NO_PROXY = "127.0.0.1,localhost,::1";
+    # HTTP_PROXY = "socks5://127.0.0.1:10800";
+    # HTTPS_PROXY = "socks5://127.0.0.1:10800";
+    # ALL_PROXY = "socks5://127.0.0.1:10800";
+    # NO_PROXY = "127.0.0.1,localhost,::1";
   };
 
   # programs.firefox.enable = true;
