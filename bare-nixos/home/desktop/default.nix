@@ -7,7 +7,7 @@
 }: {
   home.packages = [
     pkgs.wechat
-    pkgs.wpsoffice
+    pkgs.wpsoffice-cn
     pkgs-unstable.feishu
     pkgs.obsidian
     pkgs.gthumb
