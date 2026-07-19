@@ -167,7 +167,7 @@
   # 启用 Flakes 特性以及配套的船新 nix 命令行工具
   nix.settings.experimental-features = ["nix-command" "flakes"];
   nix.settings.substituters = [
-    "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
+    "https://mirrors.ustc.edu.cn/nix-channels/store"
     "https://cache.nixos.org"
   ];
   nix.settings.trusted-users = [
@@ -204,8 +204,8 @@
     just
     pkg-config
     perf
-    openrazer-daemon
-    polychromatic
+    piper
+    solaar
   ];
 
   programs.fish.enable = true;
@@ -219,6 +219,10 @@
   programs.nix-ld.enable = true;
   # 将默认编辑器设置为 vim
   environment.variables.EDITOR = "nvim";
+
+  services.ratbagd.enable = true;
+  hardware.logitech.wireless.enable = true;
+  hardware.logitech.wireless.enableGraphical = true;
 
   services.xray = {
     enable = true;
@@ -331,7 +335,7 @@
   users.users.maji = {
     shell = pkgs.fish;
     isNormalUser = true;
-    extraGroups = ["wheel" "openrazer"]; # Enable ‘sudo’ for the user.
+    extraGroups = ["wheel"]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
       google-chrome
       github-cli
