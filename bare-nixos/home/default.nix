@@ -96,6 +96,7 @@
         # lsp
         ty
         ruff
+        tinymist
         #sandbox
         bubblewrap
         # idea
