@@ -113,6 +113,7 @@
           neovim
           warp-terminal
           devenv
+          jujutsu
         ]
       )
       ++ [
