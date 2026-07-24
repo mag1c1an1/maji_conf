@@ -279,7 +279,7 @@
     },
   },
   "theme": {
-    "mode": "dark",
+    "mode": "light",
     "light": "Fleet Light",
     "dark": "Fleet Dark",
   },

@@ -111,7 +111,7 @@ tealdeer
         with pkgs-unstable; [
           xmake
           neovim
-          wezterm
+          warp-terminal
           devenv
         ]
       )
