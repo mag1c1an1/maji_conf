@@ -55,7 +55,8 @@
           # 关键设置：关闭程序内预编辑，强制使用 Fcitx5 浮窗(能解决 neovide 中无法预编辑的问题)
           # "PreeditEnabledByDefault" = "False";
           # };
-          "Hotkey/TriggerKeys" = {"0" = "F10";};
+          # "Hotkey/TriggerKeys" 注意：会被 ~/.config/fcitx5/config 遮蔽，改这里同时要改用户配置
+          "Hotkey/TriggerKeys" = {"0" = "F13";};
         };
         inputMethod = {
           GroupOrder."0" = "Default";
@@ -293,9 +294,9 @@
         )
 
         (defalias
-          ;; 点按 CapsLock -> F10
+          ;; 点按 CapsLock -> F13（触发 fcitx5 切输入法，F13 不会被其他程序抢占）
           ;; 长按 CapsLock -> CapsLock
-          caps-ime (tap-hold 200 200 f10 caps)
+          caps-ime (tap-hold 200 200 f13 caps)
         )
 
         (deflayer base
