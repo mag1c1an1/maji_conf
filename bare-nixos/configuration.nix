@@ -220,6 +220,13 @@
   # 将默认编辑器设置为 vim
   environment.variables.EDITOR = "nvim";
 
+  # 修复 Clash Verge (Tauri/WebKitGTK) webview 在 nvidia 上的 CPU 空转
+  # （webview 常驻 ~50% CPU → 桌面持续渲染 → nvidia flip → ksoftirqd 风暴 → 风扇猛转）
+  # 若无效可追加 WEBKIT_DISABLE_DMABUF_RENDERER = "1";
+  environment.sessionVariables = {
+    WEBKIT_DISABLE_COMPOSITING_MODE = "1";
+  };
+
   services.ratbagd.enable = true;
   hardware.logitech.wireless.enable = true;
   hardware.logitech.wireless.enableGraphical = true;

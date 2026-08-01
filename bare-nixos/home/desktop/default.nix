@@ -46,7 +46,7 @@
           mode = {
             width = 3840;
             height = 2160;
-            refresh = 170.0;
+            refresh = 60.0; # 27M2U-D 硬件仅支持 60Hz（原配置 170 被 niri 静默降级）
           };
           position = {
             x = 2560;

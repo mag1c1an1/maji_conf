@@ -103,4 +103,16 @@
       "tab": "picker::ConfirmCompletion",
     },
   },
+  {
+    "context": "Workspace",
+    "unbind": {
+      "ctrl-p": "file_finder::Toggle"
+    }
+  },
+  {
+    "context": "FileFinder || FileFinder > Picker > Editor",
+    "unbind": {
+      "ctrl-p": "file_finder::Toggle"
+    }
+  }
 ]
