@@ -181,10 +181,10 @@
   systemd.services.nix-daemon.environment = {
     # 让 nix-daemon 的下载（binary cache / 固定输出 derivation）走 xray 代理
     # xray: 10801 = HTTP, 10800 = SOCKS5（与 git config 的 10801 一致）
+    # no_proxy 用 nix-daemon 模块自带默认值（已含 127.0.0.1,localhost），不重复定义
     http_proxy = "http://127.0.0.1:10801";
     https_proxy = "http://127.0.0.1:10801";
     all_proxy = "socks5://127.0.0.1:10800";
-    no_proxy = "127.0.0.1,localhost,::1";
   };
 
   # programs.firefox.enable = true;
