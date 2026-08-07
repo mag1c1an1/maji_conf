@@ -35,6 +35,9 @@
   services.xserver.videoDrivers = ["nvidia"];
   hardware.nvidia.open = true; # see the note above
   hardware.nvidia.modesetting.enable = true;
+  hardware.nvidia-container-toolkit = {
+    enable = true;
+  };
 
   # 选择输入法类型为 fcitx5
   i18n.inputMethod = {

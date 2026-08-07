@@ -1,10 +1,10 @@
-{pkgs-unstable, ...}: {
+{pkgs-zed, ...}: {
   # home.file.".config/zed/settings.json" = ../../../zed/settings.json;
   # home.file.".config/zed/keymap.json" = ../../../zed/keymap.json;
   programs.zed-editor = {
     enable = true;
     installRemoteServer = true;
-    package = pkgs-unstable.zed-editor-fhs;
+    package = pkgs-zed.zed-editor-fhs;
     # userSettings = {
     #   node = {
     #     path = lib.getExe pkgs.nodejs;
