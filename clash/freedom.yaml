@@ -1,5 +1,4 @@
-mode: rule
-allow-lan: true
+mixed-port: 7890
 
 proxy-groups:
   - name: PROXY
@@ -14,7 +13,7 @@ proxies:
     server: 8.209.242.121
     port: 443
     udp: true
-    uuid: ee7381ee-db2b-404c-b7fc-87f5369a7643
+    uuid: mag1cian
     flow: xtls-rprx-vision
     packet-encoding: ""
 
@@ -26,7 +25,7 @@ proxies:
     skip-cert-verify: true
     reality-opts:
       public-key: 4-rbY6ItUutAV13q9VdEcWtCc2H2C382F4Y7IwfCwQw
-      short-id: ffff
+      short-id: ffffeeee
     encryption: "none"
 
     network: tcp
@@ -151,9 +150,23 @@ rule-providers:
     interval: 86400
 
 rules:
+  - IP-CIDR,8.209.242.121/32,DIRECT,no-resolve
+  - IP-CIDR,54.213.218.196/32,DIRECT,no-resolve
+  - IP-CIDR,94.74.104.22/32,DIRECT,no-resolve
+  - IP-CIDR,122.8.155.231/32,DIRECT,no-resolve
+  - IP-CIDR,122.8.0.0/16,DIRECT,no-resolve
+  - IP-CIDR,159.138.233.109/32,DIRECT,no-resolve
+  - IP-CIDR,124.81.191.148/32,DIRECT,no-resolve
+  - IP-CIDR,43.255.106.34/32,DIRECT,no-resolve
+  - IP-CIDR,159.138.97.199/32,DIRECT,no-resolve
+  - IP-CIDR,190.92.204.101/32,DIRECT,no-resolve
+  - IP-CIDR,159.138.102.13/32,DIRECT,no-resolve
+  - IP-CIDR,124.243.170.175/32,DIRECT,no-resolve
+  - IP-CIDR,111.119.222.118/32,DIRECT,no-resolve
   - RULE-SET,applications,DIRECT
   - DOMAIN,clash.razord.top,DIRECT
   - DOMAIN,yacd.haishan.me,DIRECT
+  - DOMAIN-SUFFIX,aliyun.com,DIRECT
   - RULE-SET,private,DIRECT
   - RULE-SET,reject,REJECT
   - RULE-SET,icloud,DIRECT
@@ -167,3 +180,4 @@ rules:
   - GEOIP,LAN,DIRECT
   - GEOIP,CN,DIRECT
   - MATCH,PROXY
+
