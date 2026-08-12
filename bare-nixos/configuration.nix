@@ -110,6 +110,7 @@
       noto-fonts-color-emoji
       nerd-fonts.hack
       nerd-fonts._0xproto
+      maple-mono.NF-CN-unhinted
     ];
     fontconfig = {
       defaultFonts = {
