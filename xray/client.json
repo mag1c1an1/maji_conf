@@ -98,7 +98,7 @@
             "port": 443,
             "users": [
               {
-                "id": "ee7381ee-db2b-404c-b7fc-87f5369a7643", // 与服务端一致
+                "id": "mag1cian", // 与服务端一致
                 "flow": "xtls-rprx-vision", // 与服务端一致
                 "encryption": "none"
               }
@@ -114,7 +114,7 @@
           "fingerprint": "chrome", // 选填，使用 uTLS 库模拟客户端 TLS 指纹，默认 chrome
           "serverName": "developer.mozilla.org", // 服务端 serverNames 之一
           "password": "4-rbY6ItUutAV13q9VdEcWtCc2H2C382F4Y7IwfCwQw", // 服务端私钥生成的公钥，对客户端来说就是密码
-          "shortId": "ffff", // 服务端 shortIds 之一
+          "shortId": "ffffeeee", // 服务端 shortIds 之一
           "mldsa65Verify": "", // 选填，服务端 mldsa65Seed 生成的公钥，对证书进行抗量子的额外验证
           "spiderX": "" // 爬虫初始路径与参数，建议每个客户端不同
         }

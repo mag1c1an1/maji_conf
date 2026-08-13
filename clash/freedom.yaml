@@ -2,10 +2,12 @@ mixed-port: 7890
 
 proxy-groups:
   - name: PROXY
-    type: select
+    type: fallback
     proxies:
       - ali-jp
       - aws-us
+    url: https://www.gstatic.com/generate_204
+    interval: 300
 
 proxies:
   - name: "ali-jp"
