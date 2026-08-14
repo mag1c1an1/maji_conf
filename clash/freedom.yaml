@@ -4,12 +4,38 @@ proxy-groups:
   - name: PROXY
     type: fallback
     proxies:
+      - vul-jp
       - ali-jp
       - aws-us
     url: https://www.gstatic.com/generate_204
     interval: 300
 
 proxies:
+  - name: "vul-jp"
+    type: vless
+    server: 207.148.108.198
+    port: 443
+    udp: true
+    uuid: mag1cian
+    flow: xtls-rprx-vision
+    packet-encoding: ""
+
+    tls: true
+    servername: developer.mozilla.org
+    # alpn:
+    # fingerprint: chrome
+    client-fingerprint: chrome
+    skip-cert-verify: true
+    reality-opts:
+      public-key: 4-rbY6ItUutAV13q9VdEcWtCc2H2C382F4Y7IwfCwQw
+      short-id: ffffeeee
+    encryption: "none"
+
+    network: tcp
+
+    smux:
+      enabled: false
+
   - name: "ali-jp"
     type: vless
     server: 8.209.242.121
@@ -34,6 +60,7 @@ proxies:
 
     smux:
       enabled: false
+
   - name: "aws-us"
     type: vless
     server: 54.213.218.196

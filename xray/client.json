@@ -89,6 +89,38 @@
   "outbounds": [
     // 客户端出站配置
     {
+      "tag": "vul-jp",
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "207.148.108.198", // 服务端的域名或 IP
+            "port": 443,
+            "users": [
+              {
+                "id": "mag1cian", // 与服务端一致
+                "flow": "xtls-rprx-vision", // 与服务端一致
+                "encryption": "none"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "raw",
+        "security": "reality",
+        "realitySettings": {
+          "show": false, // 选填，若为 true，输出调试信息
+          "fingerprint": "chrome", // 选填，使用 uTLS 库模拟客户端 TLS 指纹，默认 chrome
+          "serverName": "developer.mozilla.org", // 服务端 serverNames 之一
+          "password": "4-rbY6ItUutAV13q9VdEcWtCc2H2C382F4Y7IwfCwQw", // 服务端私钥生成的公钥，对客户端来说就是密码
+          "shortId": "ffffeeee", // 服务端 shortIds 之一
+          "mldsa65Verify": "", // 选填，服务端 mldsa65Seed 生成的公钥，对证书进行抗量子的额外验证
+          "spiderX": "" // 爬虫初始路径与参数，建议每个客户端不同
+        }
+      }
+    },
+    {
       "tag": "ali-jp",
       "protocol": "vless",
       "settings": {

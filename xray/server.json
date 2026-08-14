@@ -18,15 +18,15 @@
     },
     "inbounds": [
         {
-            "listen": "0.0.0.0",
-            "port": 443,
+	    "listen": "0.0.0.0",
+	    "port": 443,
             "protocol": "vless",
             "settings": {
-                "users": [
+                "clients": [
                     {
-                        "id": "mag1cian",
-                        "flow": "xtls-rprx-vision",
-                        "email": "mag1cian0610@gmail.com"
+                        "id": "ff34be52-b9a6-54e8-b262-5e839e6a6ac2",
+                        "email": "mag1cian0610@gmail.com",
+                        "flow": "xtls-rprx-vision"
                     }
                 ],
                 "decryption": "none"
@@ -43,7 +43,7 @@
                     "minClientVer": "",
                     "maxClientVer": "",
                     "maxTimeDiff": 0,
-                    "shortIds": ["ffff"],
+                    "shortIds": ["ffffeeee"],
                     "mldsa65Seed": "",
                     "limitFallbackUpload": {
                         "afterBytes": 0,
@@ -70,3 +70,4 @@
         }
     ]
 }
+
