@@ -1,4 +1,5 @@
 {
+  "agent_ui_font_family": "Maple Mono NF CN",
   "diff_view_style": "unified",
   "agent_servers": {
     "codex-acp": {
@@ -90,7 +91,7 @@
       "effort": "medium",
       "enable_thinking": true,
       "provider": "openai-subscribed",
-      "model": "gpt-5.5",
+      "model": "gpt-5.6-luna",
     },
   },
   "language_models": {
@@ -262,18 +263,18 @@
   },
   "vim_mode": true,
   "icon_theme": {
-    "mode": "dark",
+    "mode": "light",
     "light": "Material Icon Theme",
     "dark": "Material Icon Theme",
   },
   "ui_font_size": 24,
   "buffer_font_size": 20.0,
-  "buffer_font_family": "0xProto Nerd Font",
+  "buffer_font_family": "Maple Mono NF CN",
   "terminal": {
     "font_size": 18.0,
     "cursor_shape": "bar",
     "blinking": "on",
-    "font_family": "0xProto Nerd Font",
+    "font_family": "Maple Mono NF CN",
     "line_height": {
       "custom": 1.1,
     },
@@ -281,7 +282,7 @@
   "theme": {
     "mode": "dark",
     "light": "Fleet Light",
-    "dark": "Fleet Dark",
+    "dark": "Catppuccin Mocha",
   },
   "theme_overrides": {
     "Fleet Light": {

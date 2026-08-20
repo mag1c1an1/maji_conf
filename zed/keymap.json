@@ -114,5 +114,11 @@
     "unbind": {
       "ctrl-p": "file_finder::Toggle"
     }
+  },
+  {
+    "context": "Workspace",
+    "unbind": {
+      "ctrl-t": "project_symbols::Toggle"
+    }
   }
 ]
