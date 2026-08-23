@@ -170,6 +170,22 @@
         "type": "github"
       }
     },
+    "nixpkgs-warp": {
+      "locked": {
+        "lastModified": 1787360063,
+        "narHash": "sha256-dt4WdcvsA8/RCe+VZZwqU0X+XMM3wBbGCWA0/sFWzGo=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "2c423e03bbafcff28bfadc6781a4a8257f205cb5",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nixpkgs-zed": {
       "locked": {
         "lastModified": 1787360063,
@@ -232,6 +248,7 @@
         "niri": "niri",
         "nixpkgs": "nixpkgs",
         "nixpkgs-unstable": "nixpkgs-unstable",
+        "nixpkgs-warp": "nixpkgs-warp",
         "nixpkgs-zed": "nixpkgs-zed",
         "vicinae": "vicinae",
         "zen-browser": "zen-browser"
