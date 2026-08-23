@@ -13,8 +13,9 @@ link:
    ln -s $PWD/wezterm/.wezterm.lua $HOME/.config/.wezterm.lua
    # ln $PWD/nix $HOME/.config/nix
 
-upadte:
-   cd nixos && nix flake update
+update:
+   cd bare-nixos && nix flake update nixpkgs-zed
+   # cd nixos && nix flake update
 
 init:
   echo "trusted-users = root $USER" | sudo tee --append /etc/nix/nix.conf

@@ -7,6 +7,7 @@
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     # Zed 使用独立的 nixpkgs，这样可以只更新 Zed 而不影响其他 unstable 软件。
     nixpkgs-zed.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs-warp.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     cc-switch-cli = {
       url = "github:saladday/cc-switch-cli";
@@ -43,6 +44,7 @@
     nixpkgs,
     nixpkgs-unstable,
     nixpkgs-zed,
+    nixpkgs-warp,
     home-manager,
     vicinae,
     ...
@@ -57,6 +59,10 @@
             config.allowUnfree = true;
           };
           pkgs-zed = import nixpkgs-zed {
+            system = hostPlatform;
+            config.allowUnfree = true;
+          };
+          pkgs-warp = import nixpkgs-warp {
             system = hostPlatform;
             config.allowUnfree = true;
           };
