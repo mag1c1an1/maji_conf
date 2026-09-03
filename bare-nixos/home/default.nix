@@ -113,7 +113,6 @@
           xmake
           neovim
           devenv
-          jujutsu
         ]
       )
       ++ [

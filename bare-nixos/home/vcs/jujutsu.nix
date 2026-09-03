@@ -1,6 +1,11 @@
 {
+  pkgs-unstable,
+  ...
+}: {
   programs.jujutsu = {
     enable = true;
+    # 与 home.packages 中移除的 jujutsu 对应,固定用 unstable 版本
+    package = pkgs-unstable.jujutsu;
     settings = {
       user = {
        	name = "mag1cian";
