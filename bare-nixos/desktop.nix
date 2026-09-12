@@ -17,6 +17,7 @@
       xwayland-satellite
       nautilus
       ddcutil
+      swayidle
     ]
     ++ [
       inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
@@ -60,4 +61,10 @@
     compositor.name = "niri";
     configHome = "/home/maji";
   };
+
+  # greeter 空闲熄屏：dms-greeter 生成 niri 配置时会 include 这个文件，
+  # 用 swayidle 在空闲 10 分钟后关屏（DPMS Off），任意键鼠输入自动亮回登录界面。
+  environment.etc."greetd/niri_overrides.kdl".text = ''
+    spawn-at-startup "${pkgs.swayidle}/bin/swayidle" "-w" "timeout" "600" "niri msg action power-off-monitors" "resume" "niri msg action power-on-monitors"
+  '';
 }
