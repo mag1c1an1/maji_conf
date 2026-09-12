@@ -1,4 +1,5 @@
 {
+  config,
   inputs,
   pkgs,
   pkgs-unstable,
@@ -38,6 +39,24 @@
     serviceMode = true;
     tunMode = true;
     autoStart = true;
+  };
+
+  # 开机就把 verge-mihomo 核心跑起来（SSH-only、没登录桌面时也有 127.0.0.1:7890 可用）。
+  # 登录图形会话时 dms.service 启动 -> 本单元按 Conflicts 自动停止，
+  # 把 7890 让给 clash-verge GUI（经 clash-verge-service）自己拉起的核心，GUI 表现与以往完全一致。
+  users.users.maji.linger = true;
+
+  systemd.user.services.verge-mihomo-boot = {
+    description = "verge-mihomo core at boot (hands over to Clash Verge GUI on graphical login)";
+    wantedBy = [ "default.target" ];
+    unitConfig.Conflicts = "dms.service";
+    serviceConfig = {
+      Type = "simple";
+      ExecStartPre = "${pkgs.coreutils}/bin/mkdir -p %t/clash-verge-rev";
+      ExecStart = "${config.programs.clash-verge.package}/bin/verge-mihomo -d ${config.users.users.maji.home}/.local/share/io.github.clash-verge-rev.clash-verge-rev -f ${config.users.users.maji.home}/.local/share/io.github.clash-verge-rev.clash-verge-rev/clash-verge.yaml";
+      Restart = "on-failure";
+      RestartSec = 3;
+    };
   };
 
   # systemd.services.clash-verge.serviceConfig = {
