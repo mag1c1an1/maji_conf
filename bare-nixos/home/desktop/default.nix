@@ -3,6 +3,7 @@
   pkgs,
   pkgs-unstable,
   lib,
+  config,
   ...
 }: {
   home.packages = [
@@ -734,15 +735,23 @@
       };
     };
 
-    # settings = {
-    #   close_on_focus_loss = true;
-    #   consider_preedit = true;
-    #   pop_to_root_on_close = true;
-    #
-    #   launcher_window = {
-    #     opacity = 0.98;
-    #   };
-    # };
+    # 限制文件索引范围：默认每 60 秒全量扫描 /home/maji（约 14.7 万文件、持续占用内存/IO）。
+    # 排除体积很大且搜索价值低的目录（本机实际：repos 286G、Steam 65G、外置盘 125G）。
+    # 通过模块的 VICINAE_OVERRIDES 注入为 nix.json，不会覆盖手写的 settings.json。
+    settings = {
+      providers.files.preferences = {
+        autoIndexing = true;
+        indexingPaths = ["${config.home.homeDirectory}"];
+        excludedIndexingPaths = [
+          "${config.home.homeDirectory}/repos" # 代码仓库（含 LakeSoul/.devenv/state，286G）
+          "${config.home.homeDirectory}/.local/share/Steam" # Steam 游戏库（65G）
+          "${config.home.homeDirectory}/.config/zen" # Zen 浏览器 profile
+          "${config.home.homeDirectory}/.config/google-chrome" # Chrome profile
+          "${config.home.homeDirectory}/.mozilla" # Firefox profile（如有）
+          "${config.home.homeDirectory}/mobile" # 外置盘 SteamLibrary/models（125G）
+        ];
+      };
+    };
   };
   home.file.".config/DankMaterialShell/avatar.png".source = /home/maji/Pictures/jp.png;
   home.activation.setDmsAvatar = lib.hm.dag.entryAfter ["writeBoundary"] ''

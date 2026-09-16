@@ -39,6 +39,33 @@
     enable = true;
   };
 
+  # ── 内存保护：防止内存耗尽导致整机卡死 ────────────────────────────────
+  # 2026-09-16 死机分析结论：
+  #   - 系统完全没有 swap，匿名内存无法回收，内存到顶时内核进入 direct
+  #     reclaim 全局停顿（journalctl -b -1 最后 20 秒只有零星日志，无 OOM 记录）
+  #   - 同时期内核报 vmemmap alloc failure: order:9，NVIDIA 驱动报
+  #     NV_ERR_NO_MEMORY（nvidia_uvm 注册 GPU 时分配失败）
+  #   - 9/14、9/16 两次死机是同一签名；9/15 也出现过同类分配失败
+  # 修复：zram（压缩内存当 swap，让匿名页可回收）+ earlyoom（提前杀最大户）
+  zramSwap = {
+    enable = true;
+    algorithm = "zstd"; # 压缩率约 2~3:1
+    memoryPercent = 50; # 32GB 内存 → 最多 16GB zram（按需占用，不做预留）
+  };
+
+  # 可用内存或 swap 低于 10% 时，提前杀掉内存占用最大的进程，
+  # 避免内核在 OOM 边界卡死（systemd-oomd 在无 swap 时能力受限）
+  services.earlyoom.enable = true;
+
+  # 保留 256MB 最低空闲内存，缓解碎片化时 order-9 连续页分配失败；
+  # zram 场景下提高 swappiness，优先换出冷匿名页；
+  # 打开完整 SysRq：下次卡死可先 Alt+SysRq+S 同步，再按 B 重启，减少数据风险
+  boot.kernel.sysctl = {
+    "vm.min_free_kbytes" = 262144;
+    "vm.swappiness" = 100;
+    "kernel.sysrq" = 1;
+  };
+
   # 选择输入法类型为 fcitx5
   i18n.inputMethod = {
     type = "fcitx5";
