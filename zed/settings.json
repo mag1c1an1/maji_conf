@@ -282,7 +282,7 @@
   "theme": {
     "mode": "dark",
     "light": "Fleet Light",
-    "dark": "Catppuccin Mocha",
+    "dark": "Fleet Dark",
   },
   "theme_overrides": {
     "Fleet Light": {
