@@ -315,7 +315,7 @@
     ];
   };
   services.kanata = {
-    enable = true;
+    enable = false;
 
     keyboards.default = {
       config = ''
