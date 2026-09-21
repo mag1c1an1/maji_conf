@@ -20,6 +20,8 @@
     interactiveShellInit = ''
       set fish_greeting # Disable greeting
 
+      ulimit -n 65536
+
       # PATH
       fish_add_path $HOME/.local/bin
       fish_add_path $HOME/.npm-global/bin
