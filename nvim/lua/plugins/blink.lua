@@ -16,11 +16,6 @@ return {
           "fallback",
         },
 
-        ["<CR>"] = {
-          "accept",
-          "fallback",
-        },
-
         ["<C-n>"] = { "select_next", "fallback" },
         ["<C-p>"] = { "select_prev", "fallback" },
         ["<Right>"] = { "select_next", "fallback" },
