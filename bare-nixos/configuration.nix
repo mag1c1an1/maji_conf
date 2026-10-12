@@ -345,7 +345,9 @@
     LC_MEASUREMENT = "zh_CN.UTF-8";
     LC_NUMERIC = "zh_CN.UTF-8";
     LC_PAPER = "zh_CN.UTF-8";
-    LC_CTYPE = "zh_CN.UTF-8";
+    # 保持 en_US.UTF-8：若为 zh_CN，go-runewidth 会把 ─│└ 等字符按 2 列宽处理，
+    # 与 Warp 的 1 列宽渲染不一致，导致 k9s 按 / 搜索时界面错位（#1241 同类问题）
+    LC_CTYPE = "en_US.UTF-8";
   };
 
   # Some programs need SUID wrappers, can be configured further or are
