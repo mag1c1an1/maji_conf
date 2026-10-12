@@ -55,6 +55,7 @@
           set -gx HTTP_PROXY http://127.0.0.1:7890
           set -gx HTTPS_PROXY http://127.0.0.1:7890
           set -gx ALL_PROXY http://127.0.0.1:7890
+          set -gx PI_PROXY_ANTHROPIC http://127.0.0.1:7890
         end
       end
 
@@ -62,6 +63,7 @@
         set -e HTTP_PROXY
         set -e HTTPS_PROXY
         set -e ALL_PROXY
+        set -e PI_PROXY_ANTHROPIC
       end
 
       proxy
