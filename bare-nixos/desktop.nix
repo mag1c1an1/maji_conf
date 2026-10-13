@@ -50,6 +50,9 @@
     description = "verge-mihomo core at boot (hands over to Clash Verge GUI on graphical login)";
     wantedBy = [ "default.target" ];
     unitConfig.Conflicts = "dms.service";
+    # 这是用户级单元，对 greeter 等所有用户可见；限制只有 maji 的用户实例启动它，
+    # 否则 greeter 实例会因读不了 /home/maji 下的配置而每 3 秒失败重启一次。
+    unitConfig.ConditionUser = config.users.users.maji.name;
     serviceConfig = {
       Type = "simple";
       ExecStartPre = "${pkgs.coreutils}/bin/mkdir -p %t/clash-verge-rev";
