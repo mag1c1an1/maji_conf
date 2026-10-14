@@ -133,7 +133,10 @@
           index = "https://rsproxy.cn/crates.io-index"
           [net]
           git-fetch-with-cli = true
-        '';
+          [build]
+          target-dir = "/home/maji/mobile/cargo-target"
+          build-dir = "/home/maji/mobile/cargo-build/{workspace-path-hash}"
+          '';
       };
     };
     sessionPath = [
