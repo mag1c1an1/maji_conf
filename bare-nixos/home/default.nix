@@ -60,6 +60,7 @@
         # cpp
         clang
         clang-tools
+        mold
         cmake
         gnumake
         ninja
