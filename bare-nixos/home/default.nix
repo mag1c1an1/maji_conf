@@ -137,6 +137,9 @@
           [build]
           target-dir = "/home/maji/mobile/cargo-target"
           build-dir = "/home/maji/mobile/cargo-build/{workspace-path-hash}"
+          [target.'cfg(target_os = "linux")']
+          linker = "clang"
+          rustflags = ["-C", "link-arg=-fuse-ld=mold"]
           '';
       };
     };
