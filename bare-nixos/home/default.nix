@@ -118,7 +118,10 @@
       )
       ++ [
         inputs.cc-switch-cli.packages.${pkgs.stdenv.hostPlatform.system}.default
-        pkgs-warp.warp-terminal
+        # 需要 waylandSupport：把 libwayland 加进 RPATH 并设 WARP_ENABLE_WAYLAND=1
+        # 否则 winit dlopen 找不到 libwayland-client（NixOS 无 /etc/ld.so.cache），
+        # 会在启动时 panic 后自动回落到 X11。
+        (pkgs-warp.warp-terminal.override {waylandSupport = true;})
       ];
     stateVersion = "25.05";
     file = {
