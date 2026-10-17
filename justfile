@@ -15,6 +15,7 @@ link:
 
 update:
    cd bare-nixos && nix flake update nixpkgs-zed
+   cd bare-nixos && nix flake update nixpkgs-warp
    # cd nixos && nix flake update
 
 init:
