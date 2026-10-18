@@ -25,13 +25,6 @@
     ];
     hardware.i2c.enable = true;
     users.users.maji.extraGroups = ["i2c"];
-  environment.sessionVariables = {
-    # XMODIFIERS = "@im=fcitx";
-    # GTK_IM_MODULE = "fcitx";
-    # QT_IM_MODULE = "fcitx";
-    # SDL_IM_MODULE = "fcitx";
-    # GLFW_IM_MODULE = "ibus";
-  };
 
   programs.clash-verge = {
     enable = true;

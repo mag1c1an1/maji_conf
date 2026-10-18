@@ -9,11 +9,17 @@
   home.packages = [
     pkgs.wechat
     pkgs.wpsoffice-cn
-    pkgs-unstable.feishu
+    # 飞书默认走 XWayland，XWayland 下拿不到 text-input-v3，pinyinime 无法输入。
+    # 强制 ozone/Wayland + text-input-v3(7.66.10 实测可用，见 nixpkgs#318035 的历史崩溃已不复现)。
+    (pkgs-unstable.feishu.override {
+      commandLineArgs = "--ozone-platform=wayland --enable-wayland-ime --wayland-text-input-version=3";
+    })
     pkgs.obsidian
     pkgs.gthumb
     #pkgs.davinci-resolve
     pkgs.mpv
+    # niri 原生拼音输入法(input-method-v2)，源码在本机 ~/repos/pinyinime
+    inputs.pinyinime.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 
   imports = [
@@ -27,6 +33,8 @@
     package = pkgs.niri;
     settings = {
       spawn-at-startup = [
+        # niri 原生拼音输入法(input-method-v2)，替代 fcitx5
+        {argv = ["pinyinime"];}
         # {argv = ["vicinae" "server"];}
       ];
       outputs = {

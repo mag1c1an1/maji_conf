@@ -11,7 +11,6 @@
     ./neovim
     ./zed
     ./utils
-    ./fcitx5
     ./desktop
     ./ghostty.nix
   ];

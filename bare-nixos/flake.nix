@@ -35,6 +35,13 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # 本机仓库里的输入法(niri 原生 input-method-v2)，不经过 GitHub：
+    # 走 git 枚举，只拷 tracked 文件、不拷 .git。
+    pinyinime = {
+      url = "git+file:///home/maji/repos/pinyinime";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # Vicinae 官方建议不要 follows nixpkgs，
     # 否则它自己的 Cachix cache 可能 miss。
     vicinae.url = "github:vicinaehq/vicinae";

@@ -218,6 +218,25 @@
         "type": "github"
       }
     },
+    "pinyinime": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "dirtyRev": "6bb16721344f94f384d7bfa9748368e420def891-dirty",
+        "dirtyShortRev": "6bb1672-dirty",
+        "lastModified": 1792297818,
+        "narHash": "sha256-/UmkYSLDS9netoug1EakrEeXzoaB7w0Eaar8O8urXwA=",
+        "type": "git",
+        "url": "file:///home/maji/repos/pinyinime"
+      },
+      "original": {
+        "type": "git",
+        "url": "file:///home/maji/repos/pinyinime"
+      }
+    },
     "quickshell": {
       "inputs": {
         "nixpkgs": [
@@ -250,6 +269,7 @@
         "nixpkgs-unstable": "nixpkgs-unstable",
         "nixpkgs-warp": "nixpkgs-warp",
         "nixpkgs-zed": "nixpkgs-zed",
+        "pinyinime": "pinyinime",
         "vicinae": "vicinae",
         "zen-browser": "zen-browser"
       }
