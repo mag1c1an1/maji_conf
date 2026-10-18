@@ -7,7 +7,6 @@
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     # Zed 使用独立的 nixpkgs，这样可以只更新 Zed 而不影响其他 unstable 软件。
     nixpkgs-zed.url = "github:NixOS/nixpkgs/nixos-unstable";
-    nixpkgs-warp.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     cc-switch-cli = {
       url = "github:saladday/cc-switch-cli";
@@ -42,6 +41,13 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # 本地自编译的 Warp（upstream + IME 候选窗修复补丁）：
+    # 只拷 tracked 文件，不拷 .git。
+    warp-ime = {
+      url = "git+file:///home/maji/repos/warp-ime";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # Vicinae 官方建议不要 follows nixpkgs，
     # 否则它自己的 Cachix cache 可能 miss。
     vicinae.url = "github:vicinaehq/vicinae";
@@ -51,7 +57,6 @@
     nixpkgs,
     nixpkgs-unstable,
     nixpkgs-zed,
-    nixpkgs-warp,
     home-manager,
     vicinae,
     ...
@@ -66,10 +71,6 @@
             config.allowUnfree = true;
           };
           pkgs-zed = import nixpkgs-zed {
-            system = hostPlatform;
-            config.allowUnfree = true;
-          };
-          pkgs-warp = import nixpkgs-warp {
             system = hostPlatform;
             config.allowUnfree = true;
           };

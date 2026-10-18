@@ -2,7 +2,6 @@
   inputs,
   pkgs,
   pkgs-unstable,
-  pkgs-warp,
   ...
 }: {
   imports = [
@@ -117,10 +116,11 @@
       )
       ++ [
         inputs.cc-switch-cli.packages.${pkgs.stdenv.hostPlatform.system}.default
-        # 需要 waylandSupport：把 libwayland 加进 RPATH 并设 WARP_ENABLE_WAYLAND=1
-        # 否则 winit dlopen 找不到 libwayland-client（NixOS 无 /etc/ld.so.cache），
-        # 会在启动时 panic 后自动回落到 X11。
-        (pkgs-warp.warp-terminal.override {waylandSupport = true;})
+        # 从源码编译的 Warp（upstream + IME 候选窗修复）：
+        # 二进制名 warp-terminal-experimental / warp-oss，
+        # desktop id 变成 dev.warp.WarpOss，配置目录独立在 ~/.config/warp-oss。
+        # 它的 wrapper 已经把 wayland/libGL/fontconfig 等塞进 LD_LIBRARY_PATH。
+        inputs.warp-ime.packages.${pkgs.stdenv.hostPlatform.system}.warp-terminal-experimental
       ];
     stateVersion = "25.05";
     file = {

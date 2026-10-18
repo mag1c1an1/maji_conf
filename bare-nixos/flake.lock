@@ -20,6 +20,21 @@
         "type": "github"
       }
     },
+    "crane": {
+      "locked": {
+        "lastModified": 1778106249,
+        "narHash": "sha256-cM/AuKy5tMhwOOQIbha8ZRRMHVfNf7cv2aljIw+qoCg=",
+        "owner": "ipetkov",
+        "repo": "crane",
+        "rev": "6d015ea29630b7ad2402841386da2cb617a470a7",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ipetkov",
+        "repo": "crane",
+        "type": "github"
+      }
+    },
     "dms": {
       "inputs": {
         "nixpkgs": [
@@ -170,22 +185,6 @@
         "type": "github"
       }
     },
-    "nixpkgs-warp": {
-      "locked": {
-        "lastModified": 1791956154,
-        "narHash": "sha256-jBYGPi4udQ9uo4KQp9m2J0546nJVQitG15gvZSaVVAs=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "55bfb4d7437bd4e09ab7cba58a43bd68eb310044",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "ref": "nixos-unstable",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "nixpkgs-zed": {
       "locked": {
         "lastModified": 1791956154,
@@ -267,11 +266,32 @@
         "niri": "niri",
         "nixpkgs": "nixpkgs",
         "nixpkgs-unstable": "nixpkgs-unstable",
-        "nixpkgs-warp": "nixpkgs-warp",
         "nixpkgs-zed": "nixpkgs-zed",
         "pinyinime": "pinyinime",
         "vicinae": "vicinae",
+        "warp-ime": "warp-ime",
         "zen-browser": "zen-browser"
+      }
+    },
+    "rust-overlay": {
+      "inputs": {
+        "nixpkgs": [
+          "warp-ime",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1777432579,
+        "narHash": "sha256-Ce11TStDsqCge2vAAfLKe2+4lDI5cSX5ZYZOuKJBKKQ=",
+        "owner": "oxalica",
+        "repo": "rust-overlay",
+        "rev": "3ecb5e6ab380ced3272ef7fcfe398bffbcc0f152",
+        "type": "github"
+      },
+      "original": {
+        "owner": "oxalica",
+        "repo": "rust-overlay",
+        "type": "github"
       }
     },
     "systems": {
@@ -306,6 +326,28 @@
         "owner": "vicinaehq",
         "repo": "vicinae",
         "type": "github"
+      }
+    },
+    "warp-ime": {
+      "inputs": {
+        "crane": "crane",
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "rust-overlay": "rust-overlay"
+      },
+      "locked": {
+        "lastModified": 1792313497,
+        "narHash": "sha256-8Hcp0d7WEd7CVM3rrzIXxHeOzRHYuB3+v14AkvVwBnw=",
+        "ref": "refs/heads/master",
+        "rev": "31c8e3e8c1c92a76bc1dcec6b94c3e57f0911041",
+        "revCount": 2,
+        "type": "git",
+        "url": "file:///home/maji/repos/warp-ime"
+      },
+      "original": {
+        "type": "git",
+        "url": "file:///home/maji/repos/warp-ime"
       }
     },
     "xwayland-satellite-stable": {
