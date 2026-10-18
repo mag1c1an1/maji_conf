@@ -225,10 +225,10 @@
         ]
       },
       "locked": {
-        "dirtyRev": "6bb16721344f94f384d7bfa9748368e420def891-dirty",
-        "dirtyShortRev": "6bb1672-dirty",
-        "lastModified": 1792297818,
-        "narHash": "sha256-/UmkYSLDS9netoug1EakrEeXzoaB7w0Eaar8O8urXwA=",
+        "lastModified": 1792310157,
+        "narHash": "sha256-8PBhU98YwfWdRVK7LbtwaA1+8JpYj+vHrYPyZ3+xrA8=",
+        "rev": "a8bfd7ad8e6637f1875ca0a38cbe7444588c6555",
+        "revCount": 4,
         "type": "git",
         "url": "file:///home/maji/repos/pinyinime"
       },
