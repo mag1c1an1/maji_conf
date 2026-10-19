@@ -33,6 +33,7 @@
 
   hardware.graphics.enable = true;
   services.xserver.videoDrivers = ["nvidia"];
+  services.envfs.enable = true;
   hardware.nvidia.open = true; # see the note above
   hardware.nvidia.modesetting.enable = true;
   hardware.nvidia-container-toolkit = {
