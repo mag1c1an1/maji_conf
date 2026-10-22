@@ -15,6 +15,11 @@
       commandLineArgs = "--ozone-platform=wayland --enable-wayland-ime --wayland-text-input-version=3";
     })
     pkgs.obsidian
+    # 同飞书：默认走 XWayland 时拿不到 text-input-v3，pinyinime 无法输入。
+    # 强制 ozone/Wayland + text-input-v3，让 VSCode 接 niri 的 input-method-v2 输入法。
+    (pkgs.vscode.override {
+      commandLineArgs = "--ozone-platform=wayland --enable-wayland-ime --wayland-text-input-version=3";
+    })
     pkgs.gthumb
     #pkgs.davinci-resolve
     pkgs.mpv
