@@ -1,16 +1,10 @@
 # Edit this configuration file to define what should be installed on
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
-{
-  inputs,
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
-    # inputs.dms.nixosMoudles.dank-material-shell
-    inputs.dms.nixosModules.greeter
     ./docker.nix
     ./desktop.nix
     # ./cachix/devenv.nix
@@ -36,9 +30,22 @@
   services.envfs.enable = true;
   hardware.nvidia.open = true; # see the note above
   hardware.nvidia.modesetting.enable = true;
+  # 睡眠/唤醒必须保留显存内容。否则 resume 后 VRAM/GEM 里的 buffer 全是垃圾：
+  # nvidia-drm 报 "Failed to apply atomic modeset (-11)"、Xid 13 Graphics Exception，
+  # cosmic-comp 的 page flip 全部 EINVAL，屏幕黑着回不到桌面
+  # （2026-10-24 13:39:08 suspend → 13:54:29 resume 实测，boot -1 日志）。
+  # 驱动 595.71.05(open) + open=true → kernelSuspendNotifier 默认启用，走内核 suspend
+  # notifier + NVreg_PreserveVideoMemoryAllocations=1，不需要 nvidia-suspend/resume 单元。
+  hardware.nvidia.powerManagement.enable = true;
   hardware.nvidia-container-toolkit = {
     enable = true;
   };
+
+  # 外置盘 aigo S7(USB 3535:1122, S/N YS20220271) 禁止 USB autosuspend：
+  # power/control=on + autosuspend_delay_ms=-1，设备重枚举后也保持。
+  services.udev.extraRules = ''
+    ACTION=="add", SUBSYSTEM=="usb", ATTR{idVendor}=="3535", ATTR{idProduct}=="1122", ATTR{serial}=="YS20220271", ATTR{power/control}="on", ATTR{power/autosuspend_delay_ms}="-1"
+  '';
 
   # ── 内存保护：防止内存耗尽导致整机卡死 ────────────────────────────────
   # 2026-09-16 死机分析结论：
@@ -68,7 +75,7 @@
   };
 
   # 输入法:maji 自己写的 pinyinime(zwp_input_method_v2，见 home/desktop/default.nix)，
-  # 不再用 fcitx5。
+  # 不再用 fcitx5；COSMIC 自 1.0.0~beta.8 起实现 input-method-v2 + virtual-keyboard-v1。
 
   services.logind.settings.Login = {
     IdleAction = "ignore";
@@ -124,27 +131,6 @@
     };
   };
 
-  # programs.dms-shell = {
-  #   enable = true;
-  #   systemd = {
-  #     enable = true;
-  #     restartIfChanged = true;
-  #   };
-  #   enableSystemMonitoring = true; # System monitoring widgets (dgop)
-  #   enableVPN = false; # VPN management widget
-  #   enableDynamicTheming = true; # Wallpaper-based theming (matugen)
-  #   enableAudioWavelength = true; # Audio visualizer (cava)
-  #   enableCalendarEvents = true; # Calendar integration (khal)
-  #   enableClipboardPaste = true;
-  # };
-
-  # services.displayManager.defaultSession = "niri";
-  # services.greetd = {
-  #   enable = true;
-  #   useTextGreeter = true;
-  #   settings.default_session.command = "${pkgs.tuigreet}/bin/tuigreet --time --remember --remember-user-session --cmd ${config.programs.niri.package}/bin/niri-session";
-  # };
-
   # Configure keymap in X11
   # services.xserver.xkb.layout = "us";
   # services.xserver.xkb.options = "eurosign:e,caps:escape";
@@ -188,15 +174,9 @@
   };
 
   # programs.firefox.enable = true;
-  # programs.dms-shell = {
-  #   enable = true;
-  #   enableSystemMonitoring = true;
-  #   dgop.package = inputs.dgop.packages.$[pkgs.stdenv.hostPlatform.system].default;
-  # }
 
   # List packages installed in system profile.
   # You can use https://search.nixos.org/ to find more packages (and options).
-  hardware.openrazer.enable = true;
   environment.systemPackages = with pkgs; [
     # Flakes 通过 git 命令拉取其依赖项，所以必须先安装好 git
     git

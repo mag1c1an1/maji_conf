@@ -56,7 +56,7 @@ nixos-rebuild list-generations
 
 ```bash
 just update                                  # 只更新 nixpkgs-zed
-cd bare-nixos && nix flake update <input>    # 如 nixpkgs / home-manager / vicinae ...
+cd bare-nixos && nix flake update <input>    # 如 nixpkgs / home-manager / warp-ime ...
 alejandra bare-nixos/                        # 格式化 nix 文件
 ```
 
@@ -77,13 +77,14 @@ alejandra bare-nixos/                        # 格式化 nix 文件
 
 ```
 bare-nixos/configuration.nix           # 系统入口（imports: hardware / docker.nix / desktop.nix / ...）
-bare-nixos/desktop.nix                 # 桌面环境（COSMIC 主 + niri 回退、clash-verge、greeter；imports: avatar.nix / steam.nix）
-                                       # 2026-10-24 起处于 niri+DMS → COSMIC 迁移阶段一：cosmic 与 cosmic-greeter 已启用，
-                                       # niri 会话保留；DMS greeter 已关闭，DMS 面板/niri include hack 尚未删除
+bare-nixos/desktop.nix                 # 桌面环境：COSMIC（services.desktopManager.cosmic + cosmic-greeter）、
+                                       # clash-verge、zen-browser（imports: avatar.nix / steam.nix）
+                                       # 2026-10-24 已从 niri + DankMaterialShell 完全迁移到 COSMIC，niri/DMS 的 flake input、
+                                       # HM 模块、greeter 全部删除；输入法 pinyinime 走 XDG autostart 启动
 bare-nixos/docker.nix                  # Docker
 bare-nixos/steam.nix                   # Steam（由 desktop.nix 引入）
 bare-nixos/home/default.nix            # home-manager 用户入口（imports: shells / vcs / neovim / desktop / ...）
-bare-nixos/home/desktop/default.nix    # niri/HM 桌面相关（vicinae、DMS 等）
+bare-nixos/home/desktop/default.nix    # 桌面应用与 pinyinime autostart
 bare-nixos/home/shells/ ...            # fish/nushell/starship
 ```
 
@@ -96,8 +97,32 @@ bare-nixos/home/shells/ ...            # fish/nushell/starship
   - `services.earlyoom.enable = true`：可用内存/swap < 10% 时提前 OOM-kill
   - `boot.kernel.sysctl`：`vm.min_free_kbytes = 262144`、`vm.swappiness = 100`、`kernel.sysrq = 1`
     （下次卡死可 `Alt+SysRq+S` 同步后 `B` 重启）
-- `home/desktop/default.nix`：`programs.vicinae.settings` 把 `repos`、Steam、浏览器 profile、外置盘
-  等大目录从文件索引中排除（否则每 60 秒全量扫描 ~15 万文件）
+
+2026-10-24 睡眠唤醒后回不到桌面（NVIDIA 显存内容丢失）后的修复：
+
+- `configuration.nix`：`hardware.nvidia.powerManagement.enable = true;`
+  生成 `/etc/modprobe.d/nixos.conf` 里的
+  `NVreg_PreserveVideoMemoryAllocations=1 NVreg_UseKernelSuspendNotifiers=1`
+  （驱动 595.71.05 open + `hardware.nvidia.open = true` → 走内核 suspend notifier，
+  不需要 `nvidia-suspend/resume` systemd 单元）。
+  没有它：resume 后 `nvidia-drm` 报 `Failed to apply atomic modeset (-11)` / `Xid 13`，
+  cosmic-comp 的 page flip 全部 `EINVAL`，屏幕黑着回不到桌面。
+- **改这个必须重启**，模块参数在 `nvidia` 模块加载时生效（`hardware.nvidia.powerManagement.kernelSuspendNotifier = false` 可退回 systemd 单元方案）。
+- `configuration.nix`：`services.udev.extraRules` 给外置盘 aigo S7（USB `3535:1122`，S/N `YS20220271`）
+  钉死 `power/control=on` + `autosuspend_delay_ms=-1`。不钉的话睡眠时这块盘会被 USB autosuspend
+  挂掉并重新枚举（`USB disconnect` → 变 sdb），旧挂载进入 ext4 `shutdown` 状态（写入 EIO），
+  `docker`（`data-root = /home/maji/mobile/docker`）随之起不来，`just bare` 会以 **exit 4** 失败。
+
+COSMIC 不再自动挂起（2026-10-24 起，原默认 AC 30 分钟 / 电池 15 分钟会在跑测试时把机器睡掉）：
+
+- 自动挂起由 `cosmic-idle` 负责：用 `ext-idle-notify-v1` 计时，到点直接执行 `systemctl suspend`
+  （`systemd-logind` 侧 `IdleAction=ignore`，不参与）。
+- `bare-nixos/home/desktop/default.nix` 用 `xdg.configFile` 把
+  `~/.config/cosmic/com.system76.CosmicIdle/v1/{suspend_on_ac_time,suspend_on_battery_time}` 写成 `None`
+  （值类型 `Option<u32>`，单位毫秒，`None` = 永不）。
+- `screen_off_time` 未管理，仍是默认 15 分钟（黑屏 + `loginctl lock-session`）。
+- `cosmic-config` 用 inotify 热加载，改这些文件不需要重启 `cosmic-idle`；但因为是 Nix 软链，
+  在 COSMIC 设置里改成别的值只在本次会话生效，下次 `just bare` 会覆盖回 `None`。
 
 重建后自检：
 
@@ -105,6 +130,9 @@ bare-nixos/home/shells/ ...            # fish/nushell/starship
 swapon --show                     # 应有 /dev/zram0
 systemctl status earlyoom --no-pager
 sysctl kernel.sysrq vm.swappiness vm.min_free_kbytes
+grep -E 'PreserveVideoMemoryAllocations|UseKernelSuspendNotifiers' /proc/driver/nvidia/params  # 都应为 1
+cat ~/.config/cosmic/com.system76.CosmicIdle/v1/suspend_on_*_time   # 都应为 None
+sudo rtcwake -m mem -s 20         # 睡 20 秒自动醒；醒来后桌面应正常渲染
 ```
 
 ## 其他

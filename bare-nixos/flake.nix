@@ -24,17 +24,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    niri = {
-      url = "github:sodiboo/niri-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    dms = {
-      url = "github:AvengeMedia/DankMaterialShell/stable";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    # 本机仓库里的输入法(niri 原生 input-method-v2)，不经过 GitHub：
+    # 本机仓库里的输入法(zwp_input_method_v2)，不经过 GitHub：
     # 走 git 枚举，只拷 tracked 文件、不拷 .git。
     pinyinime = {
       url = "git+file:///home/maji/repos/pinyinime";
@@ -47,10 +37,6 @@
       url = "git+file:///home/maji/repos/warp-ime";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    # Vicinae 官方建议不要 follows nixpkgs，
-    # 否则它自己的 Cachix cache 可能 miss。
-    vicinae.url = "github:vicinaehq/vicinae";
   };
 
   outputs = inputs @ {
@@ -58,7 +44,6 @@
     nixpkgs-unstable,
     nixpkgs-zed,
     home-manager,
-    vicinae,
     ...
   }: {
     nixosConfigurations = {
@@ -84,16 +69,6 @@
           modules = [
             {
               nixpkgs.config.allowUnfree = true;
-
-              # Vicinae Cachix，避免本地编译
-              nix.settings = {
-                extra-substituters = [
-                  # "https://vicinae.cachix.org"
-                ];
-                extra-trusted-public-keys = [
-                  # "vicinae.cachix.org-1:1kDrfienkGHPYbkpNj1mWTr7Fm1+zcenzgTizIcI3oc="
-                ];
-              };
             }
 
             ./configuration.nix
