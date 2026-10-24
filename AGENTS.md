@@ -77,7 +77,9 @@ alejandra bare-nixos/                        # 格式化 nix 文件
 
 ```
 bare-nixos/configuration.nix           # 系统入口（imports: hardware / docker.nix / desktop.nix / ...）
-bare-nixos/desktop.nix                 # 桌面环境（niri、dms、clash-verge、greeter；imports: avatar.nix / steam.nix）
+bare-nixos/desktop.nix                 # 桌面环境（COSMIC 主 + niri 回退、clash-verge、greeter；imports: avatar.nix / steam.nix）
+                                       # 2026-10-24 起处于 niri+DMS → COSMIC 迁移阶段一：cosmic 与 cosmic-greeter 已启用，
+                                       # niri 会话保留；DMS greeter 已关闭，DMS 面板/niri include hack 尚未删除
 bare-nixos/docker.nix                  # Docker
 bare-nixos/steam.nix                   # Steam（由 desktop.nix 引入）
 bare-nixos/home/default.nix            # home-manager 用户入口（imports: shells / vcs / neovim / desktop / ...）

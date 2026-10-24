@@ -71,15 +71,13 @@
     enable = true;
   };
 
-  programs.dank-material-shell.greeter = {
-    enable = true;
-    compositor.name = "niri";
-    configHome = "/home/maji";
-  };
+  # ── 迁移到 COSMIC（2026-10-24）─────────────────────────────────────
+  # 阶段一：COSMIC 作为主桌面与登录器；niri 会话保留在登录列表中作为回退。
+  # 注意：DMS 的 niri 集成（面板、alttab.kdl、niri include hack）在 COSMIC 下无效，
+  # 待 COSMIC 验收通过后再统一删除。
+  services.desktopManager.cosmic.enable = true;
+  services.displayManager.cosmic-greeter.enable = true;
 
-  # greeter 空闲熄屏：dms-greeter 生成 niri 配置时会 include 这个文件，
-  # 用 swayidle 在空闲 10 分钟后关屏（DPMS Off），任意键鼠输入自动亮回登录界面。
-  environment.etc."greetd/niri_overrides.kdl".text = ''
-    spawn-at-startup "${pkgs.swayidle}/bin/swayidle" "-w" "timeout" "600" "niri msg action power-off-monitors" "resume" "niri msg action power-on-monitors"
-  '';
+  # DMS greeter 与 cosmic-greeter 都写 greetd 的 default_session，二选一。
+  programs.dank-material-shell.greeter.enable = false;
 }

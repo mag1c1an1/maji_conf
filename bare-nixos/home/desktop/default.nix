@@ -766,6 +766,17 @@
       };
     };
   };
+  # COSMIC 没有 niri 的 spawn-at-startup，用 XDG autostart 拉起 pinyinime。
+  # niri 会话不读 XDG autostart，仍由 programs.niri.settings.spawn-at-startup 启动。
+  xdg.configFile."autostart/pinyinime.desktop".text = ''
+    [Desktop Entry]
+    Type=Application
+    Name=pinyinime
+    Exec=pinyinime
+    Terminal=false
+    X-GNOME-Autostart-enabled=true
+  '';
+
   home.file.".config/DankMaterialShell/avatar.png".source = /home/maji/Pictures/jp.png;
   home.activation.setDmsAvatar = lib.hm.dag.entryAfter ["writeBoundary"] ''
     if command -v dms >/dev/null 2>&1; then
