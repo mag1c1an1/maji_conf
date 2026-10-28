@@ -19,6 +19,8 @@
       commandLineArgs = "--ozone-platform=wayland --enable-wayland-ime --wayland-text-input-version=3";
     })
     pkgs.gthumb
+    # 局域网向 iPhone 传文本/文件（iPhone 端装 App Store 版 LocalSend，同一 Wi-Fi 即可）
+    pkgs.localsend
     #pkgs.davinci-resolve
     pkgs.mpv
     # 原生拼音输入法(zwp_input_method_v2)，源码在本机 ~/repos/pinyinime

@@ -1,7 +1,7 @@
 # Edit this configuration file to define what should be installed on
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
-{pkgs, ...}: {
+{pkgs, config, pkgs-unstable, ...}: {
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
@@ -30,11 +30,23 @@
   services.envfs.enable = true;
   hardware.nvidia.open = true; # see the note above
   hardware.nvidia.modesetting.enable = true;
+  # 屏幕自动关闭后唤醒时 GPU 固件崩溃（与 S3 睡眠无关）：
+  # 2026-10-27 20:30 DPMS 唤醒重设模式 → nvidia-modeset "Lost display notification"
+  # → "GSP task watchdog timeout @ pc:0x13fe044" + "GSP RM heartbeat timed out"
+  # → 双 4K DP 屏全黑、desktop 回不来，只能硬重启（boot -1 日志）。
+  # 595.71.05(open) 在 Blackwell(RTX 5070 Ti) 上的 GSP 固件问题，先换成最新点版本试试。
+  # 580.142 这条线走不通：kernel 7.1 删掉了 linux/of_gpio.h 且移除了
+  # of_get_named_gpio()，580 的驱动源码要改代码才能编过，不划算。
+  # 改用 nixpkgs-unstable 的 595.104.02（比出问题的 595.71.05 新一个点版本），
+  # 但内核仍用本机 7.1.1 编译模块，避免内核不匹配。
+  # 若仍崩，退回本行注释掉、改用 hardware.nvidia.open = false;
+  hardware.nvidia.package =
+    (pkgs-unstable.linuxPackagesFor config.boot.kernelPackages.kernel).nvidiaPackages.stable;
   # 睡眠/唤醒必须保留显存内容。否则 resume 后 VRAM/GEM 里的 buffer 全是垃圾：
   # nvidia-drm 报 "Failed to apply atomic modeset (-11)"、Xid 13 Graphics Exception，
   # cosmic-comp 的 page flip 全部 EINVAL，屏幕黑着回不到桌面
   # （2026-10-24 13:39:08 suspend → 13:54:29 resume 实测，boot -1 日志）。
-  # 驱动 595.71.05(open) + open=true → kernelSuspendNotifier 默认启用，走内核 suspend
+  # 驱动 open 模块 + open=true → kernelSuspendNotifier 默认启用，走内核 suspend
   # notifier + NVreg_PreserveVideoMemoryAllocations=1，不需要 nvidia-suspend/resume 单元。
   hardware.nvidia.powerManagement.enable = true;
   hardware.nvidia-container-toolkit = {
@@ -93,6 +105,12 @@
 
   # Configure network connections interactively with nmcli or nmtui.
   networking.networkmanager.enable = true;
+
+  # 关掉 IPv6：本机到 cache.nixos.org 的 IPv6 路径极差（实测 82 KB/s，IPv4 1.9 MB/s），
+  # 而 nix-daemon 会优先选 IPv6，导致 rebuild 卡在下载上（2026-10-27 实测）。
+  # 这个选项会置 net.ipv6.conf.{all,default}.disable_ipv6 = 1。
+  # 需要 IPv6 时改回 true 即可。
+  networking.enableIPv6 = false;
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://127.0.0.1:10801";
@@ -313,8 +331,10 @@
   # services.openssh.enable = true;
 
   # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
+  # LocalSend（局域网收发文本/文件）：53317/tcp 传文件与文本，53317/udp 做多播发现
+  #（multicast 224.0.0.167），不开放的话 iPhone 端搜不到本机。
+  networking.firewall.allowedTCPPorts = [53317];
+  networking.firewall.allowedUDPPorts = [53317];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 

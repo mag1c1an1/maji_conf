@@ -1,6 +1,7 @@
 {
   config,
   inputs,
+  lib,
   pkgs,
   ...
 }: {
@@ -56,6 +57,24 @@
   # cosmic-greeter 同时接管 greetd（Xwayland 由 cosmic-comp 自己拉起，不用 xwayland-satellite）。
   services.desktopManager.cosmic.enable = true;
   services.displayManager.cosmic-greeter.enable = true;
+
+  # 登录界面（greeter 会话）不会自动熄屏：cosmic-greeter-start 只 exec cosmic-comp，
+  # cosmic-idle 只由 cosmic-session 在用户会话里拉起，greeter 会话里没人消费 idle 事件，
+  # 所以永远不 DPMS off（services.logind.settings.Login.IdleAction = "ignore" 只管
+  # 系统级 idle 动作，跟熄屏无关）。这里在 greeter 会话里额外拉起 cosmic-idle，
+  # 用 until 循环重试，等 compositor 的 wayland socket 就绪。
+  services.greetd.settings.default_session.command = let
+    greeterWithIdle = pkgs.writeShellScript "cosmic-greeter-with-idle" ''
+      rm -rf /run/cosmic-greeter/cosmic/com.system76.CosmicSettingsDaemon/v1/* 2>/dev/null
+      ( until ${lib.getExe pkgs.cosmic-idle}; do sleep 1; done ) >/dev/null 2>&1 &
+      exec ${lib.getExe' config.services.displayManager.cosmic-greeter.package "cosmic-greeter-start"}
+    '';
+  in
+    lib.mkForce (lib.concatStringsSep " " [
+      (lib.getExe' pkgs.coreutils "env")
+      "XCURSOR_THEME=\"\${XCURSOR_THEME:-Pop}\""
+      (toString greeterWithIdle)
+    ]);
 
   services.xserver.enable = false;
 }

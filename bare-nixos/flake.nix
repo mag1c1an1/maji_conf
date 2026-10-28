@@ -25,9 +25,9 @@
     };
 
     # 本机仓库里的输入法(zwp_input_method_v2)，不经过 GitHub：
-    # 走 git 枚举，只拷 tracked 文件、不拷 .git。
+    # 固定到 jj 工作区快照，包含设置界面与 CapsLock 修复；不复制 .git/.jj 历史。
     pinyinime = {
-      url = "git+file:///home/maji/repos/pinyinime";
+      url = "git+file:///home/maji/repos/pinyinime?rev=188f4581a385be3bd2782c48f1c36582dec11242";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
