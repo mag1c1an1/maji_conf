@@ -1,10 +1,11 @@
 # Edit this configuration file to define what should be installed on
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
-{pkgs, config, pkgs-unstable, ...}: {
+{inputs, pkgs, config, pkgs-unstable, ...}: {
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
+    inputs.dms.nixosModules.greeter
     ./docker.nix
     ./desktop.nix
     # ./cachix/devenv.nix
@@ -44,7 +45,7 @@
     (pkgs-unstable.linuxPackagesFor config.boot.kernelPackages.kernel).nvidiaPackages.stable;
   # 睡眠/唤醒必须保留显存内容。否则 resume 后 VRAM/GEM 里的 buffer 全是垃圾：
   # nvidia-drm 报 "Failed to apply atomic modeset (-11)"、Xid 13 Graphics Exception，
-  # cosmic-comp 的 page flip 全部 EINVAL，屏幕黑着回不到桌面
+  # 合成器的 page flip 全部 EINVAL，屏幕黑着回不到桌面
   # （2026-10-24 13:39:08 suspend → 13:54:29 resume 实测，boot -1 日志）。
   # 驱动 open 模块 + open=true → kernelSuspendNotifier 默认启用，走内核 suspend
   # notifier + NVreg_PreserveVideoMemoryAllocations=1，不需要 nvidia-suspend/resume 单元。
@@ -87,7 +88,7 @@
   };
 
   # 输入法:maji 自己写的 pinyinime(zwp_input_method_v2，见 home/desktop/default.nix)，
-  # 不再用 fcitx5；COSMIC 自 1.0.0~beta.8 起实现 input-method-v2 + virtual-keyboard-v1。
+  # 不再用 fcitx5；niri 原生支持 input-method-v2。
 
   services.logind.settings.Login = {
     IdleAction = "ignore";
@@ -183,8 +184,10 @@
   ];
 
   systemd.services.nix-daemon.environment = {
-    # 让 nix-daemon 的下载（binary cache / 固定输出 derivation）走 xray 代理
-    # xray: 10801 = HTTP, 10800 = SOCKS5（与 git config 的 10801 一致）
+    # 让 nix-daemon 的下载（binary cache / 固定输出 derivation）走本地代理。
+    # 用 xray（系统服务、随开机启动）：10801 = HTTP，10800 = SOCKS5（与 git config 的 10801 一致）。
+    # 备选是 clash-verge-rev 的 mixed-port 7890（HTTP+SOCKS5 同端口），但它是用户级 GUI 程序，
+    # 未登录/未启动时端口不存在，会让 rebuild 直接失败。
     # no_proxy 用 nix-daemon 模块自带默认值（已含 127.0.0.1,localhost），不重复定义
     http_proxy = "http://127.0.0.1:10801";
     https_proxy = "http://127.0.0.1:10801";
@@ -212,6 +215,7 @@
   programs.git = {
     enable = true;
     config = {
+      # 与 nix-daemon 一致走 xray 的 10801（见上面 nix-daemon environment 的说明）
       http.proxy = "http://127.0.0.1:10801";
       https.proxy = "http://127.0.0.1:10801";
     };

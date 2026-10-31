@@ -24,11 +24,27 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    niri = {
+      url = "github:sodiboo/niri-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    dms = {
+      url = "github:AvengeMedia/DankMaterialShell/stable";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # 本机仓库里的输入法(zwp_input_method_v2)，不经过 GitHub：
     # 固定到 jj 工作区快照，包含设置界面与 CapsLock 修复；不复制 .git/.jj 历史。
     pinyinime = {
-      url = "git+file:///home/maji/repos/pinyinime?rev=188f4581a385be3bd2782c48f1c36582dec11242";
+      url = "git+file:///home/maji/repos/pinyinime?rev=4f4e213fbb098a74436bf36a33a8ae2be4c05221";
       inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    # WeType 运行资源（词典/模型）。路径必须是真实文件目录；软链接在构建沙箱里不可用。
+    wetype-data = {
+      url = "path:/home/maji/.local/share/wetype";
+      flake = false;
     };
 
     # 本地自编译的 Warp（upstream + IME 候选窗修复补丁）：
@@ -37,6 +53,10 @@
       url = "git+file:///home/maji/repos/warp-ime";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # Vicinae 官方建议不要 follows nixpkgs，
+    # 否则它自己的 Cachix cache 可能 miss。
+    vicinae.url = "github:vicinaehq/vicinae";
   };
 
   outputs = inputs @ {
